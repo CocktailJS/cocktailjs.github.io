@@ -27,9 +27,88 @@
     <!-- MAIN CONTENT -->
     <div id="main_content_wrap" class="outer">
       <section id="main_content" class="inner">
-        <h3>What's Cocktail?</h3>
+        <h1>What's Cocktail?</h1>
 
 <p>Cocktail is a small library for NodeJS to easily create and define Classes. It helps to reuse code and maintain a simple and clear code structure. </p>
+
+<h2>For Who?</h2>
+
+<p>Cocktail is not for everyone. If you feel uncomfortable writing your methods and properties and using <em>utils</em> helpers for inheritance, or you just miss having a better and organised way to read your classes definitions then <em>CocktailJS</em> <strong>is for you</strong>.</p>
+
+<p>Moreover, if you like OOP and you want to go one step ahead and explore about using <strong>traits</strong> and <strong>talents</strong> to share behaviour, then you'll <strong>love</strong> <em>CocktailJS</em>.</p>
+
+<h2>Keep code simple and yet reusable</h2>
+
+<p><em>Cocktail</em> is <strong>so simple</strong> that it has one <em>one</em> public method: <code>Cocktail.mix()</code></p>
+
+<p><strong>Cocktail.mix</strong> accepts two parameters: </p>
+
+<ul>
+<li>
+<strong>subject</strong>: {Class|Object} </li>
+<li>
+<strong>options</strong>: {Object}</li>
+</ul><p>In its simplest use case, <strong>mix</strong> will merge your subject with the options. So if you use an Object as a <em>subject</em> and a bunch of properties as <em>options</em>, the result will be a merge:</p>
+
+<pre><code>var obj = {};
+
+Cocktail.mix(obj, {
+    aProperty: 'something',
+    anotherOne: 'something else'
+});
+
+//now you can access aProperty or anotherOne from obj:
+console.log(obj.aProperty); //will print 'something'
+
+</code></pre>
+
+<h3>What about all the cool other features?</h3>
+
+<p>Yes, I mentioned <em>inheritance</em>, <em>traits</em>, <em>talents</em>, blah, blah... Cocktail uses this special properties names that are defined between quotes and start with <code>@</code>, those are called <code>Annotations</code> and Cocktail uses them to apply some processes to the subject.</p>
+
+<h2>Annotations</h2>
+
+<p>So, <code>Annotations</code>, what ...? Annotations are just some meta-data Cocktail uses to apply some processes. As meta-data they are not part of the resulting mix. Let's explore a bit more about them:</p>
+
+<h3><code>@extends</code></h3>
+
+<p>For classical OOP inheritance we need a <em>Base</em> class. <code>@extends</code> annotation is used to tell Cocktail that we are going to apply inheritance from a base class. </p>
+
+<pre><code>var Cocktail = require('Cocktail'),
+    BaseClass = require('./MyBaseAwesomeClass'),
+    MyClass = function(){};
+
+Cocktail.mix(MyClass, {
+    '@extends': BaseClass,
+
+     someProperty: 'something'
+});
+
+</code></pre>
+
+<p>As in classical OOP inheritance, any instance of MyClass is an instance of BaseClass too, and you have access to any methods or properties defined in BaseClass.</p>
+
+<h3><code>@properties</code></h3>
+
+<p>Properties are a kind of magical helper. All the properties defined in @properties become part of the class prototype, but also, it generates getter/setter methods for you.</p>
+
+<pre><code>var Cocktail = require('Cocktail'),
+    BaseClass = require('./MyBaseAwesomeClass'),
+    MyClass = function(){};
+
+Cocktail.mix(MyClass, {
+    '@extends': BaseClass,
+
+     '@properties': {
+         name: 'default name'
+     },
+
+     someProperty: 'something'
+});
+
+</code></pre>
+
+<p>In the example above, we will have a <code>setName</code> and <code>getName</code> methods accessible from any MyClass instance.  </p>
       </section>
     </div>
 
@@ -40,7 +119,17 @@
       </footer>
     </div>
 
-    
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-39565774-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
 
   </body>
 </html>
