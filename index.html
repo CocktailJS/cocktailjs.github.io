@@ -31,7 +31,7 @@
 
 <p>Cocktail is a small library for NodeJS to easily create and define Classes. It helps to reuse code and maintain a simple and clear code structure. </p>
 
-<h2>For Who?</h2>
+<h1>For Who?</h1>
 
 <p>Cocktail is not for everyone. If you feel uncomfortable writing your methods and properties and using <em>utils</em> helpers for inheritance, or you just miss having a better and organised way to read your classes definitions then <em>CocktailJS</em> <strong>is for you</strong>.</p>
 
@@ -62,15 +62,15 @@ console.log(obj.aProperty); //will print 'something'
 
 </code></pre>
 
-<h3>What about all the cool other features?</h3>
+<h2>What about all the cool other features?</h2>
 
 <p>Yes, I mentioned <em>inheritance</em>, <em>traits</em>, <em>talents</em>, blah, blah... Cocktail uses this special properties names that are defined between quotes and start with <code>@</code>, those are called <code>Annotations</code> and Cocktail uses them to apply some processes to the subject.</p>
 
-<h2>Annotations</h2>
+<h1>Annotations</h1>
 
 <p>So, <code>Annotations</code>, what ...? Annotations are just some meta-data Cocktail uses to apply some processes. As meta-data they are not part of the resulting mix. Let's explore a bit more about them:</p>
 
-<h3><code>@extends</code></h3>
+<h2><code>@extends</code></h2>
 
 <p>For classical OOP inheritance we need a <em>Base</em> class. <code>@extends</code> annotation is used to tell Cocktail that we are going to apply inheritance from a base class. </p>
 
@@ -88,7 +88,7 @@ Cocktail.mix(MyClass, {
 
 <p>As in classical OOP inheritance, any instance of MyClass is an instance of BaseClass too, and you have access to any methods or properties defined in BaseClass.</p>
 
-<h3><code>@properties</code></h3>
+<h2><code>@properties</code></h2>
 
 <p>Properties are a kind of magical helper. All the properties defined in @properties become part of the class prototype, but also, it generates getter/setter methods for you.</p>
 
@@ -109,6 +109,15 @@ Cocktail.mix(MyClass, {
 </code></pre>
 
 <p>In the example above, we will have a <code>setName</code> and <code>getName</code> methods accessible from any MyClass instance.  </p>
+
+<h2><code>@traits</code></h2>
+
+<p><em>Traits</em> are Composable Units of Behaviour (You can read more from <a href="http://scg.unibe.ch/archive/papers/Scha03aTraits.pdf">this paper</a>). Basically, a Trait is a Class, let's say a special type of Class, that has only behaviour (methods) and no state. </p>
+
+<p>A Trait can be composed with other Traits. In Cocktail -at least- you cannot extend from a Trait or a Trait cannot extend from other class.</p>
+
+<pre><code>
+</code></pre>
       </section>
     </div>
 
