@@ -116,8 +116,47 @@ Cocktail.mix(MyClass, {
 
 <p>A Trait can be composed with other Traits. In Cocktail -at least- you cannot extend from a Trait or a Trait cannot extend from other class.</p>
 
-<pre><code>
+<p>In the following example we explore a simple functionality, where we want to know if a given instance is "testable" and to resolve that our instance should be an instance of a "Test" class.</p>
+
+<p>We can create a simple Trait "Testable" which will determine if the current instance is testable:</p>
+
+<pre><code>var TestClass = require('./SomeBaseTest'),
+    Testable = function(){};
+
+Testable.prototype.isTestable = function(){
+    return this instanceof TestClass;
+};
+
+module.exports = Testable;
 </code></pre>
+
+<p>So now we can apply the Testable Trait to our class definition:</p>
+
+<pre><code>var Cocktail = require('Cocktail'),
+    Testable = require('./Testable'),
+    MyClass = function(){};
+
+Cocktail.mix(MyClass, {
+   '@traits': [Testable],
+
+   // ... more class definitions
+
+});
+
+module.exports = MyClass;
+</code></pre>
+
+<p>Now we can use our class and check if it is Testable</p>
+
+<pre><code>var MyClass = require('./MyClass'),
+    instance;
+
+instance = new MyClass();
+
+console.log(instance.isTestable()) //false
+</code></pre>
+
+<p>This is a very simple and fairly stupid example, but here we demonstrated we don't need Cocktail to <em>define</em> a Trait but just only to apply it.</p>
       </section>
     </div>
 
