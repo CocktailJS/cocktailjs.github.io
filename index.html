@@ -37,9 +37,9 @@
 
 <p>Moreover, if you like OOP and you want to go one step ahead and explore about using <strong>traits</strong> and <strong>talents</strong> to share behaviour, then you'll <strong>love</strong> <em>CocktailJS</em>.</p>
 
-<h2>Keep code simple and yet reusable</h2>
+<h1>Keep code simple and yet reusable</h1>
 
-<p><em>Cocktail</em> is <strong>so simple</strong> that it has one <em>one</em> public method: <code>Cocktail.mix()</code></p>
+<p><em>Cocktail</em> is <strong>so simple</strong> that it has only <em>one</em> public method: <code>Cocktail.mix()</code></p>
 
 <p><strong>Cocktail.mix</strong> accepts two parameters: </p>
 
@@ -62,7 +62,7 @@ console.log(obj.aProperty); //will print 'something'
 
 </code></pre>
 
-<h2>What about all the cool other features?</h2>
+<h2>What about all the other cool features?</h2>
 
 <p>Yes, I mentioned <em>inheritance</em>, <em>traits</em>, <em>talents</em>, blah, blah... Cocktail uses this special properties names that are defined between quotes and start with <code>@</code>, those are called <code>Annotations</code> and Cocktail uses them to apply some processes to the subject.</p>
 
@@ -157,6 +157,35 @@ console.log(instance.isTestable()) //false
 </code></pre>
 
 <p>This is a very simple and fairly stupid example, but here we demonstrated we don't need Cocktail to <em>define</em> a Trait but just only to apply it.</p>
+
+<h2><code>@talents</code></h2>
+
+<p>Talents are very similar to Traits, in fact a Trait can be applied as a Talent in Cocktail. The main difference is a Talent can be applied to an <em>instance</em>. So we can define a Talent as a <em>Dynamically Composable Unit of Reuse</em> (you can read more from <a href="http://scg.unibe.ch/archive/papers/Ress11a-Talents.pdf">this paper</a>).</p>
+
+<p>In the previous example we created a Testable trait. So, what now if we want to use that behaviour only on certain instances? Well that's when Talents become super handy:</p>
+
+<pre><code>var MyClass = require('./MyAnotherClass'),
+    MyTestableClass = require('./MyClassInheritsFromTest'),
+    Testable = require('./Testable'),
+    instanceA, instanceB;
+
+instanceA = new MyTestableClass();
+
+Cocktail.mix(instanceA, {
+    '@talents': [Testable]
+});
+
+console.log(instanceA.isTestable()) //true
+
+instanceB = new MyClass();
+
+Cocktail.mix(instanceB, {
+    '@talents': [Testable]
+})l
+
+console.log(instanceB.isTestable()) //false
+
+</code></pre>
       </section>
     </div>
 
