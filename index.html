@@ -100,7 +100,8 @@ Cocktail.mix(MyClass, {
     '@extends': BaseClass,
 
      '@properties': {
-         name: 'default name'
+         name: 'default name',
+         valid: true
      },
 
      someProperty: 'something'
@@ -108,7 +109,8 @@ Cocktail.mix(MyClass, {
 
 </code></pre>
 
-<p>In the example above, we will have a <code>setName</code> and <code>getName</code> methods accessible from any MyClass instance.  </p>
+<p>In the example above, we will have a <code>setName</code> and <code>getName</code> methods accessible from any MyClass instance.<br>
+In case the property is a <em>boolean</em> like <code>valid</code>, then we will have an <code>isValid</code> and <code>setValid</code> methods instead. </p>
 
 <h2><code>@traits</code></h2>
 
@@ -153,19 +155,67 @@ module.exports = MyClass;
 
 instance = new MyClass();
 
-console.log(instance.isTestable()) //false
+console.log(instance.isTestable()); //false
 </code></pre>
 
 <p>This is a very simple and fairly stupid example, but here we demonstrated we don't need Cocktail to <em>define</em> a Trait but just only to apply it.</p>
+
+<p>If you have read the paper, you might noticed that sometimes conflicts may arise and there are some ways to avoid those conflicts. Those are implemented in <em>Cocktail</em> as well. You can create <em>alias</em> or even <em>exclude</em> methods from the Trait. The syntax is a bit different for these cases:</p>
+
+<pre><code>Cocktail.mix(MyClass, {
+   '@traits': [
+       Testable,
+       {
+           trait: AnotherTrait,
+           excludes: ['doSomething'], 
+           alias: {
+              'methodFoo': 'myClassMethodFoo'
+           }
+       }
+    ],
+
+   // ... more class definitions
+
+});
+</code></pre>
+
+<h2><code>@requires</code></h2>
+
+<p>We saw that we can use any Class defined with no state as a Trait but, sometimes we need to specify that our Trait requires some methods to be defined in order to be usable. That's what <code>@requires</code> is for. Let's see an example:</p>
+
+<p>Our Trait <em>Formatable</em> requires a value where the format will be applied. Since Traits <em>cannot have state</em>, we need some way to access to the variable we want to format. So, in this case <em>Formatable</em> requires a <em>getValue</em> method to be defined:</p>
+
+<pre><code>Cocktail.mix(Formatable, {
+    '@requires': ['getValue'],
+
+    format: function(pattern){
+         var value = this.getValue(); 
+         // apply the pattern to the current value ...
+         return value;
+    }
+});
+</code></pre>
+
+<p>Now we can apply it to a Class:</p>
+
+<pre><code>Cocktail.mix(MyClass, {
+   '@traits': [Formatable],
+   '@properties': {
+       value: 10
+   }
+});
+</code></pre>
+
+<p>Note that we have not defined a <code>getValue()</code> method which is required by our trait, but have used the properties annotation which will generate the getter for us. So in this case the <strong>Class + glue code + Trait</strong> trilogy is successfully completed. </p>
 
 <h2><code>@talents</code></h2>
 
 <p>Talents are very similar to Traits, in fact a Trait can be applied as a Talent in Cocktail. The main difference is a Talent can be applied to an <em>instance</em>. So we can define a Talent as a <em>Dynamically Composable Unit of Reuse</em> (you can read more from <a href="http://scg.unibe.ch/archive/papers/Ress11a-Talents.pdf">this paper</a>).</p>
 
-<p>In the previous example we created a Testable trait. So, what now if we want to use that behaviour only on certain instances? Well that's when Talents become super handy:</p>
+<p>In a previous example we have created a Testable trait. So, what if we want now to use that behaviour only on certain instances? Well that's when Talents become super handy:</p>
 
 <pre><code>var MyClass = require('./MyAnotherClass'),
-    MyTestableClass = require('./MyClassInheritsFromTest'),
+    MyTestableClass = require('./MyClassInheritsFromTestClass'),
     Testable = require('./Testable'),
     instanceA, instanceB;
 
@@ -175,17 +225,19 @@ Cocktail.mix(instanceA, {
     '@talents': [Testable]
 });
 
-console.log(instanceA.isTestable()) //true
+console.log(instanceA.isTestable()); //true
 
 instanceB = new MyClass();
 
 Cocktail.mix(instanceB, {
     '@talents': [Testable]
-})l
+});
 
-console.log(instanceB.isTestable()) //false
+console.log(instanceB.isTestable()); //false
 
 </code></pre>
+
+<p>The same syntax we used for Traits is applicable to a Talent for <em>excludes</em> and <em>alias</em> functionality. </p>
       </section>
     </div>
 
