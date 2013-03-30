@@ -1,0 +1,15 @@
+
+name: CocktailJS
+
+description: Shake your objects and classes with Cocktail!
+
+author: Maximiliano Fierro
+
+username: CocktailJS
+repository: Cocktail
+
+analytics: UA-39565774-1
+
+#baseurl: /node/home/_site
+
+markdown: rdiscount

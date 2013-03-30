@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>{% if page.title %} {{ page.title }} | {% endif %} {{ site.name }}</title>
+        <link href='http://fonts.googleapis.com/css?family=Quattrocento+Sans:400,700,700italic,400italic' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="{{site.baseurl}}/resources/css/styles.css" />
+        <meta name="description" content="{{site.description}}"/>
+        <meta name="author" content="{{site.author}}"/>
+        <link rel="author" href="humans.txt"/>
+<!-- 
+        <link rel="stylesheet" href="/resources/fontello/css/fontello.css">
+        <link rel="stylesheet" href="/resources/fontello/css/animation.css">
+
+ -->        <!--[if IE 7]><link rel="stylesheet" href="/resources/fontello/css/fontello-ie7.css"><![endif]-->
+    </head>
+
+    <body>
+        <nav>
+
+            <ul>
+<!-- 
+                <li><i class="icon-home"></i>   <a href="{{site.baseurl}}/">Home</a></li>
+ 
+                <li><i class="icon-mail"></i>   <a href="{{site.baseurl}}/contact">Contact</a></li>
+                <li><i class="icon-th"></i>     <a href="{{site.baseurl}}/archive">Archive</a></li>
+                <li><i class="icon-rss"></i>    <a href="{{site.baseurl}}/feed.xml">RSS Feed</a></li>
+ -->           
+             </ul>
+
+        </nav>
+
+        <header>
+            <hgroup>
+                <h1 class='title'> <span class="logo"></span>{{ site.name }}</h1>
+                <h4 class= 'description'>{{ site.description }}</h4>
+            </hgroup>
+            <hgroup class="social">
+                <!-- Twiter -->
+                <a href="https://twitter.com/CocktailJS" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @CocktailJS</a>
+                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+                <!-- Github -->
+                <a href="https://github.com/{{site.username}}/{{site.repository}}" class="gh-button" data-size="large">View in GitHub</a>
+                <script async defer src="http://buttons.github.com/gh-buttons.js"></script>
+
+            </hgroup>
+        </header>
+
+
+        <main>
+
+            {{ content }}
+
+        </main>
+
+        <footer>
+            <p>&copy; <time>2013</time> {{ site.author }}</p>
+        </footer>
+
+        <!-- Analytics -->
+        <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+                var pageTracker = _gat._getTracker("{{site.analytics}}");
+                pageTracker._trackPageview();
+            } catch(err) {}
+        </script>
+
+    </body>
+
+</html>
