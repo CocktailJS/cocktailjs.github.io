@@ -1,0 +1,28 @@
+@-webkit-keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+  60% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+
+header .title{
+    -webkit-animation-duration: 0.7s;
+    -webkit-animation-name: fadein;
+}
+
+header .description{
+    -webkit-animation-duration: 1.5s;
+    -webkit-animation-name: fadein;
+}
+
+
+header .social{
+    -webkit-animation-duration: 2s;
+    -webkit-animation-name: fadein;
+}
