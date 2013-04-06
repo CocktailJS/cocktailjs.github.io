@@ -249,7 +249,34 @@ img {
 /*******************************************************************************
 Full-Width Styles
 *******************************************************************************/
-header {
+html, body, main { height: 100%; }
+body > main { height: auto; min-height: 100%; }
+
+main {
+  display: block;
+  position: relative;
+  max-width: 640px;
+  padding: 20px 10px;
+  margin: 0 auto;
+  height: auto;
+  min-height: 100%;
+  padding-bottom: 3em;
+}
+
+footer {
+  background: url(../images/blackgrid.png) #212121;
+  box-shadow: black 0 0 50px inset;
+  border-top: 4px solid #6c3;
+  text-align: center;
+  position: relative;
+  z-index: 10;
+  height: 3em;
+  margin-top: -3em;
+}
+
+/* DEFAULT LAYOUT */
+
+.default header {
   height: 400px;
   background: url(../images/blackgrid.png) #212121;
   text-align: center;
@@ -267,7 +294,7 @@ header .logo {
   display: inline-block;
 }
 
-header .title {
+.default header .title {
   font-weight: 400;
   font-size: 120px;
   color: #eee;
@@ -286,20 +313,11 @@ header .social{
   margin-top: 75px;
 }
 
-main {
-  display: block;
-  position: relative;
-  max-width: 640px;
-  padding: 20px 10px;
-  margin: 0 auto;
-}
 
-nav {
-  /*display: none;*/
+.default nav {
   max-width: 640px;
   padding: 20px 10px;
   margin: 0 auto;
-  border-bottom: 1px solid #eee;
 }
 
 nav ul {
@@ -314,15 +332,63 @@ nav a{
   color: #f63;
 }
 
-footer {
-  height: 100px;
-  background: url(../images/blackgrid.png) #212121;
-  box-shadow: black 0 0 50px inset;
-  border-top: 4px solid #6c3;
-  text-align: center;
-  text-transform: uppercase;
+
+/* POST LAYOUT */
+
+.post header {
+  max-width: 640px;
+  padding: 20px 10px;
+  margin: 30px auto;
 }
 
+.post header .title{
+  font-size: 72px;
+  line-height: 65px;
+  margin: 20px 0;
+}
+
+.post header .category{
+  font-size: 20px;
+  color: #fff;
+  padding: 5px 10px;
+  background: #c0c0c0;
+}
+
+.post header .tag{
+  font-size: 20px;
+  color: #fff;
+  background: #ddd;
+  padding: 5px 10px;
+}
+
+.post header .date{
+  font-size: 16px;
+  color: #ccc;
+}
+
+.post nav {
+  background: url(../images/blackgrid.png) #212121;
+  box-shadow: black 0 0 50px inset;
+  border-bottom: 4px solid #f63;
+}
+
+.post nav .logo {
+  background: url(../images/logo.png) no-repeat -10px -5px;
+  background-size: 55px;
+  height: 20px;
+  width: 30px;
+  display: inline-block;
+  margin-left: 10px;
+}
+
+.post nav ul {
+  padding: 5px 0;
+}
+.post nav ul li{
+  display: inline-block;
+  color: #aaa;
+  font-size: 20px;
+}
 /*
 .outer {
   width: 100%;

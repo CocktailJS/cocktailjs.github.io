@@ -10,6 +10,9 @@ repository: Cocktail
 
 analytics: UA-39565774-1
 
-#baseurl: /node/home/_site
-
 markdown: rdiscount
+permalink: none
+
+safe: true
+lsi: false
+pygments: true
