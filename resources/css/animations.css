@@ -11,18 +11,18 @@
 }
 
 
-header .title{
+.default header .title{
     -webkit-animation-duration: 0.7s;
     -webkit-animation-name: fadein;
 }
 
-header .description{
+.default header .description{
     -webkit-animation-duration: 1.5s;
     -webkit-animation-name: fadein;
 }
 
 
-header .social{
+.default  header .social{
     -webkit-animation-duration: 2s;
     -webkit-animation-name: fadein;
 }

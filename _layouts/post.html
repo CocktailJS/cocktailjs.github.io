@@ -12,40 +12,27 @@
     </head>
 
     <body class="post">
-        <nav>
-            <!-- <span class="logo"></span> -->
-            <ul>
-                <li><span class="logo"></span>CocktailJS</li>
-                <li>Blog</li>
-             </ul>
-        </nav>
+        {% include navigation.html %}
 
         <header>
             <hgroup>
                 <h1 class='title'> {{ page.title }}</h1>
-                <div>
-
-                    {% for category in page.categories %}
-                        <span class="category">{{category}}</span>
-                    {% endfor %}
-
-                    {% for tag in page.tags %}
-                      <span class="tag">{{ tag }}</span>
-                    {% endfor %}
-
+                <div class="meta">
+                    <div class="tags">
+                        {% for tag in page.tags %}
+                            <span class="tag">{{ tag }}</span>
+                        {% endfor %}
+                    </div>
+                    <div class="date">{{ page.date | date_to_string }}</div>
                 </div>
-                <div>
-                    <span class="date">{{ page.date | date_to_string }}</span>
-                <div>
 
-                <div>
-                    <a href="https://twitter.com/share" class="twitter-share-button" data-via="CocktailJS" data-hashtags="Cocktail">Tweet</a>
+                <div class="social twitter">
+                    <a href="https://twitter.com/share" class="twitter-share-button" data-via="CocktailJS">Tweet</a>
                     <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 
                 </div>
             </hgroup>
         </header>
-
 
         <main>
 
@@ -54,7 +41,7 @@
         </main>
 
         <footer>
-            <p>&copy; <time>2013</time> {{ site.author }}</p>
+            <p>&copy; <time>2013</time>{{ site.author }}</p>
         </footer>
 
         <!-- Analytics -->
