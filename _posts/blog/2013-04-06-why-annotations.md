@@ -1,10 +1,9 @@
 ---
 layout: post
 title: Why Annotations?
+category: blog
 tags: [annotations, node, javascript]
 published: true
-category: blog
-comments: true
 ---
 
 #It's all about describing code
@@ -55,3 +54,10 @@ your final result will be as clean as if you were using an util method.
 
 - **Readability**: One single action makes your code easy to read. Instead of having a set of instructions to inherit, merge, apply a Trait, etc.,
 all these actions are performed in one single method.
+
+These are some of the advantages of having annotations in Cocktail and they are part of the library goals.
+
+##Do one thing and do it well
+Cocktail delegates all the work to its annotations so each of them can do a very simple and small action, even though sometimes it is not that small or simple.  
+The goal behind a particular annotation should be concise and very well defined.
+
