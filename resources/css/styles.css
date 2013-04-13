@@ -260,7 +260,7 @@ main {
   margin: 0 auto;
   height: auto;
   min-height: 100%;
-  padding-bottom: 3em;
+  padding-bottom: 6em;
 }
 
 footer {
@@ -373,6 +373,7 @@ header .social{
   color: #fff;
   background: #6c3;
   padding: 5px 10px;
+  font-weight: bold;
 }
 
 .meta .date {

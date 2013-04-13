@@ -1,8 +1,9 @@
 ---
-layout: 
-title: N/A
+layout: guide
+title: Getting Started
 published: true
-category: doc
+category: guide
+tags: [getting started]
 ---
 
-DOC
+DOC CONTENT

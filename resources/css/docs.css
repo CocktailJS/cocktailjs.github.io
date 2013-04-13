@@ -1,0 +1,39 @@
+.docs header {
+  max-width: 720px;
+  padding: 20px 10px;
+  margin: 30px auto;
+  text-align: center;
+}
+
+.docs header .title{
+    font-size: 72px;
+}
+
+.docs header .description{
+    text-shadow: none;
+    font-size: 48px;
+    margin-top: -48px;
+    color: #aaa;
+}
+
+.docs .toc {
+    margin-bottom: 40px;
+    padding: 0px 25px;
+    background: #6C3;
+}
+
+.docs .toc li {
+    list-style: none;
+}
+
+.docs .toc  > ul > li {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.docs .toc a {
+    padding: 5px 10px;
+    background: #6c3;
+    color: #fff;
+    font-weight: bold;
+}

@@ -3,15 +3,50 @@
 <html>
     <head>
         {% include head.html %}
+        <link rel="stylesheet" href="{{site.baseurl}}/resources/css/docs.css" />
+
     </head>
 
     <body class="docs">
-        {% include navigation.html %}            
+        {% include navigation.html %}
+
+        <header>
+            <hgroup>
+                <h1 class='title'>{{ page.title }}</h1>
+                <h2 class='description'>{{ page.description }}</h2>
+            </hgroup> 
+        </header>
+
+
 
         <main>
+            <section class="toc">
+                <h1>Table of Contents</h1>
+                <ul>
+                    <li>
+                        <a href="#cocktail.mix">Cocktail.mix</a>
+                        <ul>
+                            <li><a href="#subject">subject</a></li>
+                            <li><a href="#options">options</a></li>
+                        </ul>                            
+                    </li>
+                    <li>
+                        <a href="#annotations">Annotations</a>
+                        <ul>
+                            <li><a href="#@annotation">@annotation</a></li>
+                            <li><a href="#@extends">@extends</a></li>
+                            <li><a href="#@properties">@properties</a></li>
+                            <li><a href="#@traits">@traits</a></li>
+                            <li><a href="#@talents">@talents</a></li>
+                            <li><a href="#@requires">@requires</a></li>
+                        </ul>    
+                    </li>
+                </ul>    
+            </section>
 
-            {{ content }}
-
+            <section class="content">
+                {{ content }}
+            </section>
         </main>
 
         {% include footer.html %}
