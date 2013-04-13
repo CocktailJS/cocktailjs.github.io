@@ -95,7 +95,7 @@ It calls the specified methodName on the parent class with the given params.
             MyClass = function(){};
 
         Cocktail.mix(MyClass, {
-            '@extends' : Base
+            '@extends' : Base,
 
             /**
              * overrides Base foo(param) method
@@ -133,7 +133,7 @@ are created. If the property is a boolean then an **is[PropertyName]** method is
                 total: 0,
                 initialized: false,
                 other: undefined
-            }
+            },
 
 
             /**
