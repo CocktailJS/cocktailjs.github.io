@@ -65,6 +65,8 @@ The annotation is applicable to a Class with a **process** and **setParameter** 
 
 >Example:
 
+Custom.js
+
         var Cocktail = require('Cocktail'),
             Custom = function(){};
 
@@ -73,10 +75,33 @@ The annotation is applicable to a Class with a **process** and **setParameter** 
 
             setParameter: function(){/*...*/},
 
-            process: function(){/*...*/}
+            process: function(subject){/*...*/}
         });
 
+        module.exports = Custom;
+
 >The Custom class is a processor for the annotation named `custom`.
+>Now we can use our newly created annotation in our code:
+
+index.js
+
+    // 1.-include Custom annotation definition
+    require('./Custom.js');
+
+    var Cocktail = require('Cocktail'),
+        myObj = {};
+
+    Cocktail.mix(myObj, {
+        // 2.-annotate the code with the custom annotation  
+        '@custom' : 'some-custom-parameter',
+
+        //more annotations, or code
+    });
+
+>In the index.js file we are first adding the annotation definition (it is not necessary to bind it to any local variable)
+and then we just use our custom annotation in our code. 
+The parameter specified in the mix for @custom is the one that will be passed to setParameter method in Custom Annotation definition.
+Then the process() receives the subject, myObj in this case, when it is processed by the annotation.
 
 <a id="@extends"></a>
 ##**@extends**: {Function} parent class
@@ -89,6 +114,8 @@ a **callSuper** method.
 It calls the specified methodName on the parent class with the given params.
 
 >Example:
+
+MyClass.js
 
         var Cocktail = require('Cocktail'),
             Base = require('./Base'),
@@ -112,7 +139,21 @@ It calls the specified methodName on the parent class with the given params.
 
         });
 
+        module.exports = MyClass;
+
 >MyClass class extends from the Base class.
+
+index.js
+
+        var MyClass = require('./MyClass'),
+            myObj;
+
+        myObj = new MyClass();
+        //...
+
+        myObj.foo('blah'); // this will call foo in MyClass and on its parent class
+
+
 
 <a id="@properties"></a>
 ##**@properties**: {Object} properties
@@ -169,6 +210,11 @@ are created. If the property is a boolean then an **is[PropertyName]** method is
 This annotation allows to define or specify which traits will be part of the current mix. A **Trait** is an special case of
 class where you define only behavior that will be shared among other classes or even other Traits.
 
+_Traits_ are Composable Units of Behaviour (You can read more from [this paper](http://scg.unibe.ch/archive/papers/Scha03aTraits.pdf)).
+Basically, a Trait is a Class, let's say a special type of Class, that has only behaviour (methods) and no state. 
+
+A Trait can be composed with other Traits. In Cocktail you cannot extend from a Trait or a Trait cannot extend from other class.
+
 Traits implementation doesn't allow to override a method defined in the target class with one in the current Trait but, it defines
 some mechanisms to avoid method collision:
 
@@ -216,8 +262,11 @@ Basically, all the methods defined in the Trait will become part of the target c
 ##**@talents**: {Array} talent list
 >Aplicable to **Object**
 
-Talents shared the same design principles that Traits but they are applicable to an instance. 
-Talents have the same mechanisms (excludes and alias) to avoid method collision as in Traits.
+Talents are very similar to Traits, in fact a Trait can be applied as a Talent in Cocktail.
+The main difference is a Talent can be applied to an _instance_. 
+So we can define a Talent as a _Dynamically Composable Unit of Reuse_ (you can read more from [this paper](http://scg.unibe.ch/archive/papers/Ress11a-Talents.pdf)).
+
+Talents share the same design principles that Traits and they have the same mechanisms (excludes and alias) to avoid method collision as in Traits.
 
 >Example
 
