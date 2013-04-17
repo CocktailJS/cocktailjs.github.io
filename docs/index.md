@@ -51,6 +51,50 @@ The option object can contain any number of _methods_, _properties_ and _annotat
             '@someAnnotation': 'this is not state'
         }
 
+>Example with a Class (Function):
+
+MyClass.js
+
+        var Cocktail = require('Cocktail'),
+            MyClass = function(){};
+
+        Cocktail.mix(MyClass, {
+
+            _aProperty: 'My Property Content',
+
+            /**
+             * @public foo
+             */
+            foo: function(){
+                console.log('foo method called!');
+            }
+        });
+
+        module.exports = MyClass;
+
+>Example with an Object:
+
+index.js
+
+        var Cocktail = require('Cocktail'),
+            ClassA = require('./ClassA'),
+            instance;
+
+        instance = new ClassA();    
+
+        Cocktail.mix(instance, {
+
+            _aProperty: 'My Property Content',
+
+            /**
+             * @public foo
+             */
+            foo: function(){
+                console.log('foo method called!');
+            }
+        });
+
+
 <a id="annotations"></a>
 #**Annotations**
 _Annotations_ are special properties defined in the _options_ parameter of Cocktail.mix() method.

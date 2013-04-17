@@ -3,15 +3,19 @@
 <html>
     <head>
         {% include head.html %}
-        <link rel="stylesheet" href="{{site.baseurl}}/resources/css/blog.css" />       
+        <link rel="stylesheet" href="{{site.baseurl}}/resources/css/guides.css" />
     </head>
 
-    <body class="blog">
+    <body class="guides">
         {% include navigation.html %}            
+
+        <header>
+            <h1 class="title">{{ page.title }}</h1>
+        </header>
 
         <main>
             <section class="entries">
-                {% for post in site.categories.blog %}
+                {% for post in site.categories.guides %}
                     <article class="entry"> 
                         <a href="{{ post.url }}">
                           <h1 class="title">{{ post.title }}</h1>
@@ -22,7 +26,6 @@
                                     <span class="tag">{{ tag }}</span>
                                 {% endfor %}
                             </div>
-                            <div class="date">{{ post.date | date_to_string }}</div>
                         </div>
                         <div class="preview">
                            {{ post.content | split:'<!--break-->' | first }}

@@ -324,7 +324,7 @@ nav .logo {
   border-bottom: 4px solid #f63;
 }
 
-header .logo {
+.default header .logo {
   background: url(../images/logo.png) no-repeat -75px -20px;
   background-size: 340px;
   height: 131px;
@@ -339,79 +339,18 @@ header .logo {
   text-shadow: #181818 0 1px 1px;
 }
 
-header .description{
+.default header .description{
   font-weight: 400;
   font-size: 32px;
   color: #888;
   text-shadow: #181818 0px 1px 1px;
 }
 
-header .social{
+.default header .social{
   margin-top: 75px;
 }
 
-/* BLOG LAYOUT*/
-.entry {
-  margin-top: 50px;
-  margin-bottom: 25px;
-}
 
-.entry .title{
-  font-size: 72px;
-  text-align: center;
-  line-height: 60px;
-  padding-bottom: 10px;
-}
-
-.meta {
-  color: #aaa;
-  text-align: center;
-}
-
-.meta .tag {
-  font-size: 14px;
-  color: #fff;
-  background: #6c3;
-  padding: 5px 10px;
-  font-weight: bold;
-}
-
-.meta .date {
-  margin-top: 5px;
-  font-size: 16px;
-  color: #ccc;
-}
-
-
-/* POST LAYOUT */
-
-.post header {
-  max-width: 720px;
-  padding: 20px 10px;
-  margin: 30px auto;
-  text-align: center;
-}
-
-.post header .title{
-  font-size: 72px;
-  line-height: 60px;
-  margin: 20px 0;
-}
-
-.post header .category{
-  font-size: 20px;
-  color: #fff;
-  padding: 5px 10px;
-  background: #c0c0c0;
-}
-
-.post .social{
-  margin-top: 3px;
-}
-
-.post .social.twitter iframe {
-  width: 77px !important;
-}
 
 
 /*.post nav {
