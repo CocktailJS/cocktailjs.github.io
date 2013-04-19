@@ -95,10 +95,6 @@ p {
   margin: 10px 0 15px 0;
 }
 
-footer p {
-  color: #f2f2f2;
-}
-
 a {
   text-decoration: none;
   color: #f63;
@@ -260,19 +256,52 @@ main {
   margin: 0 auto;
   height: auto;
   min-height: 100%;
-  padding-bottom: 6em;
+  padding-bottom: 12em;
 }
 
+/*
 footer {
+  position: relative;
+  z-index: 10;
+  height: 10em;
+  margin-top: -10em;
+}
+*/
+footer p {
+  color: #f2f2f2;
+  font-size: 12px;
+  text-align: center;
+}
+
+footer .social {
+  border-top: 4px solid #f63;
+  padding: 10px 0;
+  background: #f0f0f0
+}
+
+footer .social ul{
+  display: block;
+  position: relative;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+footer .social ul li{
+  display: inline-block;
+  font-size: 16px;
+  padding-bottom: 5px;
+  padding-right: 20px;
+  vertical-align: top;
+}
+
+footer .bottom {
   background: url(../images/blackgrid.png) #212121;
   box-shadow: black 0 0 50px inset;
   border-top: 4px solid #6c3;
-  text-align: center;
-  position: relative;
-  z-index: 10;
-  height: 3em;
-  margin-top: -3em;
+  padding: 10px;
 }
+
+
 
 /* NAVIGATION */
 nav ul {
@@ -287,6 +316,7 @@ nav ul{
   max-width: 720px;
   padding: 15px 0px;
   margin: 0 auto;
+  height: auto;
 }
 
 nav ul li{
@@ -349,9 +379,6 @@ nav .logo {
 .default header .social{
   margin-top: 75px;
 }
-
-
-
 
 /*.post nav {
   background: url(../images/blackgrid.png) #212121;

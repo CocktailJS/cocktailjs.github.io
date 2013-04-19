@@ -6,4 +6,5 @@ category: guides
 tags: [Getting Started]
 ---
 
-DOC CONTENT
+# Create a nodejs project
+

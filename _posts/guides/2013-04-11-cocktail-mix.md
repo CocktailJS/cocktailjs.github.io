@@ -1,7 +1,7 @@
 ---
 layout: guide
 title: Getting Started
-published: true
+published: false
 category: guides
 tags: [Getting Started]
 ---

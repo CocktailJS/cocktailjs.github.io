@@ -1,0 +1,39 @@
+<div class="social"> 
+    <ul>
+        <li>            
+            <div class="social-item header">
+                Social
+            </div>
+        </li>
+
+        <li>            
+            <!-- Twiter -->
+            <div class="social-item twitter">
+                <a href="https://twitter.com/CocktailJS" class="twitter-follow-button" data-show-count="false" data-size="small">Follow @CocktailJS</a>
+                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+            </div>
+        </li>
+        <li>
+            <!-- Github -->
+            <div class="social-item github">
+                <a href="https://github.com/{{ {site.username }}/{{ site.repository }}" class="gh-button" data-count-href="https://github.com/{{ site.username }}/{{ site.repository }}/stargazers" data-count-api="/repos/{{ site.username }}/{{ site.repository }}#watchers">Star</a>
+
+                <a href="https://github.com/{{ {site.username }}/{{ site.repository }}" class="gh-button" data-count-href="https://github.com/{{ site.username }}/{{ site.repository }}/network" data-count-api="/repos/{{ site.username }}/{{ site.repository }}#forks">Fork</a>
+                <script async defer src="http://buttons.github.io/gh-buttons.js"></script>
+            </div>
+        </li>
+        <li>
+            <!-- G+ -->
+            <div class="social-item g-plus">
+                <div class="g-plusone" data-size="medium" data-annotation="inline" data-width="160"></div>
+                <script type="text/javascript">
+                  (function() {
+                    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+                    po.src = 'https://apis.google.com/js/plusone.js';
+                    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+                  })();
+                </script>
+            </div>                
+        </li>
+    </ul>
+</div>

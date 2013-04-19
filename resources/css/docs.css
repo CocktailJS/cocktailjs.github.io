@@ -6,13 +6,15 @@
 }
 
 .docs header .title{
-    font-size: 72px;
+  font-size: 72px;
+  line-height: 60px;
+  margin-top: 20px;
 }
 
 .docs header .description{
     text-shadow: none;
     font-size: 48px;
-    margin-top: -48px;
+    margin-top: -25px;
     color: #aaa;
 }
 
