@@ -7,6 +7,8 @@ published: true
 
 <a id="cocktail.mix"></a>
 #**Cocktail.mix**(_subject_, _options_);
+>Since **v0.0.1**
+
 Merges the _options_ object into the _subject_. If _subject_ is a class, then the merge will be applied to the subject's prototype.
 The second parameter can specify _annotations_ that will trigger some processes over the current mix.
 
@@ -104,6 +106,8 @@ This properties are defined by a name starting with `@`. The following is the li
 ##**@annotation**: {String} name
 >Aplicable to **Class**
 
+>Since **v0.0.3**
+
 This annotation will register the current mix as a custom annotation by the name parameter precedeed by the @ symbol.
 The annotation is applicable to a Class with a **process** and **setParameter** methods.
 
@@ -147,9 +151,126 @@ and then we just use our custom annotation in our code.
 The parameter specified in the mix for @custom is the one that will be passed to setParameter method in Custom Annotation definition.
 Then the process() receives the subject, myObj in this case, when it is processed by the annotation.
 
+<a id="@merge"></a>
+##**@merge**: {String} merge strategy
+>Aplicable to **Class**, **Object**, **Trait**, **Talent**
+
+>Since **v0.0.4**
+
+The merge strategy defines how the properties into the subject will be merged. The default strategy `single` is applied everytime
+you execute a mix(). The `single` strategy is equivalent to `mine`.
+
+As convention for merge strategies the second parameter is `mine` and the subject is `their`
+
+###Merge Strategies
+The following strategies are available to use as `@merge` annotation parameter:
+
+- **single**: It will perform a single merge, the properties and functions defined in options will be added to the subject.
+Properties and function with the same name are overriden with the ones defined in options parameters.
+- **mine**: Same as `single`, just for keeping naming conventions.
+- **their**: The merge is done as a single merge but if the property is already defined in the subject it is not overriden.
+- **deep-mine**: If the property is an Object and it is already defined in the subject it gets merged using the `mine` strategy.
+If the property is an Array it is concatenated with the subject version.
+- **deep-their**: If the property is an Object and it is already defined in the subject it gets merged using the `their` strategy.
+If the property is an Array it is concatenated with the subject version.
+
+>Example:
+
+index.js
+
+        var Cocktail = require('Cocktail'),
+            myObject = {
+                property: {
+                    a: 'a',
+                    b: 'b'
+                },
+                values: [1,2]
+            };
+
+        Cocktail.mix(myObject, {
+            property: {
+                z: 'z'
+            }
+
+        });
+
+> Here the default merge strategy is applied (`mine`). So the myObject.property becomes `{z: 'z'}`
+
+index.js
+
+        var Cocktail = require('Cocktail'),
+            myObject = {
+                property: {
+                    a: 'a',
+                    b: 'b'
+                },
+                values: [1,2]
+            };
+
+        Cocktail.mix(myObject, {
+            '@merge': 'their',
+            property: {
+                z: 'z'
+            }
+
+        });
+
+> Here the `their` merge strategy is applied. So the myObject.property becomes `{a: 'a', b: 'b'}`
+
+index.js
+
+        var Cocktail = require('Cocktail'),
+            myObject = {
+                property: {
+                    a: 'a',
+                    b: 'b'
+                },
+                values: [1,2]
+            };
+
+        Cocktail.mix(myObject, {
+            '@merge': 'deep-mine',
+            property: {
+                a: 'A',
+                z: 'z'
+            },
+            values: [3,4]
+
+        });
+
+> Here the `deep-mine` merge strategy is applied. So the myObject.property becomes `{a: 'A', b: 'b', z: 'z'}` and
+myObject.values gets concatenated becoming `[1,2,3,4]`.
+
+index.js
+
+        var Cocktail = require('Cocktail'),
+            myObject = {
+                property: {
+                    a: 'a',
+                    b: 'b'
+                },
+                values: [1,2]
+            };
+
+        Cocktail.mix(myObject, {
+            '@merge': 'deep-their',
+            property: {
+                a: 'A',
+                z: 'z'
+            },
+            values: [3,4]
+
+        });
+
+> Here the `deep-their` merge strategy is applied. So the myObject.property becomes `{a: 'a', b: 'b', z: 'z'}` and
+myObject.values gets concatenated becoming `[1,2,3,4]`.
+
+
 <a id="@extends"></a>
 ##**@extends**: {Function} parent class
 >Aplicable to **Class**
+
+>Since **v0.0.1**
 
 Makes the _subject_ inherit from the given parent class with a prototype chaining inheritance. The parent overriden class methods are accessible through
 a **callSuper** method.
@@ -203,6 +324,8 @@ index.js
 ##**@properties**: {Object} properties
 >Aplicable to **Class**, **Object**
 
+>Since **v0.0.1**
+
 This is a helper to define getters and setters for the given properties. All the properties specified here become part of the 
 subject (class prototype or object) with the specified value. For any non boolean properties the **get[PropertyName]** and **set[PropertyName]** methods
 are created. If the property is a boolean then an **is[PropertyName]** method is created instead of the getter.
@@ -250,6 +373,8 @@ are created. If the property is a boolean then an **is[PropertyName]** method is
 <a id="@traits"></a>
 ##**@traits**: {Array} trait list
 >Aplicable to **Class**, **Trait**, **Talent**
+
+>Since **v0.0.1**
 
 This annotation allows to define or specify which traits will be part of the current mix. A **Trait** is an special case of
 class where you define only behavior that will be shared among other classes or even other Traits.
@@ -306,6 +431,8 @@ Basically, all the methods defined in the Trait will become part of the target c
 ##**@talents**: {Array} talent list
 >Aplicable to **Object**
 
+>Since **v0.0.1**
+
 Talents are very similar to Traits, in fact a Trait can be applied as a Talent in Cocktail.
 The main difference is a Talent can be applied to an _instance_. 
 So we can define a Talent as a _Dynamically Composable Unit of Reuse_ (you can read more from [this paper](http://scg.unibe.ch/archive/papers/Ress11a-Talents.pdf)).
@@ -344,6 +471,8 @@ Talents share the same design principles that Traits and they have the same mech
 <a id="@requires"></a>
 ##**@requires**: {Array} required method list
 >Aplicable to **Trait**, **Talent**
+
+>Since **v0.0.1**
 
 Traits and Talents definitions have no state but, they can access state in the target class or object through some 
 methods that expose the state. Or a given trait might need some other functionality defined somewhere else.
