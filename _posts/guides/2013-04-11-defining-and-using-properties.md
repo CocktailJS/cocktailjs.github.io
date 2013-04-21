@@ -6,8 +6,7 @@ category: guides
 tags: [Getting Started]
 ---
 
-This guide is intended to explain the usage of the `@properties` annotation. Defining and using properties not only 
-while you define a class but also as a handy mechanism to add getters and setters even in objects.
+This guide is intended to explain the `@properties` annotation through some simple examples.
 
 # Creating a Class with CocktailJS
 

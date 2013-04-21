@@ -16,7 +16,7 @@ create a new project by creating a new folder like `my-mix` for example.
     #mkdir my-mix
     #cd my-mix
 
-Inside this new folder we need to define a project or pacakage descriptor as in any other node module. This file is 
+Inside this new folder we need to define a project or package descriptor as in any other node module. This file is 
 named `package.json` and it should be placed at the root of your project.
 You can create it manually with the following example:
 
