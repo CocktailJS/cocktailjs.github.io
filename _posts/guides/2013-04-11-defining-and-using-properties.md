@@ -63,7 +63,7 @@ And then change the `sayHello` method to use the getter.
         console.log(greeting + ' Cocktail!');
     }
 
-All together:
+MyClass class will look like the following:
 
 MyClass.js
 
@@ -104,7 +104,36 @@ index.js
     obj.sayHello(); // prints "Yo Cocktail!"
 
 
+The '@properties' annotation creates the getter and setter for you. It also adds the property to the subject (or
+subject's prototype in case of classes). An special case is made when the defined property is a boolean. Here,
+instead of having a getter an isXXX method is created. 
+
+MyClass.js
+
+    var Cocktail = require('Cocktail'),
+        MyClass = function(){};
+
+    Cocktail.mix(MyClass, {
+
+        '@properties' : {
+            greeting: 'Hello',
+            silent: false
+        },
+
+        sayHello: function(){
+            var greeting = this.getGreeting();
+            
+            if(!this.isSilent()){
+                console.log(greeting + ' Cocktail!');    
+            }
+            
+        }
+
+    });
+
+    module.exports = MyClass;
 
 
-
-
+In the example above, we have added a property _silent_ which defines if the sayHello() method will print the message
+to the console or not. Since _silent_ is declared as _false_ it is assumed as a boolean property then an **isSilent** method
+is created instead of **getSilent**. 
