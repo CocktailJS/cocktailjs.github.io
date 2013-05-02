@@ -17,7 +17,7 @@
             {% for tag in page.tags %}
                 <section class="entries">
                     <h1>{{tag}}</h1>
-                {% for post in site.categories.guides%}
+                {% for post in site.categories.guides reversed %}
                     {% if post.tags contains tag%}
                         <article class="entry">
                             <a href="{{ post.url }}">
