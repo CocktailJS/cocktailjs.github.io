@@ -111,6 +111,46 @@ This properties are defined by a name starting with `@`. The following is the li
 This annotation will register the current mix as a custom annotation by the name parameter precedeed by the @ symbol.
 The annotation is applicable to a Class with a **process** and **setParameter** methods.
 
+A processor class should implement the following methods and properties:
+
+###**setParameter**({Any})
+The setParameter will be used to apply the argument passed to the annotation in the mix execution.
+
+###**process**(subject, proto)
+This method will be executed in the processor with the given parameters. Here is where the annotation processor takes
+place to perform the task over the subject and/or proto. The _subject_ is the first parameter passed in the **mix()**
+method and the _proto_ is the second one without the annotations.
+
+###**priority**: {Number}
+The priority defines the execution sequence in the queue.
+
+###Execution Sequence
+In order to execute the different annotations CocktailJS uses an execution queue based in priorities. These priorities
+are defined into **Cocktail.SEQUENCE** and you can define when your annotation will be executed by defining a **priority**
+property into your Annotation Class Processor. The **priority** property should be a Number. The following list shows the
+predifined priorities:
+
+- Cocktail.SEQUENCE.NO_OP (-1)
+This NO OP priority means that the processor will not be picked up to run in the execution queue.
+- Cocktail.SEQUENCE.EXTENDS (10)
+- Cocktail.SEQUENCE.PROPERTIES (20)
+- Cocktail.SEQUENCE.REQUIRES (30)
+- Cocktail.SEQUENCE.MERGE (100)
+- Cocktail.SEQUENCE.TRAIT (110)
+- Cocktail.SEQUENCE.ANNOTATION (1000)
+
+The order in the execution queue is given by the values in the priority property. The lower value will be executed first
+except for -1 (NO_OP).
+
+**Note**: An Annotation Class Processor with no priority defined will be executed with no prority by default meaning that it 
+will be the last one to be executed.
+
+For each priority (except for NO_OP) there are defined a *PRE_XXX* and *POST_XXX* as helpers in case you want to execute the
+annotation right after or before some predefined stage.
+
+- Cocktail.SEQUENCE.PRE_EXTENDS (9)
+- Cocktail.SEQUENCE.POST_MERGE (101)
+
 >Example:
 
 Custom.js
