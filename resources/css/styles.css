@@ -280,6 +280,7 @@ footer .social {
 }
 
 footer .social ul{
+  text-align: center;
   display: block;
   position: relative;
   max-width: 720px;
@@ -293,6 +294,15 @@ footer .social ul li{
   padding-right: 20px;
   vertical-align: top;
 }
+
+footer .social ul .npm {
+  margin-top: -16px;
+}
+
+footer .social ul .travis-ci {
+  margin-top: -18px;
+}
+
 
 footer .bottom {
   background: url(../images/blackgrid.png) #212121;
