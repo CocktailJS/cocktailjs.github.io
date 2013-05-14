@@ -237,10 +237,12 @@ form {
   padding: 20px;
 }
 
+/*
 img {
   width: 100%;
   max-width: 100%;
 }
+*/
 
 /*******************************************************************************
 Full-Width Styles
@@ -296,11 +298,11 @@ footer .social ul li{
 }
 
 footer .social ul .npm {
-  margin-top: -16px;
+  margin-top: -14px;
 }
 
 footer .social ul .travis-ci {
-  margin-top: -18px;
+  margin-top: -15px;
 }
 
 
