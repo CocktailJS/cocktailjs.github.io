@@ -533,6 +533,34 @@ Those **required** methods are defined using a **'@requires'** annotation in the
 
                 //do something with the data here
             }
+        }); 
+
+        module.exports = MyTrait;   
+
+
+<a id="@exports"></a>
+##**@exports**: {Object} module object
+>Aplicable to **Class**, **Trait**, **Talent**, **Object**
+
+>Since **v0.1.1**
+
+The @exports annotation is used to export the current mix as `module.exports`. The parameter should be 
+the module variable where the current mix will be exported.
+
+> Example
+
+        var Cocktail = require('Cocktail'),
+            MyClass = function(){};
+
+        Cocktail.mix(MyClass, {
+            '@exports': module,
+
+            doSomethingWithData: function(){
+                var data = this.getData(); //this method should be provided by the target class/object
+
+                //do something with the data here
+            }
         });    
 
-
+        //this is not necessary anymore:
+        //module.exports = MyClss;
