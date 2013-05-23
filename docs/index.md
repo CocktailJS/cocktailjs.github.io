@@ -556,11 +556,10 @@ the module variable where the current mix will be exported.
             '@exports': module,
 
             doSomethingWithData: function(){
-                var data = this.getData(); //this method should be provided by the target class/object
 
                 //do something with the data here
             }
         });    
 
         //this is not necessary anymore:
-        //module.exports = MyClss;
+        //module.exports = MyClass;
