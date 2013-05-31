@@ -157,7 +157,7 @@ index.js
 
     joe = new Person();
 
-    joe.sayHi(); //will print "Hi!" in the console
+    joe.sayHi(); //will print "Hello!" in the console
 
     jack = new Pirate();
 
@@ -184,7 +184,7 @@ index.js
 
     joe = new Person();
 
-    joe.sayHi(); //will print "Hi!" in the console
+    joe.sayHi(); //will print "Hello!" in the console
 
     jack = new Pirate();
 
