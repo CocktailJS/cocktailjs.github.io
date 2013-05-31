@@ -161,7 +161,7 @@ index.js
 
     jack = new Pirate();
 
-    jack.sayHi(); //will print "Hi!" in the console
+    jack.sayHi(); //will print "Ahoy!" in the console
 
     marvin = new Robot();
 
@@ -188,7 +188,7 @@ index.js
 
     jack = new Pirate();
 
-    jack.sayHi(); //will print "Hi!" in the console
+    jack.sayHi(); //will print "Ahoy!" in the console
 
     marvin = new Robot();
 
