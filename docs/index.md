@@ -19,17 +19,50 @@ This is the variable where the mix will be done. It is usually a variable name, 
 - **Object**: Just a simple instance or plain object.  
         
         var obj = {};
+        Cocktail.mix(obj, ...)
+        //or
         var another = new AnotherClass();
+        Cocktail.mix(another, ...)
 
 - **Class**: A class reference or a constructor function.  
 
         var MyClass = function(){};
+        Cocktail.mix(MyClass ,...)
+        //or
         var Other = require('./SomeClass');
+        Cocktail.mix(Other, ...)
 
 - **Trait/Talent**: Traits and Talents are special cases of Class.  
 
         var MyTrait = function(){};
+        Cocktail.mix(MyTrait ,...)
+        //or
         var TraitA = require('./TraitA');
+        Cocktail.mix(TraitA ,...)
+
+
+- **Object class definition** {Object}
+>Since **v0.2.0**
+
+    When the subject is the only parameter in the mix and it is an Object literal that has one or more from the following list:
+
+    - `@extends` annotation,
+    - `@requires` annotation,
+    - `@traits` annotation,
+    - `@annotation` annotation,
+    - `constructor` method
+
+    then the mix will be trated as a _Class/Trait Definition_ creating a class.  
+
+        var MyBaseClass = require('./MyBaseClass'),
+            MyClass;
+
+        MyClass = Cocktail.mix({
+            '@extends': MyBaseClass,
+
+            myMethod: function() {}
+        });
+
 
 <a id="options"></a>
 ##**options** {Object}  
