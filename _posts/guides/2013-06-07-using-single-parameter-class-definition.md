@@ -79,7 +79,7 @@ Greetable.js
         sayHi: function(){
             var greeting = this.getGreeting();
             console.log(greeting + "!");
-        }}
+        }
 
     });
 
@@ -109,3 +109,24 @@ Person.js
 Notice that our _Greetable_ trait declares a `getGreeting` as a required method. We are applying the trait to our 
 `Person` class. We didn't define the getter for `greeting` property but it is created when we declare `@properties`
 annotation. 
+
+Now let's use our classes in a simple example. We can create a couple _Pirates_ and _Persons_ and make them _sayHi_
+
+index.js
+
+    var Person = require('./Person'),
+        Pirate = require('./Pirate'),
+        people = [],
+        i;
+
+    people.push(new Pirate());
+    people.push(new Person());
+
+    for (i = 0; i < people.length; i++) {
+        people[i].sayHi();
+    }
+
+That's it, as you can see we use _Cocktail_ to help with **classes** definitions but it is not required to use the
+classes.
+
+
