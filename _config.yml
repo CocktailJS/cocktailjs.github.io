@@ -10,7 +10,7 @@ repository: Cocktail
 
 analytics: UA-39565774-1
 
-markdown: rdiscount
+markdown: redcarpet
 permalink: none
 
 safe: true

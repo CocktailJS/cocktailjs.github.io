@@ -3,7 +3,7 @@ layout: guide
 title: Defining & Using Properties
 published: true
 category: guides
-tags: [Getting Started, @properties]
+tags: [Getting Started, "@properties"]
 ---
 
 This guide is intended to explain the `@properties` annotation through some simple examples.

@@ -3,7 +3,7 @@ layout: guide
 title: Using Single Parameter Class Definition
 published: true
 category: guides
-tags: [Getting Started, @extends, @exports, @properties, @traits, @requires]
+tags: [Getting Started, "@extends", "@exports", "@properties", "@traits", "@requires"]
 ---
 
 This guide explains how to use the single parameter class definition to define or extend a class. It will show you how

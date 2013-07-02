@@ -13,8 +13,10 @@ This guide provides very basic steps to create a project, add CocktailJS as a de
 The very first thing we need is to have node installed ([install node from here](http://nodejs.org/download)). Then we can 
 create a new project by creating a new folder like `my-mix` for example.
 
-    #mkdir my-mix
-    #cd my-mix
+````console
+$ mkdir my-mix
+$ cd my-mix
+````
 
 Inside this new folder we need to define a project or package descriptor as in any other node module. This file is 
 named `package.json` and it should be placed at the root of your project.
@@ -22,31 +24,38 @@ You can create it manually with the following example:
 
 package.json
 
-        {
-          "name": "my-mix",
-          "description": "my first project with cocktailjs",
-          "version": "0.0.0",
-          "private": true,
-          "dependencies":{
-            "cocktail": "*"
-          }
-        }        
+````javascript
+  {
+    "name": "my-mix",
+    "description": "my first project with cocktailjs",
+    "version": "0.0.0",
+    "private": true,
+    "dependencies":{
+      "cocktail": "*"
+    }
+  }        
+````
 
 Or you can use `npm` to create a new project:
 
-    #npm init
-
+````console
+$ npm init
+````
 
 # Install CocktailJS as a dependency
 
 The package.json file structure defines some aspects of our project. The more important in this case is our depencies list.
 All the modules described as depencies will be installed in your project using `npm`.
 
-    #npm install
+````console
+$ npm install
+````
 
 Or you can run
 
-    #npm install cocktail --save
+````console
+$ npm install cocktail --save
+````
 
 This will install the latest version of cocktail and save the dependency in the package.json for you.
 
@@ -70,23 +79,25 @@ with _Cocktail.mix()_ method:
 
 index.js
 
-    
-    var Cocktail = require('Cocktail'),
-        myObject = {};
+````javascript
 
-    Cocktail.mix(myObject, {
+var Cocktail = require('Cocktail'),
+    myObject = {};
 
-        sayHello: function(){
-            console.log('Hello Cocktail!');
-        }
-    });
+Cocktail.mix(myObject, {
 
-    myObject.sayHello();
+    sayHello: function(){
+        console.log('Hello Cocktail!');
+    }
+});
 
+myObject.sayHello();
+````
 
 Save the file and execute it:
 
-    #node index.js
-    Hello Cocktail!
-
+````console
+$ node index.js
+Hello Cocktail!
+````
 **Congratulations!** We just created a very simple first example.

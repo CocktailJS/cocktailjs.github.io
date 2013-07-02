@@ -3,7 +3,7 @@ layout: guide
 title: Extending a Class
 published: true
 category: guides
-tags: [Getting Started, @extends]
+tags: [Getting Started, "@extends"]
 ---
 
 This guide will introduce you to some basic principles about inheritance in CocktailJS.
