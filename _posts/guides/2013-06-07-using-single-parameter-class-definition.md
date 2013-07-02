@@ -16,25 +16,29 @@ outside the `Cocktail.mix()` method:
 
 Person.js
 
-    var Cocktail = require('Cocktail');
+````javascript
 
-    Cocktail.mix({
-        //export the class 
-        '@exports' : module,
+var Cocktail = require('Cocktail');
 
-        //declare the properties
-        '@properties' : {
-            greeting : 'Hello'
-        },
+Cocktail.mix({
+    //export the class 
+    '@exports' : module,
 
-        //the constructor is defined inside the mix()
-        constructor: function(greeting) {
-            if(greeting) {
-                this.setGreeting(greeting);
-            }
+    //declare the properties
+    '@properties' : {
+        greeting : 'Hello'
+    },
+
+    //the constructor is defined inside the mix()
+    constructor: function(greeting) {
+        if(greeting) {
+            this.setGreeting(greeting);
         }
+    }
 
-    });
+});
+
+````
 
 The code above shows how a class is defined. We have specified a `greeting` property and a constructor that receives a 
 parameter for the greeting property. If the property has value then we are going to use the setter to assign the constructor
@@ -50,16 +54,19 @@ you can use the single parameter class definition and use the `@exports` annotat
 
 Pirate.js
 
-    var Cocktail = require('Cocktail'),
-        Person   = require('./Person');
+````javascript
 
-    Cocktai.mix({
-        '@exports' : module,
-        '@extends' : Person,
+var Cocktail = require('Cocktail'),
+    Person   = require('./Person');
 
-        greeting: 'Ahoy'
-    });
+Cocktai.mix({
+    '@exports' : module,
+    '@extends' : Person,
 
+    greeting: 'Ahoy'
+});
+
+````
 
 #Traits and Talents
 We have said that _Traits & Talents_ are just a special type of class where you only define behavior. It is very common
@@ -68,43 +75,50 @@ We are going to define the _Greetable_ trait using the Single Parameter Class De
 
 Greetable.js
 
-    var Cocktail = require('Cocktail');
+````javascript
 
-    Cocktail.mix({
-        '@exports' : module,
+var Cocktail = require('Cocktail');
 
-        '@requires' : ['getGreeting'],
+Cocktail.mix({
+    '@exports' : module,
+
+    '@requires' : ['getGreeting'],
 
 
-        sayHi: function(){
-            var greeting = this.getGreeting();
-            console.log(greeting + "!");
-        }
+    sayHi: function(){
+        var greeting = this.getGreeting();
+        console.log(greeting + "!");
+    }
 
-    });
+});
 
+````
 
 And now we can refactor our previous `Person` class:
 
 Person.js
 
-    var Cocktail  = require('Cocktail'),
-        Greetable = require('./Greetable.js');
+````javascript
 
-    Cocktail.mix({
-        '@exports' : module,
-        '@traits'  : [Greetable],
-        '@properties' : {
-            greeting : 'Hello'
-        },
+var Cocktail  = require('Cocktail'),
+    Greetable = require('./Greetable.js');
 
-        constructor: function(greeting) {
-            if(greeting) {
-                this.setGreeting(greeting);
-            }
+Cocktail.mix({
+    '@exports' : module,
+    '@traits'  : [Greetable],
+    '@properties' : {
+        greeting : 'Hello'
+    },
+
+    constructor: function(greeting) {
+        if(greeting) {
+            this.setGreeting(greeting);
         }
+    }
 
-    });
+});
+
+````
 
 Notice that our _Greetable_ trait declares a `getGreeting` as a required method. We are applying the trait to our 
 `Person` class. We didn't define the getter for `greeting` property but it is created when we declare `@properties`
@@ -114,17 +128,29 @@ Now let's use our classes in a simple example. We can create a couple _Pirates_ 
 
 index.js
 
-    var Person = require('./Person'),
-        Pirate = require('./Pirate'),
-        people = [],
-        i;
+````javascript
 
-    people.push(new Pirate());
-    people.push(new Person());
+var Person = require('./Person'),
+    Pirate = require('./Pirate'),
+    people = [],
+    i;
 
-    for (i = 0; i < people.length; i++) {
-        people[i].sayHi();
-    }
+people.push(new Pirate());
+people.push(new Person());
+
+for (i = 0; i < people.length; i++) {
+    people[i].sayHi();
+}
+
+````
+
+Runing index.js
+
+````console
+$ node index.js
+Ahoy!
+Hello!
+````
 
 That's it, as you can see we use _Cocktail_ to help with **classes** definitions but it is not required to use the
 classes.

@@ -15,14 +15,16 @@ as a subject into the mix. The very basic structure looks like this:
 
 MyClass.js
 
-    var Cocktail = require('Cocktail'),
-        MyClass = function(){};
+````javascript
+var Cocktail = require('Cocktail'),
+    MyClass = function(){};
 
-    Cocktail.mix(MyClass, {
+Cocktail.mix(MyClass, {
+    // ....
+});
 
-    });
-
-    module.exports = MyClass;
+module.exports = MyClass;
+````
 
 Here we have created and exported our class `MyClass`. Right now there is nothing done in the mix since the option
 object is just an empty object.
@@ -31,18 +33,22 @@ message in the console which we called `sayHello`:
 
 MyClass.js
 
-    var Cocktail = require('Cocktail'),
-        MyClass = function(){};
+````javascript
 
-    Cocktail.mix(MyClass, {
+var Cocktail = require('Cocktail'),
+    MyClass = function(){};
 
-        sayHello: function(){
-            console.log('Hello Cocktail!');
-        }
+Cocktail.mix(MyClass, {
 
-    });
+    sayHello: function(){
+        console.log('Hello Cocktail!');
+    }
 
-    module.exports = MyClass;
+});
+
+module.exports = MyClass;
+
+````
 
 # Defining Properties
 
@@ -51,11 +57,40 @@ We are going to add a property named `greeting` into our `MyClass` so we can cha
 
 First, we have to define the `greeting` property:
 
-    '@properties' : {
-        greeting: 'Hello'
-    }
+````javascript
+
+'@properties' : {
+    greeting: 'Hello'
+}
+
+````
 
 And then change the `sayHello` method to use the getter.
+
+````javascript
+
+sayHello: function(){
+    var greeting = this.getGreeting();
+
+    console.log(greeting + ' Cocktail!');
+}
+
+````
+
+MyClass class will look like the following:
+
+MyClass.js
+
+````javascript
+
+var Cocktail = require('Cocktail'),
+    MyClass = function(){};
+
+Cocktail.mix(MyClass, {
+
+    '@properties' : {
+        greeting: 'Hello'
+    },
 
     sayHello: function(){
         var greeting = this.getGreeting();
@@ -63,46 +98,32 @@ And then change the `sayHello` method to use the getter.
         console.log(greeting + ' Cocktail!');
     }
 
-MyClass class will look like the following:
+});
 
-MyClass.js
+module.exports = MyClass;
 
-    var Cocktail = require('Cocktail'),
-        MyClass = function(){};
-
-    Cocktail.mix(MyClass, {
-
-        '@properties' : {
-            greeting: 'Hello'
-        },
-
-        sayHello: function(){
-            var greeting = this.getGreeting();
-
-            console.log(greeting + ' Cocktail!');
-        }
-
-    });
-
-    module.exports = MyClass;
+````
 
 Now we can use MyClass to produce different messages:
 
 index.js
 
-    var MyClass = require('./MyClass'),
-        obj;
+````javascript
 
-    obj = new MyClass();
+var MyClass = require('./MyClass'),
+    obj;
 
-    obj.sayHello(); // prints "Hello Cocktail!" since the default value is Hello
+obj = new MyClass();
 
-    obj.setGreeting('Ahoy');
-    obj.sayHello(); // prints "Ahoy Cocktail!"
+obj.sayHello(); // prints "Hello Cocktail!" since the default value is Hello
 
-    obj.setGreeting('Yo');
-    obj.sayHello(); // prints "Yo Cocktail!"
+obj.setGreeting('Ahoy');
+obj.sayHello(); // prints "Ahoy Cocktail!"
 
+obj.setGreeting('Yo');
+obj.sayHello(); // prints "Yo Cocktail!"
+
+````
 
 The '@properties' annotation creates the getter and setter for you. It also adds the property to the subject (or
 subject's prototype in case of classes). An special case is made when the defined property is a boolean. Here,
@@ -110,29 +131,32 @@ instead of having a getter an isXXX method is created.
 
 MyClass.js
 
-    var Cocktail = require('Cocktail'),
-        MyClass = function(){};
+````javascript
 
-    Cocktail.mix(MyClass, {
+var Cocktail = require('Cocktail'),
+    MyClass = function(){};
 
-        '@properties' : {
-            greeting: 'Hello',
-            silent: false
-        },
+Cocktail.mix(MyClass, {
 
-        sayHello: function(){
-            var greeting = this.getGreeting();
-            
-            if(!this.isSilent()){
-                console.log(greeting + ' Cocktail!');    
-            }
-            
+    '@properties' : {
+        greeting: 'Hello',
+        silent: false
+    },
+
+    sayHello: function(){
+        var greeting = this.getGreeting();
+        
+        if(!this.isSilent()){
+            console.log(greeting + ' Cocktail!');    
         }
+        
+    }
 
-    });
+});
 
-    module.exports = MyClass;
+module.exports = MyClass;
 
+````
 
 In the example above, we have added a property _silent_ which defines if the sayHello() method will print the message
 to the console or not. Since _silent_ is declared as _false_ it is assumed as a boolean property then an **isSilent** method

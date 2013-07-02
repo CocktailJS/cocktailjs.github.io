@@ -21,36 +21,42 @@ how they look like:
 
 Person.js
 
-    var Cocktail = require('Cocktail'),
-        Person = function(){};
+````javascript
 
-    Cocktail.mix(Person, {
-        
-        greeting: 'Hello',
+var Cocktail = require('Cocktail'),
+    Person = function(){};
 
-        sayHi: function(){
-            console.log(this.greeting + "!");
-        }
-    });
+Cocktail.mix(Person, {
+    
+    greeting: 'Hello',
 
-    module.exports =  Person;
+    sayHi: function(){
+        console.log(this.greeting + "!");
+    }
+});
 
+module.exports =  Person;
+
+````
 
 Pirate.js
 
-    var Cocktail = require('Cocktail'),
-        Person   = require('./Person'),
-        Pirate   = function(){};
+````javascript
 
-    Cocktail.mix(Pirate, {
-        '@extends': Person,
+var Cocktail = require('Cocktail'),
+    Person   = require('./Person'),
+    Pirate   = function(){};
 
-        greeting: 'Ahoy'
+Cocktail.mix(Pirate, {
+    '@extends': Person,
 
-    });
+    greeting: 'Ahoy'
 
-    module.exports = Pirate;
+});
 
+module.exports = Pirate;
+
+````
 
 Imagine that we want to add a `Robot` to the class model. We want the **Robot** to be able to say hi too. One can be tempted
 to reuse the same structure in **Pirate** and **Person** but, there is **no semantic relationship** between a Robot 
@@ -62,21 +68,24 @@ to create a new trait that we will call it **Greetable** and it can be defined a
 
 Greetable.js
 
-    var Cocktail  = require('Cocktail'),
-        Greetable = function(){};
+````javascript
 
-    Cocktail.mix(Greetable, {
-        '@requires': ['getGreeting'],
+var Cocktail  = require('Cocktail'),
+    Greetable = function(){};
 
-        
-        sayHi: function(){
-            var greeting = this.getGreeting();
-            console.log(greeting + "!");
-        }
-    });
+Cocktail.mix(Greetable, {
+    '@requires': ['getGreeting'],
 
-    module.exports = Greetable;
+    
+    sayHi: function(){
+        var greeting = this.getGreeting();
+        console.log(greeting + "!");
+    }
+});
 
+module.exports = Greetable;
+
+````
 
 The code above defines a class as a _Trait_ **Greetable**. It is not so different from defining a class. We have 
 specified our `sayHi` method in this trait. This method needs to access to the `greeting` variable. Since _Traits_
@@ -87,19 +96,23 @@ Now we can create the `Robot` class that will be composed with the trait.
 
 Robot.js
 
-    var Cocktail  = require('Cocktail'),
-        Greetable = require('./Greetable'),
-        Robot     = function(){};
+````javascript
 
-    Cocktail.mix(Robot, {
-        '@traits': [Greetable],
+var Cocktail  = require('Cocktail'),
+    Greetable = require('./Greetable'),
+    Robot     = function(){};
 
-        greeting: '01001000 01100101 01101100 01101100 01101111', //Yes, that's hello in binary :)
+Cocktail.mix(Robot, {
+    '@traits': [Greetable],
 
-        getGreeting: function(){
-            return this.greeting;
-        }
-    });
+    greeting: '01001000 01100101 01101100 01101100 01101111', //Yes, that's hello in binary :)
+
+    getGreeting: function(){
+        return this.greeting;
+    }
+});
+
+````
 
 We have created a new class for `Robot`. We've declared that our class is composed with a `Trait` **Greetable**.
 The _Greetable_ needs a `getGreeting` method so we defined one that returns our greeting property.
@@ -112,60 +125,72 @@ Let's refactor them to take advantage of the _Greetable_ trait.
 
 Person.js
 
-    var Cocktail  = require('Cocktail'),
-        Greetable = require('./Greetable'),
-        Person    = function(){};
+````javascript
 
-    Cocktail.mix(Person, {
-        '@traits': [Greetable],
+var Cocktail  = require('Cocktail'),
+    Greetable = require('./Greetable'),
+    Person    = function(){};
 
-        greeting: 'Hello',
+Cocktail.mix(Person, {
+    '@traits': [Greetable],
 
-        getGreeting: function(){
-            return this.greeting;
-        }
-    });
+    greeting: 'Hello',
 
-    module.exports =  Person;
+    getGreeting: function(){
+        return this.greeting;
+    }
+});
+
+module.exports =  Person;
+
+````
 
 That's all we need. We don't need to change our `Pirate` class since the methods defined in the _trait_ will be
 inherited from `Person`.
 
 Pirate.js
 
-    var Cocktail = require('Cocktail'),
-        Person   = require('./Person'),
-        Pirate   = function(){};
+````javascript
 
-    Cocktail.mix(Pirate, {
-        '@extends': Person,
+var Cocktail = require('Cocktail'),
+    Person   = require('./Person'),
+    Pirate   = function(){};
 
-        greeting: 'Ahoy'
+Cocktail.mix(Pirate, {
+    '@extends': Person,
 
-    });
+    greeting: 'Ahoy'
 
-    module.exports = Pirate;
+});
+
+module.exports = Pirate;
+
+````
 
 Let's see now how this will work into our main file.
 
 index.js
 
-    var Person = require('./Person'),
-        Pirate = require('./Pirate'),
-        Robot  = require('./Robot'),
-        joe, jack, marvin;
+````javascript
 
-    joe = new Person();
+var Person = require('./Person'),
+    Pirate = require('./Pirate'),
+    Robot  = require('./Robot'),
+    joe, jack, marvin;
 
-    joe.sayHi(); //will print "Hello!" in the console
+joe = new Person();
 
-    jack = new Pirate();
+joe.sayHi(); //will print "Hello!" in the console
 
-    jack.sayHi(); //will print "Ahoy!" in the console
+jack = new Pirate();
 
-    marvin = new Robot();
+jack.sayHi(); //will print "Ahoy!" in the console
 
-    marvin.sayHi(); //will print "01001000 01100101 01101100 01101100 01101111!" 
+marvin = new Robot();
+
+marvin.sayHi(); //will print "01001000 01100101 01101100 01101100 01101111!" 
+
+````
 
 # Talents
 We have seen how to create a Trait and how to use it into our class definition. **Talents** are not that different.
@@ -175,37 +200,38 @@ our object.
 
 index.js
 
-    var Person = require('./Person'),
-        Pirate = require('./Pirate'),
-        Robot  = require('./Robot'),
-        Greetable = require('./Greetable'),
-        joe, jack, marvin, 
-        dishwasher = { model: 'DISHWASHER 1000'};
+````javascript
 
-    joe = new Person();
+var Person = require('./Person'),
+    Pirate = require('./Pirate'),
+    Robot  = require('./Robot'),
+    Greetable = require('./Greetable'),
+    joe, jack, marvin, 
+    dishwasher = { model: 'DISHWASHER 1000'};
 
-    joe.sayHi(); //will print "Hello!" in the console
+joe = new Person();
 
-    jack = new Pirate();
+joe.sayHi(); //will print "Hello!" in the console
 
-    jack.sayHi(); //will print "Ahoy!" in the console
+jack = new Pirate();
 
-    marvin = new Robot();
+jack.sayHi(); //will print "Ahoy!" in the console
 
-    marvin.sayHi(); //will print "01001000 01100101 01101100 01101100 01101111!" 
+marvin = new Robot();
 
-    
+marvin.sayHi(); //will print "01001000 01100101 01101100 01101100 01101111!" 
 
-    Cocktail.mix(dishwasher,{
-        '@talents': [Greetable],
+Cocktail.mix(dishwasher,{
+    '@talents': [Greetable],
 
-        getGreeting: function(){
-            return this.model;
-        }
-    });
-    
-    dishwasher.sayHi(); //will print "DISHWASHER 1000!"
+    getGreeting: function(){
+        return this.model;
+    }
+});
 
+dishwasher.sayHi(); //will print "DISHWASHER 1000!"
+
+````
 
 As you can see in the example we have defined an object _dishwasher_. For some reason we want to make the dishwasher
 able to sayHi too. We need a getGreeting method since it is not defined in the object. To do so, we can define it
