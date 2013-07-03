@@ -19,14 +19,17 @@ describe -or annotate- the code.
 
 Let's see an example:
 
-        Cocktail.mix(MyClass, {
-            '@extends': Base,
-            '@properties': {
-                text: 'some text'
-            },
+````javascript
 
-            //...
-        });
+Cocktail.mix(MyClass, {
+    '@extends': Base,
+    '@properties': {
+        text: 'some text'
+    },
+
+    //...
+});
+````
 
 In the example above, we've annotated MyClass with two annotations, '@extends' and '@properties'. MyClass _extends_ from _Base_,
 and it has a _property_ named _text_.
@@ -37,7 +40,11 @@ Cocktail.mix() will read every annotation and perform the associated action.
 ##The '@' symbol
 The **@** symbol is not a valid indentifier. We have to define the annotations between quotes:
 
-        '@extends': Base,
+````javascript
+
+'@extends': Base,
+
+````
 
 This is not just a workaround. When you read code you can easily detect a property name defined between quotes. It gives 
 the sensation that those properties don't belong to the code, which is the idea behind the annotation concept.

@@ -16,30 +16,41 @@ The second parameter can specify _annotations_ that will trigger some processes 
 ##**subject** {Function|Object}
 This is the variable where the mix will be done. It is usually a variable name, where we can reference a class or object:
 
-- **Object**: Just a simple instance or plain object.  
-        
-        var obj = {};
-        Cocktail.mix(obj, ...)
-        //or
-        var another = new AnotherClass();
-        Cocktail.mix(another, ...)
+- **Object**: Just a simple instance or plain object.
+
+````javascript
+
+var obj = {};
+Cocktail.mix(obj, ...)
+//or
+var another = new AnotherClass();
+Cocktail.mix(another, ...)
+
+````
 
 - **Class**: A class reference or a constructor function.  
 
-        var MyClass = function(){};
-        Cocktail.mix(MyClass ,...)
-        //or
-        var Other = require('./SomeClass');
-        Cocktail.mix(Other, ...)
+````javascript
 
+var MyClass = function(){};
+Cocktail.mix(MyClass ,...)
+//or
+var Other = require('./SomeClass');
+Cocktail.mix(Other, ...)
+
+````
+  
 - **Trait/Talent**: Traits and Talents are special cases of Class.  
 
-        var MyTrait = function(){};
-        Cocktail.mix(MyTrait ,...)
-        //or
-        var TraitA = require('./TraitA');
-        Cocktail.mix(TraitA ,...)
+````javascript
 
+var MyTrait = function(){};
+Cocktail.mix(MyTrait ,...)
+//or
+var TraitA = require('./TraitA');
+Cocktail.mix(TraitA ,...)
+
+````
 
 - **Object class definition** {Object}
 >Since **v0.2.0**
@@ -54,15 +65,18 @@ This is the variable where the mix will be done. It is usually a variable name, 
 
     then the mix will be trated as a _Class/Trait Definition_ creating a class.  
 
-        var MyBaseClass = require('./MyBaseClass'),
-            MyClass;
+    ````javascript
 
-        MyClass = Cocktail.mix({
-            '@extends': MyBaseClass,
+    var MyBaseClass = require('./MyBaseClass'),
+        MyClass;
 
-            myMethod: function() {}
-        });
+    MyClass = Cocktail.mix({
+        '@extends': MyBaseClass,
 
+        myMethod: function() {}
+    });
+
+    ````
 
 <a id="options"></a>
 ##**options** {Object}  
@@ -70,65 +84,84 @@ The option object can contain any number of _methods_, _properties_ and _annotat
 
 - **Property**: A key-value pair that defines "state".
 
-        {
-            someProperty: 1
-        }
+````javascript
+
+{
+    someProperty: 1
+}
+
+````
 
 - **Method**: A key-function pair that defines behavior.  
 
-        {
-            someMethod: function(){}
-        }
+````javascript
+
+{
+    someMethod: function(){}
+}
+
+````
 
 - **Annotation**: A special case of property that starts with the @ symbol, that is intended to define a process, mark, or any other metadata over the given mix.   
 
-        {
-            '@someAnnotation': 'this is not state'
-        }
+````javascript
+
+{
+    '@someAnnotation': 'this is not state'
+}
+
+````
 
 >Example with a Class (Function):
 
 MyClass.js
 
-        var Cocktail = require('Cocktail'),
-            MyClass = function(){};
+````javascript
 
-        Cocktail.mix(MyClass, {
+var Cocktail = require('Cocktail'),
+    MyClass = function(){};
 
-            _aProperty: 'My Property Content',
+Cocktail.mix(MyClass, {
 
-            /**
-             * @public foo
-             */
-            foo: function(){
-                console.log('foo method called!');
-            }
-        });
+    _aProperty: 'My Property Content',
 
-        module.exports = MyClass;
+    /**
+     * @public foo
+     */
+    foo: function(){
+        console.log('foo method called!');
+    }
+});
+
+module.exports = MyClass;
+
+````
 
 >Example with an Object:
 
 index.js
 
-        var Cocktail = require('Cocktail'),
-            ClassA = require('./ClassA'),
-            instance;
+````javascript
 
-        instance = new ClassA();    
+var Cocktail = require('Cocktail'),
+    ClassA = require('./ClassA'),
+    instance;
 
-        Cocktail.mix(instance, {
+instance = new ClassA();    
 
-            _aProperty: 'My Property Content',
+Cocktail.mix(instance, {
 
-            /**
-             * @public foo
-             */
-            foo: function(){
-                console.log('foo method called!');
-            }
-        });
+    _aProperty: 'My Property Content',
 
+    /**
+     * @public foo
+     */
+    foo: function(){
+        console.log('foo method called!');
+    }
+});
+
+````
 
 <a id="annotations"></a>
 #**Annotations**
@@ -188,36 +221,44 @@ annotation right after or before some predefined stage.
 
 Custom.js
 
-        var Cocktail = require('Cocktail'),
-            Custom = function(){};
+````javascript
 
-        Cocktail.mix(Custom, {
-            '@annotation' : 'custom',
+var Cocktail = require('Cocktail'),
+    Custom = function(){};
 
-            setParameter: function(){/*...*/},
+Cocktail.mix(Custom, {
+    '@annotation' : 'custom',
 
-            process: function(subject){/*...*/}
-        });
+    setParameter: function(){/*...*/},
 
-        module.exports = Custom;
+    process: function(subject){/*...*/}
+});
+
+module.exports = Custom;
+
+````
 
 >The Custom class is a processor for the annotation named `custom`.
 >Now we can use our newly created annotation in our code:
 
 index.js
 
-    // 1.-include Custom annotation definition
-    require('./Custom.js');
+````javascript
 
-    var Cocktail = require('Cocktail'),
-        myObj = {};
+// 1.-include Custom annotation definition
+require('./Custom.js');
 
-    Cocktail.mix(myObj, {
-        // 2.-annotate the code with the custom annotation  
-        '@custom' : 'some-custom-parameter',
+var Cocktail = require('Cocktail'),
+    myObj = {};
 
-        //more annotations, or code
-    });
+Cocktail.mix(myObj, {
+    // 2.-annotate the code with the custom annotation  
+    '@custom' : 'some-custom-parameter',
+
+    //more annotations, or code
+});
+
+````
 
 >In the index.js file we are first adding the annotation definition (it is not necessary to bind it to any local variable)
 and then we just use our custom annotation in our code. 
@@ -251,89 +292,105 @@ If the property is an Array it is concatenated with the subject version.
 
 index.js
 
-        var Cocktail = require('Cocktail'),
-            myObject = {
-                property: {
-                    a: 'a',
-                    b: 'b'
-                },
-                values: [1,2]
-            };
+````javascript
 
-        Cocktail.mix(myObject, {
-            property: {
-                z: 'z'
-            }
+var Cocktail = require('Cocktail'),
+    myObject = {
+        property: {
+            a: 'a',
+            b: 'b'
+        },
+        values: [1,2]
+    };
 
-        });
+Cocktail.mix(myObject, {
+    property: {
+        z: 'z'
+    }
+
+});
+
+````
 
 > Here the default merge strategy is applied (`mine`). So the myObject.property becomes `{z: 'z'}`
 
 index.js
 
-        var Cocktail = require('Cocktail'),
-            myObject = {
-                property: {
-                    a: 'a',
-                    b: 'b'
-                },
-                values: [1,2]
-            };
+````javascript
 
-        Cocktail.mix(myObject, {
-            '@merge': 'their',
-            property: {
-                z: 'z'
-            }
+var Cocktail = require('Cocktail'),
+    myObject = {
+        property: {
+            a: 'a',
+            b: 'b'
+        },
+        values: [1,2]
+    };
 
-        });
+Cocktail.mix(myObject, {
+    '@merge': 'their',
+    property: {
+        z: 'z'
+    }
+
+});
+
+````
 
 > Here the `their` merge strategy is applied. So the myObject.property becomes `{a: 'a', b: 'b'}`
 
 index.js
 
-        var Cocktail = require('Cocktail'),
-            myObject = {
-                property: {
-                    a: 'a',
-                    b: 'b'
-                },
-                values: [1,2]
-            };
+````javascript
 
-        Cocktail.mix(myObject, {
-            '@merge': 'deep-mine',
-            property: {
-                a: 'A',
-                z: 'z'
-            },
-            values: [3,4]
+var Cocktail = require('Cocktail'),
+    myObject = {
+        property: {
+            a: 'a',
+            b: 'b'
+        },
+        values: [1,2]
+    };
 
-        });
+Cocktail.mix(myObject, {
+    '@merge': 'deep-mine',
+    property: {
+        a: 'A',
+        z: 'z'
+    },
+    values: [3,4]
+
+});
+
+````
 
 > Here the `deep-mine` merge strategy is applied. So the myObject.property becomes `{a: 'A', b: 'b', z: 'z'}` and
 myObject.values gets concatenated becoming `[1,2,3,4]`.
 
 index.js
 
-        var Cocktail = require('Cocktail'),
-            myObject = {
-                property: {
-                    a: 'a',
-                    b: 'b'
-                },
-                values: [1,2]
-            };
+````javascript
 
-        Cocktail.mix(myObject, {
-            '@merge': 'deep-their',
-            property: {
-                a: 'A',
-                z: 'z'
-            },
-            values: [3,4]
+var Cocktail = require('Cocktail'),
+    myObject = {
+        property: {
+            a: 'a',
+            b: 'b'
+        },
+        values: [1,2]
+    };
 
-        });
+Cocktail.mix(myObject, {
+    '@merge': 'deep-their',
+    property: {
+        a: 'A',
+        z: 'z'
+    },
+    values: [3,4]
+
+});
+
+````
 
 > Here the `deep-their` merge strategy is applied. So the myObject.property becomes `{a: 'a', b: 'b', z: 'z'}` and
 myObject.values gets concatenated becoming `[1,2,3,4]`.
@@ -355,43 +412,49 @@ It calls the specified methodName on the parent class with the given params.
 
 MyClass.js
 
-        var Cocktail = require('Cocktail'),
-            Base = require('./Base'),
-            MyClass = function(){};
+````javascript
 
-        Cocktail.mix(MyClass, {
-            '@extends' : Base,
+var Cocktail = require('Cocktail'),
+    Base = require('./Base'),
+    MyClass = function(){};
 
-            /**
-             * overrides Base foo(param) method
-             */
-            foo: function(param){
-                //do something here
-                //...
+Cocktail.mix(MyClass, {
+    '@extends' : Base,
 
-                //call parent foo method
-                this.callSuper('foo', param);
-            }
+    /**
+     * overrides Base foo(param) method
+     */
+    foo: function(param){
+        //do something here
+        //...
 
-            /* ... */
+        //call parent foo method
+        this.callSuper('foo', param);
+    }
 
-        });
+    /* ... */
 
-        module.exports = MyClass;
+});
+
+module.exports = MyClass;
+
+````
 
 >MyClass class extends from the Base class.
 
 index.js
 
-        var MyClass = require('./MyClass'),
-            myObj;
+````javascript
 
-        myObj = new MyClass();
-        //...
+var MyClass = require('./MyClass'),
+    myObj;
 
-        myObj.foo('blah'); // this will call foo in MyClass and on its parent class
+myObj = new MyClass();
+//...
 
+myObj.foo('blah'); // this will call foo in MyClass and on its parent class
 
+````
 
 <a id="@properties"></a>
 ##**@properties**: {Object} properties
@@ -405,41 +468,45 @@ are created. If the property is a boolean then an **is[PropertyName]** method is
 
 >Example
 
-        var Cocktail = require('Cocktail'),
-            MyClass = function(){};
+````javascript
 
-        Cocktail.mix(MyClass, {
-            '@properties' : {
-                foo: 'foo',
-                total: 0,
-                initialized: false,
-                other: undefined
-            },
+var Cocktail = require('Cocktail'),
+    MyClass = function(){};
 
-
-            /**
-             * overrides the setter for foo
-             */
-            setFoo: function(param){
-                //do something here
-            }
-
-            /* ... */
-
-        }); 
+Cocktail.mix(MyClass, {
+    '@properties' : {
+        foo: 'foo',
+        total: 0,
+        initialized: false,
+        other: undefined
+    },
 
 
-        var instance = new MyClass();
+    /**
+     * overrides the setter for foo
+     */
+    setFoo: function(param){
+        //do something here
+    }
 
-        //returns 'foo'
-        instance.getFoo();
+    /* ... */
+
+}); 
 
 
-        //returns false
-        instance.isInitialized();
+var instance = new MyClass();
 
-        //returns undefined
-        instance.getOther();
+//returns 'foo'
+instance.getFoo();
+
+
+//returns false
+instance.isInitialized();
+
+//returns undefined
+instance.getOther();
+
+````
 
 > MyClass is defined with all the properties specified in the annotation. 
 
@@ -469,36 +536,39 @@ Basically, all the methods defined in the Trait will become part of the target c
 
 >Example
 
-        var Cocktail = require('Cocktail'),
-            TraitA = require('./TraitA'),
-            TraitB = require('./TraitB'),
-            MyClass = function(){};
+````javascript
 
-        Cocktail.mix(MyClass, {
-            '@traits' : [
-                TraitA,
-                {
-                    trait: TraitB,
-                    
-                    //exclude foo method
-                    excludes: ['foo'],
+var Cocktail = require('Cocktail'),
+    TraitA = require('./TraitA'),
+    TraitB = require('./TraitB'),
+    MyClass = function(){};
 
-                    //and make myDoSmth alias on doSmth method from TraitB
-                    alias: {
-                        doSmth: 'myDoSmth' 
-                    }
-                }
-            ],
+Cocktail.mix(MyClass, {
+    '@traits' : [
+        TraitA,
+        {
+            trait: TraitB,
+            
+            //exclude foo method
+            excludes: ['foo'],
 
-            foo: function(param){
-                //do something here
-                //...
+            //and make myDoSmth alias on doSmth method from TraitB
+            alias: {
+                doSmth: 'myDoSmth' 
             }
+        }
+    ],
 
-            /* ... */
+    foo: function(param){
+        //do something here
+        //...
+    }
 
-        });
+    /* ... */
 
+});
+
+````
 
 <a id="@talents"></a>
 ##**@talents**: {Array} talent list
@@ -514,32 +584,35 @@ Talents share the same design principles that Traits and they have the same mech
 
 >Example
 
-        var Cocktail = require('Cocktail'),
-            TraitA = require('./TraitA'),
-            TraitB = require('./TraitB'),
-            ClassA = require('./ClassA'),
-            myObj = new ClassA();
+````javascript
 
-        Cocktail.mix(myObj, {
-            '@talents' : [
-                TraitA,
-                {
-                    talent: TraitB,
-                    
-                    //exclude foo method
-                    excludes: ['foo'],
+var Cocktail = require('Cocktail'),
+    TraitA = require('./TraitA'),
+    TraitB = require('./TraitB'),
+    ClassA = require('./ClassA'),
+    myObj = new ClassA();
 
-                    //and make myDoSmth alias on doSmth method from TraitB
-                    alias: {
-                        doSmth: 'myDoSmth' 
-                    }
-                }
-            ]
+Cocktail.mix(myObj, {
+    '@talents' : [
+        TraitA,
+        {
+            talent: TraitB,
+            
+            //exclude foo method
+            excludes: ['foo'],
 
-            /* ... */
+            //and make myDoSmth alias on doSmth method from TraitB
+            alias: {
+                doSmth: 'myDoSmth' 
+            }
+        }
+    ]
 
-        });
+    /* ... */
 
+});
+
+````
 
 <a id="@requires"></a>
 ##**@requires**: {Array} required method list
@@ -553,23 +626,26 @@ Those **required** methods are defined using a **'@requires'** annotation in the
 
 > Example
 
-        var Cocktail = require('Cocktail'),
-            TraitA = require('TraitA'),
-            MyTrait = function(){};
+````javascript
+
+var Cocktail = require('Cocktail'),
+    TraitA = require('TraitA'),
+    MyTrait = function(){};
 
 
-        Cocktail.mix(MyTrait, {
-            '@requires': ['getData'],
+Cocktail.mix(MyTrait, {
+    '@requires': ['getData'],
 
-            doSomethingWithData: function(){
-                var data = this.getData(); //this method should be provided by the target class/object
+    doSomethingWithData: function(){
+        var data = this.getData(); //this method should be provided by the target class/object
 
-                //do something with the data here
-            }
-        }); 
+        //do something with the data here
+    }
+}); 
 
-        module.exports = MyTrait;   
+module.exports = MyTrait;   
 
+````
 
 <a id="@exports"></a>
 ##**@exports**: {Object} module object
@@ -582,17 +658,21 @@ the module variable where the current mix will be exported.
 
 > Example
 
-        var Cocktail = require('Cocktail'),
-            MyClass = function(){};
+````javascript
 
-        Cocktail.mix(MyClass, {
-            '@exports': module,
+var Cocktail = require('Cocktail'),
+    MyClass = function(){};
 
-            doSomethingWithData: function(){
+Cocktail.mix(MyClass, {
+    '@exports': module,
 
-                //do something with the data here
-            }
-        });    
+    doSomethingWithData: function(){
 
-        //this is not necessary anymore:
-        //module.exports = MyClass;
+        //do something with the data here
+    }
+});    
+
+//this is not necessary anymore:
+//module.exports = MyClass;
+
+````
