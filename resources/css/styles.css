@@ -314,6 +314,10 @@ footer .bottom {
 
 
 /* NAVIGATION */
+nav {
+  background-color: #f9f9f9;
+}
+
 nav ul {
   margin-bottom: 0;
 }
@@ -324,7 +328,7 @@ nav a{
 
 nav ul{
   max-width: 720px;
-  padding: 15px 0px;
+  padding: 15px 0;
   margin: 0 auto;
   height: auto;
 }
@@ -336,11 +340,11 @@ nav ul li{
   padding-right: 20px;
 }
 
-nav ul li.first{
+nav ul .first{
   padding-left: 0;
 }
 
-nav ul li.current{
+nav ul .current{
   background: url(../images/border.png) no-repeat 50% 10px;
 }
 
@@ -352,43 +356,7 @@ nav .logo {
   display: inline-block;
 }
 
-/* DEFAULT LAYOUT */
 
-.default header {
-  height: 400px;
-  background: url(../images/blackgrid.png) #212121;
-  text-align: center;
-  padding-top: 75px;
-  box-shadow: black 0 0 50px inset;
-  border-top: 4px solid #6c3;
-  border-bottom: 4px solid #f63;
-}
-
-.default header .logo {
-  background: url(../images/logo.png) no-repeat -75px -20px;
-  background-size: 340px;
-  height: 131px;
-  width: 160px;
-  display: inline-block;
-}
-
-.default header .title {
-  font-weight: 400;
-  font-size: 120px;
-  color: #eee;
-  text-shadow: #181818 0 1px 1px;
-}
-
-.default header .description{
-  font-weight: 400;
-  font-size: 32px;
-  color: #888;
-  text-shadow: #181818 0px 1px 1px;
-}
-
-.default header .social{
-  margin-top: 75px;
-}
 
 /*.post nav {
   background: url(../images/blackgrid.png) #212121;

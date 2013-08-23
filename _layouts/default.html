@@ -3,12 +3,12 @@
 <html>
     <head>
         {% include head.html %}
+        <link rel="stylesheet" href="{{site.url}}/resources/css/default.css" />       
         {% include analytics.html %}       
     </head>
 
     <body class="default">
         {% include navigation.html %}            
-
         <header>
             <hgroup>
                 <h1 class='title'> <span class="logo"></span>{{ site.name }}</h1>
@@ -22,7 +22,6 @@
                 <!-- Github -->
                 <a href="https://github.com/{{site.username}}/{{site.repository}}" class="gh-button" data-size="large">View in GitHub</a>
                 <script async defer src="http://buttons.github.io/gh-buttons.js"></script>
-
             </hgroup>
         </header>
 
