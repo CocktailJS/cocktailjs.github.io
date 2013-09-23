@@ -16,44 +16,44 @@ The second parameter can specify _annotations_ that will trigger some processes 
 ##**subject** {Function|Object}
 This is the variable where the mix will be done. It is usually a variable name, where we can reference a class or object:
 
-- **Object**: Just a simple instance or plain object.
+-   **Object**: Just a simple instance or plain object.
+    
+    ````javascript
 
-````javascript
+    var obj = {};
+    Cocktail.mix(obj, ...)
+    //or
+    var another = new AnotherClass();
+    Cocktail.mix(another, ...)
 
-var obj = {};
-Cocktail.mix(obj, ...)
-//or
-var another = new AnotherClass();
-Cocktail.mix(another, ...)
+    ````
 
-````
+-   **Class**: A class reference or a constructor function.  
 
-- **Class**: A class reference or a constructor function.  
+    ````javascript
 
-````javascript
+    var MyClass = function(){};
+    Cocktail.mix(MyClass ,...)
+    //or
+    var Other = require('./SomeClass');
+    Cocktail.mix(Other, ...)
 
-var MyClass = function(){};
-Cocktail.mix(MyClass ,...)
-//or
-var Other = require('./SomeClass');
-Cocktail.mix(Other, ...)
-
-````
+    ````
   
-- **Trait/Talent**: Traits and Talents are special cases of Class.  
+-   **Trait/Talent**: Traits and Talents are special cases of Class.  
 
-````javascript
+    ````javascript
 
-var MyTrait = function(){};
-Cocktail.mix(MyTrait ,...)
-//or
-var TraitA = require('./TraitA');
-Cocktail.mix(TraitA ,...)
+    var MyTrait = function(){};
+    Cocktail.mix(MyTrait ,...)
+    //or
+    var TraitA = require('./TraitA');
+    Cocktail.mix(TraitA ,...)
 
-````
+    ````
 
-- **Object class definition** {Object}
->Since **v0.2.0**
+-   **Object class definition** {Object}
+    >Since **v0.2.0**
 
     When the subject is the only parameter in the mix and it is an Object literal that has one or more from the following list:
 
@@ -63,7 +63,30 @@ Cocktail.mix(TraitA ,...)
     - `@annotation` annotation,
     - `constructor` method
 
+    Or the Object literal contains the `@as` pseudo-annotation with a value of **"class"**  
+    (`@as` pseudo-annotation was introduced in version 0.3.0)
+
+    ````javascript
+    {
+        '@as': 'class'
+    }
+    ````
+
     then the mix will be trated as a _Class/Trait Definition_ creating a class.  
+
+    ````javascript
+
+    var MyBaseClass;
+
+    MyBaseClass = Cocktail.mix({
+        '@as': 'class',
+
+        myBaseMethod: function() {}
+    });
+
+    ````
+
+    Example without using the pseudo-annotation  
 
     ````javascript
 
@@ -82,86 +105,86 @@ Cocktail.mix(TraitA ,...)
 ##**options** {Object}  
 The option object can contain any number of _methods_, _properties_ and _annotations_. All the properties and methods will be merged into the subject.
 
-- **Property**: A key-value pair that defines "state".
+-   **Property**: A key-value pair that defines "state".
 
-````javascript
+    ````javascript
 
-{
-    someProperty: 1
-}
-
-````
-
-- **Method**: A key-function pair that defines behavior.  
-
-````javascript
-
-{
-    someMethod: function(){}
-}
-
-````
-
-- **Annotation**: A special case of property that starts with the @ symbol, that is intended to define a process, mark, or any other metadata over the given mix.   
-
-````javascript
-
-{
-    '@someAnnotation': 'this is not state'
-}
-
-````
-
->Example with a Class (Function):
-
-MyClass.js
-
-````javascript
-
-var Cocktail = require('Cocktail'),
-    MyClass = function(){};
-
-Cocktail.mix(MyClass, {
-
-    _aProperty: 'My Property Content',
-
-    /**
-     * @public foo
-     */
-    foo: function(){
-        console.log('foo method called!');
+    {
+        someProperty: 1
     }
-});
 
-module.exports = MyClass;
+    ````
 
-````
+-   **Method**: A key-function pair that defines behavior.  
 
->Example with an Object:
+    ````javascript
 
-index.js
-
-````javascript
-
-var Cocktail = require('Cocktail'),
-    ClassA = require('./ClassA'),
-    instance;
-
-instance = new ClassA();    
-
-Cocktail.mix(instance, {
-
-    _aProperty: 'My Property Content',
-
-    /**
-     * @public foo
-     */
-    foo: function(){
-        console.log('foo method called!');
+    {
+        someMethod: function(){}
     }
-});
 
-````
+    ````
+
+-   **Annotation**: A special case of property that starts with the @ symbol, that is intended to define a process, mark, or any other metadata over the given mix.   
+
+    ````javascript
+
+    {
+        '@someAnnotation': 'this is not state'
+    }
+
+    ````
+
+    >Example with a Class (Function):
+
+    MyClass.js
+
+    ````javascript
+
+    var Cocktail = require('Cocktail'),
+        MyClass = function(){};
+
+    Cocktail.mix(MyClass, {
+
+        _aProperty: 'My Property Content',
+
+        /**
+         * @public foo
+         */
+        foo: function(){
+            console.log('foo method called!');
+        }
+    });
+
+    module.exports = MyClass;
+
+    ````
+
+    >Example with an Object:
+
+    index.js
+
+    ````javascript
+
+    var Cocktail = require('Cocktail'),
+        ClassA = require('./ClassA'),
+        instance;
+
+    instance = new ClassA();    
+
+    Cocktail.mix(instance, {
+
+        _aProperty: 'My Property Content',
+
+        /**
+         * @public foo
+         */
+        foo: function(){
+            console.log('foo method called!');
+        }
+    });
+
+    ````
 
 <a id="annotations"></a>
 #**Annotations**
@@ -674,5 +697,32 @@ Cocktail.mix(MyClass, {
 
 //this is not necessary anymore:
 //module.exports = MyClass;
+
+````
+
+<a id="@as"></a>
+##**@as**: {String} type to be created.  
+By now only 'class' is a valid parameter.
+>Aplicable to **Class**, **Trait**
+
+>Since **v0.3.0**
+
+The @as pseudo-annotation is used to define the current mix as a class when using a Single parameter definition.
+A pseudo-annotation is used only on specific mixes, and it means it is an annotation without a processor. In this particular case, **@as is only applicable when defining a mix with only one parameter.**
+
+> Example
+
+````javascript
+
+var Cocktail = require('Cocktail');
+
+Cocktail.mix({
+    '@exports': module,
+    '@as'     : 'class',
+
+    doSomethingWithData: function(){
+        //do something with the data here
+    }
+});    
 
 ````
