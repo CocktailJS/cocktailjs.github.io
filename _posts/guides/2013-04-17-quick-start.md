@@ -4,6 +4,7 @@ title: Quick Start
 published: true
 category: guides
 tags: [Getting Started]
+comments: true
 ---
 
 This guide provides very basic steps to create a project, add CocktailJS as a dependency and run an extremely simple example that will print a message in the console.

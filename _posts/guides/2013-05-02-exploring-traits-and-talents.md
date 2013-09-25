@@ -4,6 +4,7 @@ title: Exploring Traits & Talents
 published: true
 category: guides
 tags: [Getting Started, "@traits", "@talents"]
+comments: true
 ---
 
 This guide is intended to give you a brief explanation about using **Traits** & **Talents**. We are going to explore 

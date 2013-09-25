@@ -4,6 +4,7 @@ title: Why Annotations?
 category: blog
 tags: [annotations, node, javascript]
 published: true
+comments: true
 ---
 
 #It's all about describing code

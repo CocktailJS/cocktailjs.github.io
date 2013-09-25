@@ -4,6 +4,7 @@ title: Defining & Using Properties
 published: true
 category: guides
 tags: [Getting Started, "@properties"]
+comments: true
 ---
 
 This guide is intended to explain the `@properties` annotation through some simple examples.

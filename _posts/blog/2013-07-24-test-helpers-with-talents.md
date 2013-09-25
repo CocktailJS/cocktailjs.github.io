@@ -4,6 +4,7 @@ title: Refactoring Test Helper Methods with Talents
 category: blog
 tags: [talents, node, javascript]
 published: true
+comments: true
 ---
 
 We consider tests mandatory in CocktailJS repository, not only __unit tests__ but __integration tests__ as well. And with those tests we found ourselves having to create some _test helper methods_ to create some possible scenarios and restore state for example. We added some comments in  `lib/Cocktail.js` file as a _friendly reminder_ that those methods _should_ go away when we find a better design or strategy.

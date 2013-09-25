@@ -3,6 +3,7 @@ layout: docs
 title: Documentation
 description: CocktailJS API Reference
 published: true
+comments: true
 ---
 
 <a id="cocktail.mix"></a>
