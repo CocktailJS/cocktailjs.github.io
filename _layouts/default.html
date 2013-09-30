@@ -11,8 +11,20 @@
         {% include navigation.html %}            
         <header>
             <hgroup>
-                <h1 class='title'> <span class="logo"></span>{{ site.name }}</h1>
-                <h4 class= 'description'>{{ site.description }}</h4>
+                <h1 class="title"> <span class="logo"></span>{{ site.name }}</h1>
+                <h2 class="description">
+                    ANNOTATIONS. TRAITS. TALENTS.
+                </h2>
+                <a href="/guides">
+                <h4 class="action orange">
+                    LEARN MORE
+                </h4>
+                </a>
+                <a href="/docs">
+                <h4 class="action white">
+                    READ OUR DOCS
+                </h4>
+                </a>
             </hgroup>
             <hgroup class="social">
                 <!-- Twiter -->
@@ -24,7 +36,6 @@
                 <script async defer src="http://buttons.github.io/gh-buttons.js"></script>
             </hgroup>
         </header>
-
 
         <main>
             {{ content }}
