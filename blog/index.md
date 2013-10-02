@@ -1,5 +1,5 @@
 ---
 layout: blog
-title: Cocktail Blog
+title: Blog
 published: true
 ---

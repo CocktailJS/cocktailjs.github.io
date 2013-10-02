@@ -1,6 +1,6 @@
 ---
 layout: guides
-title: CocktailJS Guides
+title: Guides
 tags: 
     - Getting Started
 published: true
