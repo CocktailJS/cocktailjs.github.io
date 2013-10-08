@@ -534,6 +534,84 @@ instance.getOther();
 
 > MyClass is defined with all the properties specified in the annotation. 
 
+<a id="@static"></a>
+##**@static**: {Object} static methods and properties
+>Aplicable to **Class**
+
+>Since **v0.4.0**
+
+This annotation will create the given methods and properties as static members of the given class.
+
+>Example
+
+````javascript
+
+var Cocktail = require('Cocktail'),
+    MyClass  = function(){},
+
+Cocktail.mix(MyClass, {
+    '@static' : {
+        someStaticMethod: function() {
+            // static method ...
+            return 'Hello from static!';
+        },
+
+        VALUE: 'SOME SORT OF VALUE'
+    },
+
+    foo: function(param){
+        //do something here
+        //...
+    }
+
+    /* ... */
+
+});
+
+
+console.log(MyClass.someStaticMethod());
+// -> 'Hello from static!'
+console.log(MyClass.VALUE);
+// -> 'SOME SORT OF VALUE'
+
+````
+
+As static methods they cannot access the instance properties or methods. In a *static method* the keyword `this` points to the static part of the Class. In the previous example you can access the static property `VALUE` from within the `someStaticMethod` through `this.VALUE`
+
+````javascript
+
+var Cocktail = require('Cocktail'),
+    MyClass  = function(){},
+
+Cocktail.mix(MyClass, {
+    '@static' : {
+
+        someStaticMethod: function() {
+            
+            return this.VALUE;
+        },
+
+        VALUE: 'SOME SORT OF VALUE'
+    },
+
+    foo: function(param){
+        //do something here
+        //...
+    }
+
+    /* ... */
+
+});
+
+
+console.log(MyClass.someStaticMethod());
+// -> 'SOME SORT OF VALUE'
+console.log(MyClass.VALUE);
+// -> 'SOME SORT OF VALUE'
+
+````
+
+
 <a id="@traits"></a>
 ##**@traits**: {Array} trait list
 >Aplicable to **Class**, **Trait**, **Talent**
