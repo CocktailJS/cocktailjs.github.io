@@ -46,7 +46,7 @@ Task = function() {
     //....
 };
 
-Task.prototype.__proto__ = events.EventEmitter.prototype
+Task.prototype.__proto__ = EventEmitter.prototype
 
 //....
 
@@ -208,8 +208,8 @@ Cocktail.mix({
 ````
 
 ##Even more reusable code: __@evented__ Annotation
-CocktailJS relies on annotations to perform tasks over classes. It provides as well a mechanism so you can create your own annotations too.
-In this case, we have a few steps we are doing to apply the `Eventable` trait, and those steps are the same in our `Task` and `Step` classes. So, we can create a process to do that for us implementing a custom annotation.
+CocktailJS relies on annotations to perform tasks over classes. It provides as well a mechanism that allows you to create your own annotations too.
+In this case, we have a few steps we are doing to apply the `Eventable` trait, and those steps are the same in our `Task` and `Step` classes. We can, then, create a process to do that for us implementing a custom annotation.
 
 Evented.js
 
