@@ -98,11 +98,11 @@ Task = function() {
 // Delegation methods:
 
 Task.prototype.on = function() {
-    this._emitter.on(arguments);  
+    this._emitter.on.apply(this._emitter, arguments);  
 };
 
 Task.prototype.emit = function() {
-    this._emitter.emit(arguments);  
+    this._emitter.emit.apply(this._emitter, arguments);  
 };
 
 //....
@@ -137,11 +137,11 @@ Cocktail.mix({
     '@requires': ['getEmitter'],
 
     on: function() {
-        this.getEmitter().on(arguments);
+        this.getEmitter().on.apply(this.getEmitter(), arguments);
     },
 
     emit: function() {
-        this.getEmitter().emit(arguments);
+        this.getEmitter().emit.apply(this.getEmitter(), arguments);
     }
 
 }) ;
