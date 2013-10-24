@@ -123,16 +123,16 @@ This code is simple but, if we want to add a new class to represent a Step and w
 
 
 ##Using Traits to share delegation code
-All of the above applies to any class created with CocktailJS. But, we have another mechanism that helps when we want to reuse code. **Traits**.
+All of the above applies to any class created with cocktailJS. But, we have another mechanism that helps when we want to reuse code. **Traits**.
 
 Extracting all that code that we want to share into a Trait will be very easy: We just want to have -in this case- `on` and `emit` methods, so our Trait will be defining only those two:
 
 Eventable.js
 
 ````javascript
-var Cocktail = require('Cocktail');
+var cocktail = require('cocktail');
 
-Cocktail.mix({
+cocktail.mix({
     '@exports' : module, 
     '@requires': ['getEmitter'],
 
@@ -154,11 +154,11 @@ Now, we have to apply the Trait `Eventable` to our `Task` class:
 Task.js
 
 ````javascript
-var Cocktail     = require('Cocktail'),
+var cocktail     = require('cocktail'),
     EventEmitter = require('events').EventEmitter,
     Eventable    = require('./Eventable');
 
-Cocktail.mix({
+cocktail.mix({
     '@exports': module,
     '@as'     : 'class',
 
@@ -180,11 +180,11 @@ With these changes we can still execute our `index.js` with no problems. And in 
 Step.js
 
 ````javascript
-var Cocktail     = require('Cocktail'),
+var cocktail     = require('cocktail'),
     EventEmitter = require('events').EventEmitter,
     Eventable    = require('./Eventable');
 
-Cocktail.mix({
+cocktail.mix({
     '@exports': module,
     '@as'     : 'class',
 
@@ -208,17 +208,17 @@ Cocktail.mix({
 ````
 
 ##Even more reusable code: __@evented__ Annotation
-CocktailJS relies on annotations to perform tasks over classes. It provides as well a mechanism that allows you to create your own annotations too.
+cocktailJS relies on annotations to perform tasks over classes. It provides as well a mechanism that allows you to create your own annotations too.
 In this case, we have a few steps we are doing to apply the `Eventable` trait, and those steps are the same in our `Task` and `Step` classes. We can, then, create a process to do that for us implementing a custom annotation.
 
 Evented.js
 
 ````javascript
-var Cocktail  = require('Cocktail'),
+var cocktail  = require('cocktail'),
     Eventable = require('./Eventable'),
     Emitter   = require('events').EventEmitter;
 
-Cocktail.mix({
+cocktail.mix({
     '@annotation': 'evented',
     '@exports'   : module,
     '@as'        : 'class',
@@ -227,7 +227,7 @@ Cocktail.mix({
         parameter: undefined
     },
 
-    priority: Cocktail.SEQUENCE.PRE_EXPORTS,
+    priority: cocktail.SEQUENCE.PRE_EXPORTS,
 
     process: function(subject){
         var emitter = this.getParameter();
@@ -236,7 +236,7 @@ Cocktail.mix({
             emitter = new Emitter();
         }
 
-        Cocktail.mix(subject, {
+        cocktail.mix(subject, {
             '@traits': [Eventable],
 
             '@properties' : {
@@ -256,11 +256,11 @@ Refactoring our `Task` and `Step` classes to use the `@evented` annotation:
 Task.js
 
 ````javascript
-var Cocktail = require('Cocktail');
+var cocktail = require('cocktail');
 
 require('./Evented'); //import annotation (*)
 
-Cocktail.mix({
+cocktail.mix({
     '@exports': module,
     '@as'     : 'class',
 
@@ -275,11 +275,11 @@ Cocktail.mix({
 Step.js
 
 ````javascript
-var Cocktail = require('Cocktail');
+var cocktail = require('cocktail');
 
 require('./Evented'); //import annotation (*)
 
-Cocktail.mix({
+cocktail.mix({
     '@exports': module,
     '@as'     : 'class',
 
@@ -300,8 +300,8 @@ Cocktail.mix({
 });
 ````
 
-> (*) This mechanism might be changed in a future CocktailJS release, we will keep backward compatibility until version 1.0
+> (*) This mechanism might be changed in a future cocktailJS release, we will keep backward compatibility until version 1.0
 
 
 ##Final words
-We have seen here a few design principles and some features behind CocktailJS that help to reduce and reuse code. Now it is time for you to experiment with it and let us know what's your experience, thoughts, etc.
+We have seen here a few design principles and some features behind cocktailJS that help to reduce and reuse code. Now it is time for you to experiment with it and let us know what's your experience, thoughts, etc.

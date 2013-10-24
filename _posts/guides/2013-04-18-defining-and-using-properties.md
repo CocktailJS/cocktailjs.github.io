@@ -9,18 +9,18 @@ comments: true
 
 This guide is intended to explain the `@properties` annotation through some simple examples.
 
-# Creating a Class with CocktailJS
+# Creating a Class with cocktailJS
 
-To create a class in CocktailJS from scratch, we need to define a class constructor variable that will be used
+To create a class in cocktailJS from scratch, we need to define a class constructor variable that will be used
 as a subject into the mix. The very basic structure looks like this:
 
 MyClass.js
 
 ````javascript
-var Cocktail = require('Cocktail'),
+var cocktail = require('cocktail'),
     MyClass = function(){};
 
-Cocktail.mix(MyClass, {
+cocktail.mix(MyClass, {
     // ....
 });
 
@@ -36,13 +36,13 @@ MyClass.js
 
 ````javascript
 
-var Cocktail = require('Cocktail'),
+var cocktail = require('cocktail'),
     MyClass = function(){};
 
-Cocktail.mix(MyClass, {
+cocktail.mix(MyClass, {
 
     sayHello: function(){
-        console.log('Hello Cocktail!');
+        console.log('Hello cocktail!');
     }
 
 });
@@ -53,7 +53,7 @@ module.exports = MyClass;
 
 # Defining Properties
 
-CocktailJS has a handy annotation `@properties` which helps you to define properties and their getters and setter.
+cocktailJS has a handy annotation `@properties` which helps you to define properties and their getters and setter.
 We are going to add a property named `greeting` into our `MyClass` so we can change the message on `sayHello` method.
 
 First, we have to define the `greeting` property:
@@ -73,7 +73,7 @@ And then change the `sayHello` method to use the getter.
 sayHello: function(){
     var greeting = this.getGreeting();
 
-    console.log(greeting + ' Cocktail!');
+    console.log(greeting + ' cocktail!');
 }
 
 ````
@@ -84,10 +84,10 @@ MyClass.js
 
 ````javascript
 
-var Cocktail = require('Cocktail'),
+var cocktail = require('cocktail'),
     MyClass = function(){};
 
-Cocktail.mix(MyClass, {
+cocktail.mix(MyClass, {
 
     '@properties' : {
         greeting: 'Hello'
@@ -96,7 +96,7 @@ Cocktail.mix(MyClass, {
     sayHello: function(){
         var greeting = this.getGreeting();
 
-        console.log(greeting + ' Cocktail!');
+        console.log(greeting + ' cocktail!');
     }
 
 });
@@ -116,13 +116,13 @@ var MyClass = require('./MyClass'),
 
 obj = new MyClass();
 
-obj.sayHello(); // prints "Hello Cocktail!" since the default value is Hello
+obj.sayHello(); // prints "Hello cocktail!" since the default value is Hello
 
 obj.setGreeting('Ahoy');
-obj.sayHello(); // prints "Ahoy Cocktail!"
+obj.sayHello(); // prints "Ahoy cocktail!"
 
 obj.setGreeting('Yo');
-obj.sayHello(); // prints "Yo Cocktail!"
+obj.sayHello(); // prints "Yo cocktail!"
 
 ````
 
@@ -134,10 +134,10 @@ MyClass.js
 
 ````javascript
 
-var Cocktail = require('Cocktail'),
+var cocktail = require('cocktail'),
     MyClass = function(){};
 
-Cocktail.mix(MyClass, {
+cocktail.mix(MyClass, {
 
     '@properties' : {
         greeting: 'Hello',
@@ -148,7 +148,7 @@ Cocktail.mix(MyClass, {
         var greeting = this.getGreeting();
         
         if(!this.isSilent()){
-            console.log(greeting + ' Cocktail!');    
+            console.log(greeting + ' cocktail!');    
         }
         
     }

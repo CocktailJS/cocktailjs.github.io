@@ -7,7 +7,7 @@ published: true
 comments: true
 ---
 
-We consider tests mandatory in CocktailJS repository, not only __unit tests__ but __integration tests__ as well. And with those tests we found ourselves having to create some _test helper methods_ to create some possible scenarios and restore state for example. We added some comments in  `lib/Cocktail.js` file as a _friendly reminder_ that those methods _should_ go away when we find a better design or strategy.
+We consider tests mandatory in cocktailJS repository, not only __unit tests__ but __integration tests__ as well. And with those tests we found ourselves having to create some _test helper methods_ to create some possible scenarios and restore state for example. We added some comments in  `lib/cocktail.js` file as a _friendly reminder_ that those methods _should_ go away when we find a better design or strategy.
 
 <!--break-->
 
@@ -19,7 +19,7 @@ We consider tests mandatory in CocktailJS repository, not only __unit tests__ bu
     
     restoreDefaultProcessors: function() {
         var key,
-            DEFAULT_PROCESSORS = Cocktail._DEFAULT_PROCESSORS;
+            DEFAULT_PROCESSORS = cocktail._DEFAULT_PROCESSORS;
 
         this.setProcessors({});
         
@@ -58,9 +58,9 @@ We mentioned that our Talent will be used only as a _Test Helper_, so it won't b
 test/helper/RestoreProcessor.js
 
 ````javascript
-var Cocktail = require('../../lib/Cocktail');
+var cocktail = require('../../lib/cocktail');
 
-Cocktail.mix({
+cocktail.mix({
 	'@exports': module,
 
 	restoreDefaultProcessors: function () {
@@ -75,9 +75,9 @@ Now we need to declare what methods will be required to be defined in the object
 test/helper/RestoreProcessor.js
 
 ````javascript
-var Cocktail = require('../../lib/Cocktail');
+var cocktail = require('../../lib/cocktail');
 
-Cocktail.mix({
+cocktail.mix({
 	'@exports': module,
 	
 	'@requires': [
@@ -97,9 +97,9 @@ After defining the required methods, we can now start to refactor our method ins
 test/helper/RestoreProcessor.js
 
 ````javascript
-var Cocktail = require('../../lib/Cocktail');
+var cocktail = require('../../lib/cocktail');
 
-Cocktail.mix({
+cocktail.mix({
 	'@exports': module,
 	
 	'@requires': [
@@ -125,9 +125,9 @@ Cocktail.mix({
 
 ````
 
-Almost done! The Talent is defined already and we have to apply it to the Cocktail instance in our test. We need to require the Talent and apply it. 
+Almost done! The Talent is defined already and we have to apply it to the cocktail instance in our test. We need to require the Talent and apply it. 
 
-test/integration/Cocktail.js
+test/integration/cocktail.js
 
 ````javascript
 
@@ -135,23 +135,23 @@ test/integration/Cocktail.js
 
 var chai = require("chai"),
 	//...
-    Cocktail = require('../../lib/Cocktail'),
+    cocktail = require('../../lib/cocktail'),
     RestoreProcessors = require('../helper/RestoreProcessors');
 
     //...
-    Cocktail.mix(Cocktail, {
+    cocktail.mix(cocktail, {
     	'@talents': [RestoreProcessors]
 	});
 
 	//...
 
 	 afterEach(function(){
-        Cocktail.restoreDefaultProcessors();
+        cocktail.restoreDefaultProcessors();
     });
 
     //...
 
 ````
 
-One last step before we run our code is to _remove_ the current definition in `lib/Cocktail.js` file first because we don't need it anymore, and more importantly because it will fail if we apply a Talent with a method definition that is overriding an existing method in the target object.
+One last step before we run our code is to _remove_ the current definition in `lib/cocktail.js` file first because we don't need it anymore, and more importantly because it will fail if we apply a Talent with a method definition that is overriding an existing method in the target object.
 

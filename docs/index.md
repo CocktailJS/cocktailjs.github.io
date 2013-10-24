@@ -7,7 +7,7 @@ comments: true
 ---
 
 <a id="cocktail.mix"></a>
-#**Cocktail.mix**(_subject_, _options_);
+#**cocktail.mix**(_subject_, _options_);
 >Since **v0.0.1**
 
 Merges the _options_ object into the _subject_. If _subject_ is a class, then the merge will be applied to the subject's prototype.
@@ -22,10 +22,10 @@ This is the variable where the mix will be done. It is usually a variable name, 
     ````javascript
 
     var obj = {};
-    Cocktail.mix(obj, ...)
+    cocktail.mix(obj, ...)
     //or
     var another = new AnotherClass();
-    Cocktail.mix(another, ...)
+    cocktail.mix(another, ...)
 
     ````
 
@@ -34,10 +34,10 @@ This is the variable where the mix will be done. It is usually a variable name, 
     ````javascript
 
     var MyClass = function(){};
-    Cocktail.mix(MyClass ,...)
+    cocktail.mix(MyClass ,...)
     //or
     var Other = require('./SomeClass');
-    Cocktail.mix(Other, ...)
+    cocktail.mix(Other, ...)
 
     ````
   
@@ -46,10 +46,10 @@ This is the variable where the mix will be done. It is usually a variable name, 
     ````javascript
 
     var MyTrait = function(){};
-    Cocktail.mix(MyTrait ,...)
+    cocktail.mix(MyTrait ,...)
     //or
     var TraitA = require('./TraitA');
-    Cocktail.mix(TraitA ,...)
+    cocktail.mix(TraitA ,...)
 
     ````
 
@@ -79,7 +79,7 @@ This is the variable where the mix will be done. It is usually a variable name, 
 
     var MyBaseClass;
 
-    MyBaseClass = Cocktail.mix({
+    MyBaseClass = cocktail.mix({
         '@as': 'class',
 
         myBaseMethod: function() {}
@@ -94,7 +94,7 @@ This is the variable where the mix will be done. It is usually a variable name, 
     var MyBaseClass = require('./MyBaseClass'),
         MyClass;
 
-    MyClass = Cocktail.mix({
+    MyClass = cocktail.mix({
         '@extends': MyBaseClass,
 
         myMethod: function() {}
@@ -142,10 +142,10 @@ The option object can contain any number of _methods_, _properties_ and _annotat
 
     ````javascript
 
-    var Cocktail = require('Cocktail'),
+    var cocktail = require('cocktail'),
         MyClass = function(){};
 
-    Cocktail.mix(MyClass, {
+    cocktail.mix(MyClass, {
 
         _aProperty: 'My Property Content',
 
@@ -167,13 +167,13 @@ The option object can contain any number of _methods_, _properties_ and _annotat
 
     ````javascript
 
-    var Cocktail = require('Cocktail'),
+    var cocktail = require('cocktail'),
         ClassA = require('./ClassA'),
         instance;
 
     instance = new ClassA();    
 
-    Cocktail.mix(instance, {
+    cocktail.mix(instance, {
 
         _aProperty: 'My Property Content',
 
@@ -189,8 +189,8 @@ The option object can contain any number of _methods_, _properties_ and _annotat
 
 <a id="annotations"></a>
 #**Annotations**
-_Annotations_ are special properties defined in the _options_ parameter of Cocktail.mix() method.
-This properties are defined by a name starting with `@`. The following is the list of the current Cocktail core annotations.
+_Annotations_ are special properties defined in the _options_ parameter of cocktail.mix() method.
+This properties are defined by a name starting with `@`. The following is the list of the current cocktail core annotations.
 
 <a id="@annotation"></a>
 ##**@annotation**: {String} name
@@ -216,18 +216,18 @@ The priority defines the execution sequence in the queue.
 
 ###Execution Sequence
 In order to execute the different annotations CocktailJS uses an execution queue based in priorities. These priorities
-are defined into **Cocktail.SEQUENCE** and you can define when your annotation will be executed by defining a **priority**
+are defined into **cocktail.SEQUENCE** and you can define when your annotation will be executed by defining a **priority**
 property into your Annotation Class Processor. The **priority** property should be a Number. The following list shows the
 predifined priorities:
 
-- Cocktail.SEQUENCE.NO_OP (-1)
+- cocktail.SEQUENCE.NO_OP (-1)
 This NO OP priority means that the processor will not be picked up to run in the execution queue.
-- Cocktail.SEQUENCE.EXTENDS (10)
-- Cocktail.SEQUENCE.PROPERTIES (20)
-- Cocktail.SEQUENCE.REQUIRES (30)
-- Cocktail.SEQUENCE.MERGE (100)
-- Cocktail.SEQUENCE.TRAIT (110)
-- Cocktail.SEQUENCE.ANNOTATION (1000)
+- cocktail.SEQUENCE.EXTENDS (10)
+- cocktail.SEQUENCE.PROPERTIES (20)
+- cocktail.SEQUENCE.REQUIRES (30)
+- cocktail.SEQUENCE.MERGE (100)
+- cocktail.SEQUENCE.TRAIT (110)
+- cocktail.SEQUENCE.ANNOTATION (1000)
 
 The order in the execution queue is given by the values in the priority property. The lower value will be executed first
 except for -1 (NO_OP).
@@ -238,8 +238,8 @@ will be the last one to be executed.
 For each priority (except for NO_OP) there are defined a *PRE_XXX* and *POST_XXX* as helpers in case you want to execute the
 annotation right after or before some predefined stage.
 
-- Cocktail.SEQUENCE.PRE_EXTENDS (9)
-- Cocktail.SEQUENCE.POST_MERGE (101)
+- cocktail.SEQUENCE.PRE_EXTENDS (9)
+- cocktail.SEQUENCE.POST_MERGE (101)
 
 >Example:
 
@@ -247,10 +247,10 @@ Custom.js
 
 ````javascript
 
-var Cocktail = require('Cocktail'),
+var cocktail = require('cocktail'),
     Custom = function(){};
 
-Cocktail.mix(Custom, {
+cocktail.mix(Custom, {
     '@annotation' : 'custom',
 
     setParameter: function(){/*...*/},
@@ -272,10 +272,10 @@ index.js
 // 1.-include Custom annotation definition
 require('./Custom.js');
 
-var Cocktail = require('Cocktail'),
+var cocktail = require('cocktail'),
     myObj = {};
 
-Cocktail.mix(myObj, {
+cocktail.mix(myObj, {
     // 2.-annotate the code with the custom annotation  
     '@custom' : 'some-custom-parameter',
 
@@ -318,7 +318,7 @@ index.js
 
 ````javascript
 
-var Cocktail = require('Cocktail'),
+var cocktail = require('cocktail'),
     myObject = {
         property: {
             a: 'a',
@@ -327,7 +327,7 @@ var Cocktail = require('Cocktail'),
         values: [1,2]
     };
 
-Cocktail.mix(myObject, {
+cocktail.mix(myObject, {
     property: {
         z: 'z'
     }
@@ -342,7 +342,7 @@ index.js
 
 ````javascript
 
-var Cocktail = require('Cocktail'),
+var cocktail = require('cocktail'),
     myObject = {
         property: {
             a: 'a',
@@ -351,7 +351,7 @@ var Cocktail = require('Cocktail'),
         values: [1,2]
     };
 
-Cocktail.mix(myObject, {
+cocktail.mix(myObject, {
     '@merge': 'their',
     property: {
         z: 'z'
@@ -367,7 +367,7 @@ index.js
 
 ````javascript
 
-var Cocktail = require('Cocktail'),
+var cocktail = require('cocktail'),
     myObject = {
         property: {
             a: 'a',
@@ -376,7 +376,7 @@ var Cocktail = require('Cocktail'),
         values: [1,2]
     };
 
-Cocktail.mix(myObject, {
+cocktail.mix(myObject, {
     '@merge': 'deep-mine',
     property: {
         a: 'A',
@@ -395,7 +395,7 @@ index.js
 
 ````javascript
 
-var Cocktail = require('Cocktail'),
+var cocktail = require('cocktail'),
     myObject = {
         property: {
             a: 'a',
@@ -404,7 +404,7 @@ var Cocktail = require('Cocktail'),
         values: [1,2]
     };
 
-Cocktail.mix(myObject, {
+cocktail.mix(myObject, {
     '@merge': 'deep-their',
     property: {
         a: 'A',
@@ -438,11 +438,11 @@ MyClass.js
 
 ````javascript
 
-var Cocktail = require('Cocktail'),
+var cocktail = require('cocktail'),
     Base = require('./Base'),
     MyClass = function(){};
 
-Cocktail.mix(MyClass, {
+cocktail.mix(MyClass, {
     '@extends' : Base,
 
     /**
@@ -494,10 +494,10 @@ are created. If the property is a boolean then an **is[PropertyName]** method is
 
 ````javascript
 
-var Cocktail = require('Cocktail'),
+var cocktail = require('cocktail'),
     MyClass = function(){};
 
-Cocktail.mix(MyClass, {
+cocktail.mix(MyClass, {
     '@properties' : {
         foo: 'foo',
         total: 0,
@@ -546,10 +546,10 @@ This annotation will create the given methods and properties as static members o
 
 ````javascript
 
-var Cocktail = require('Cocktail'),
+var cocktail = require('cocktail'),
     MyClass  = function(){},
 
-Cocktail.mix(MyClass, {
+cocktail.mix(MyClass, {
     '@static' : {
         someStaticMethod: function() {
             // static method ...
@@ -580,10 +580,10 @@ As static methods they cannot access the instance properties or methods. In a *s
 
 ````javascript
 
-var Cocktail = require('Cocktail'),
+var cocktail = require('cocktail'),
     MyClass  = function(){},
 
-Cocktail.mix(MyClass, {
+cocktail.mix(MyClass, {
     '@static' : {
 
         someStaticMethod: function() {
@@ -624,7 +624,7 @@ class where you define only behavior that will be shared among other classes or 
 _Traits_ are Composable Units of Behaviour (You can read more from [this paper](http://scg.unibe.ch/archive/papers/Scha03aTraits.pdf)).
 Basically, a Trait is a Class, let's say a special type of Class, that has only behaviour (methods) and no state. 
 
-A Trait can be composed with other Traits. In Cocktail you cannot extend from a Trait or a Trait cannot extend from other class.
+A Trait can be composed with other Traits. In cocktail you cannot extend from a Trait or a Trait cannot extend from other class.
 
 Traits implementation doesn't allow to override a method defined in the target class with one in the current Trait but, it defines
 some mechanisms to avoid method collision:
@@ -640,12 +640,12 @@ Basically, all the methods defined in the Trait will become part of the target c
 
 ````javascript
 
-var Cocktail = require('Cocktail'),
+var cocktail = require('cocktail'),
     TraitA = require('./TraitA'),
     TraitB = require('./TraitB'),
     MyClass = function(){};
 
-Cocktail.mix(MyClass, {
+cocktail.mix(MyClass, {
     '@traits' : [
         TraitA,
         {
@@ -678,7 +678,7 @@ Cocktail.mix(MyClass, {
 
 >Since **v0.0.1**
 
-Talents are very similar to Traits, in fact a Trait can be applied as a Talent in Cocktail.
+Talents are very similar to Traits, in fact a Trait can be applied as a Talent in cocktail.
 The main difference is a Talent can be applied to an _instance_. 
 So we can define a Talent as a _Dynamically Composable Unit of Reuse_ (you can read more from [this paper](http://scg.unibe.ch/archive/papers/Ress11a-Talents.pdf)).
 
@@ -688,13 +688,13 @@ Talents share the same design principles that Traits and they have the same mech
 
 ````javascript
 
-var Cocktail = require('Cocktail'),
+var cocktail = require('cocktail'),
     TraitA = require('./TraitA'),
     TraitB = require('./TraitB'),
     ClassA = require('./ClassA'),
     myObj = new ClassA();
 
-Cocktail.mix(myObj, {
+cocktail.mix(myObj, {
     '@talents' : [
         TraitA,
         {
@@ -730,12 +730,12 @@ Those **required** methods are defined using a **'@requires'** annotation in the
 
 ````javascript
 
-var Cocktail = require('Cocktail'),
+var cocktail = require('cocktail'),
     TraitA = require('TraitA'),
     MyTrait = function(){};
 
 
-Cocktail.mix(MyTrait, {
+cocktail.mix(MyTrait, {
     '@requires': ['getData'],
 
     doSomethingWithData: function(){
@@ -762,10 +762,10 @@ the module variable where the current mix will be exported.
 
 ````javascript
 
-var Cocktail = require('Cocktail'),
+var cocktail = require('cocktail'),
     MyClass = function(){};
 
-Cocktail.mix(MyClass, {
+cocktail.mix(MyClass, {
     '@exports': module,
 
     doSomethingWithData: function(){
@@ -793,9 +793,9 @@ A pseudo-annotation is used only on specific mixes, and it means it is an annota
 
 ````javascript
 
-var Cocktail = require('Cocktail');
+var cocktail = require('cocktail');
 
-Cocktail.mix({
+cocktail.mix({
     '@exports': module,
     '@as'     : 'class',
 

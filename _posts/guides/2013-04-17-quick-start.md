@@ -7,7 +7,7 @@ tags: [Getting Started]
 comments: true
 ---
 
-This guide provides very basic steps to create a project, add CocktailJS as a dependency and run an extremely simple example that will print a message in the console.
+This guide provides very basic steps to create a project, add cocktailJS as a dependency and run an extremely simple example that will print a message in the console.
 
 # Create a new project
 
@@ -43,7 +43,7 @@ Or you can use `npm` to create a new project:
 $ npm init
 ````
 
-# Install CocktailJS as a dependency
+# Install cocktailJS as a dependency
 
 The package.json file structure defines some aspects of our project. The more important in this case is our depencies list.
 All the modules described as depencies will be installed in your project using `npm`.
@@ -70,25 +70,25 @@ like this:
      \- package.json
 
 
-We have created our project sucessfully. Now we can edit `index.js` to start using CocktailJS.
+We have created our project sucessfully. Now we can edit `index.js` to start using cocktailJS.
 
 
-# Hello Cocktail!
+# Hello cocktail!
 
-Once we have CocktailJS installed as a module into our project, we can edit `index.js` to start experimenting 
-with _Cocktail.mix()_ method:
+Once we have cocktailJS installed as a module into our project, we can edit `index.js` to start experimenting 
+with _cocktail.mix()_ method:
 
 index.js
 
 ````javascript
 
-var Cocktail = require('Cocktail'),
+var cocktail = require('cocktail'),
     myObject = {};
 
-Cocktail.mix(myObject, {
+cocktail.mix(myObject, {
 
     sayHello: function(){
-        console.log('Hello Cocktail!');
+        console.log('Hello cocktail!');
     }
 });
 
@@ -99,6 +99,6 @@ Save the file and execute it:
 
 ````console
 $ node index.js
-Hello Cocktail!
+Hello cocktail!
 ````
 **Congratulations!** We just created a very simple first example.

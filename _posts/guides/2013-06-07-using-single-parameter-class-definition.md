@@ -13,15 +13,15 @@ it can be used together with `@exports` annotation.
 #Creating a Class
 In a previous guide [(Extending a Class)](/guides/extending-a-class.html) we have seen how to create and extend a class. Now,
 we are going to revisit that example but this time we will define the class without having to specify the constructor
-outside the `Cocktail.mix()` method:
+outside the `cocktail.mix()` method:
 
 Person.js
 
 ````javascript
 
-var Cocktail = require('Cocktail');
+var cocktail = require('cocktail');
 
-Cocktail.mix({
+cocktail.mix({
     //export the class 
     '@exports' : module,
 
@@ -46,7 +46,7 @@ parameter for the greeting property. If the property has value then we are going
 parameter to the greeting property.
 Another annotation is used in this declaration. `@exports` allows to define that we are going to export the current mix. 
 It will take the result of the mix and assign it to the `module.exports` variable so we don't have to create another
-variable name for the class and export it or assign the Cocktail.mix execution to the `module.exports` variable.
+variable name for the class and export it or assign the cocktail.mix execution to the `module.exports` variable.
 
 #Extending your Class
 The Single Parameter Class Definition can be applied when you pass the subject as a Object literal with a constructor
@@ -57,10 +57,10 @@ Pirate.js
 
 ````javascript
 
-var Cocktail = require('Cocktail'),
+var cocktail = require('cocktail'),
     Person   = require('./Person');
 
-Cocktai.mix({
+cocktail.mix({
     '@exports' : module,
     '@extends' : Person,
 
@@ -78,9 +78,9 @@ Greetable.js
 
 ````javascript
 
-var Cocktail = require('Cocktail');
+var cocktail = require('cocktail');
 
-Cocktail.mix({
+cocktail.mix({
     '@exports' : module,
 
     '@requires' : ['getGreeting'],
@@ -101,10 +101,10 @@ Person.js
 
 ````javascript
 
-var Cocktail  = require('Cocktail'),
+var cocktail  = require('cocktail'),
     Greetable = require('./Greetable.js');
 
-Cocktail.mix({
+cocktail.mix({
     '@exports' : module,
     '@traits'  : [Greetable],
     '@properties' : {
@@ -153,7 +153,7 @@ Ahoy!
 Hello!
 ````
 
-That's it, as you can see we use _Cocktail_ to help with **classes** definitions but it is not required to use the
+That's it, as you can see we use _cocktail_ to help with **classes** definitions but it is not required to use the
 classes.
 
 

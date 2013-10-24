@@ -24,10 +24,10 @@ Person.js
 
 ````javascript
 
-var Cocktail = require('Cocktail'),
+var cocktail = require('cocktail'),
     Person = function(){};
 
-Cocktail.mix(Person, {
+cocktail.mix(Person, {
     
     greeting: 'Hello',
 
@@ -44,11 +44,11 @@ Pirate.js
 
 ````javascript
 
-var Cocktail = require('Cocktail'),
+var cocktail = require('cocktail'),
     Person   = require('./Person'),
     Pirate   = function(){};
 
-Cocktail.mix(Pirate, {
+cocktail.mix(Pirate, {
     '@extends': Person,
 
     greeting: 'Ahoy'
@@ -71,10 +71,10 @@ Greetable.js
 
 ````javascript
 
-var Cocktail  = require('Cocktail'),
+var cocktail  = require('cocktail'),
     Greetable = function(){};
 
-Cocktail.mix(Greetable, {
+cocktail.mix(Greetable, {
     '@requires': ['getGreeting'],
 
     
@@ -99,11 +99,11 @@ Robot.js
 
 ````javascript
 
-var Cocktail  = require('Cocktail'),
+var cocktail  = require('cocktail'),
     Greetable = require('./Greetable'),
     Robot     = function(){};
 
-Cocktail.mix(Robot, {
+cocktail.mix(Robot, {
     '@traits': [Greetable],
 
     greeting: '01001000 01100101 01101100 01101100 01101111', //Yes, that's hello in binary :)
@@ -128,11 +128,11 @@ Person.js
 
 ````javascript
 
-var Cocktail  = require('Cocktail'),
+var cocktail  = require('cocktail'),
     Greetable = require('./Greetable'),
     Person    = function(){};
 
-Cocktail.mix(Person, {
+cocktail.mix(Person, {
     '@traits': [Greetable],
 
     greeting: 'Hello',
@@ -153,11 +153,11 @@ Pirate.js
 
 ````javascript
 
-var Cocktail = require('Cocktail'),
+var cocktail = require('cocktail'),
     Person   = require('./Person'),
     Pirate   = function(){};
 
-Cocktail.mix(Pirate, {
+cocktail.mix(Pirate, {
     '@extends': Person,
 
     greeting: 'Ahoy'
@@ -222,7 +222,7 @@ marvin = new Robot();
 
 marvin.sayHi(); //will print "01001000 01100101 01101100 01101100 01101111!" 
 
-Cocktail.mix(dishwasher,{
+cocktail.mix(dishwasher,{
     '@talents': [Greetable],
 
     getGreeting: function(){

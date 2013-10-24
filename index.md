@@ -12,9 +12,9 @@ Cocktail is not for everyone. If you feel uncomfortable writing your methods and
 Moreover, if you like OOP and you want to go one step ahead and explore about using **traits** and **talents** to share behaviour, then you'll **love** _Cocktail_.
 
 # Keep code simple yet reusable
-_Cocktail_ is **so simple** that it has only _one_ public method: `Cocktail.mix()`
+_Cocktail_ is **so simple** that it has only _one_ public method: `cocktail.mix()`
 
-**Cocktail.mix** accepts two parameters: 
+**cocktail.mix** accepts two parameters: 
 
 - **subject**: {Class|Object} 
 - **options**: {Object}
@@ -25,7 +25,7 @@ In its simplest use case, **mix** will merge your subject with the options. So i
 ````javascript
 var obj = {};
 
-Cocktail.mix(obj, {
+cocktail.mix(obj, {
     aProperty: 'something',
     anotherOne: 'something else'
 });
@@ -44,11 +44,11 @@ So, `Annotations`, what ...? Annotations are just some meta-data Cocktail uses t
 For classical OOP inheritance we need a _Base_ class. `@extends` annotation is used to tell Cocktail that we are going to apply inheritance from a base class. 
 
 ````javascript
-var Cocktail = require('Cocktail'),
+var cocktail = require('cocktail'),
     BaseClass = require('./MyBaseAwesomeClass'),
     MyClass = function(){};
 
-Cocktail.mix(MyClass, {
+cocktail.mix(MyClass, {
     '@extends': BaseClass,
 
      someProperty: 'something'
@@ -62,11 +62,11 @@ As in classical OOP inheritance, any instance of MyClass is an instance of BaseC
 Properties are a kind of magical helper. All the properties defined in @properties become part of the class prototype, but also, it generates getter/setter methods for you.
 
 ````javascript
-var Cocktail = require('Cocktail'),
+var cocktail = require('cocktail'),
     BaseClass = require('./MyBaseAwesomeClass'),
     MyClass = function(){};
 
-Cocktail.mix(MyClass, {
+cocktail.mix(MyClass, {
     '@extends': BaseClass,
     
      '@properties': {
@@ -104,11 +104,11 @@ module.exports = Testable;
 So now we can apply the Testable Trait to our class definition:
 
 ````javascript
-var Cocktail = require('Cocktail'),
+var cocktail = require('cocktail'),
     Testable = require('./Testable'),
     MyClass = function(){};
 
-Cocktail.mix(MyClass, {
+cocktail.mix(MyClass, {
    '@traits': [Testable],
 
    // ... more class definitions
@@ -134,7 +134,7 @@ This is a very simple and fairly stupid example, but here we demonstrated we don
 If you have read the paper, you might noticed that sometimes conflicts may arise and there are some ways to avoid those conflicts. Those are implemented in _Cocktail_ as well. You can create _alias_ or even _exclude_ methods from the Trait. The syntax is a bit different for these cases:
 
 ````javascript
-Cocktail.mix(MyClass, {
+cocktail.mix(MyClass, {
    '@traits': [
        Testable,
        {
@@ -157,7 +157,7 @@ We saw that we can use any Class defined with no state as a Trait but, sometimes
 Our Trait _Formatable_ requires a value where the format will be applied. Since Traits _cannot have state_, we need some way to access to the variable we want to format. So, in this case _Formatable_ requires a _getValue_ method to be defined:
 
 ````javascript
-Cocktail.mix(Formatable, {
+cocktail.mix(Formatable, {
     '@requires': ['getValue'],
 
     format: function(pattern){
@@ -171,7 +171,7 @@ Cocktail.mix(Formatable, {
 Now we can apply it to a Class:
 
 ````javascript
-Cocktail.mix(MyClass, {
+cocktail.mix(MyClass, {
    '@traits': [Formatable],
    '@properties': {
        value: 10
@@ -187,14 +187,15 @@ Talents are very similar to Traits, in fact a Trait can be applied as a Talent i
 In a previous example we have created a Testable trait. So, what if we want now to use that behaviour only on certain instances? Well that's when Talents become super handy:
 
 ````javascript
-var MyClass = require('./MyAnotherClass'),
+var cocktail = require('cocktail'),
+    MyClass = require('./MyAnotherClass'),
     MyTestableClass = require('./MyClassInheritsFromTestClass'),
     Testable = require('./Testable'),
     instanceA, instanceB;
 
 instanceA = new MyTestableClass();
 
-Cocktail.mix(instanceA, {
+cocktail.mix(instanceA, {
     '@talents': [Testable]
 });
 
@@ -202,7 +203,7 @@ console.log(instanceA.isTestable()); //true
 
 instanceB = new MyClass();
 
-Cocktail.mix(instanceB, {
+cocktail.mix(instanceB, {
     '@talents': [Testable]
 });
 

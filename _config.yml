@@ -6,12 +6,12 @@ description: Shake your objects and classes with Cocktail!
 author: Maximiliano Fierro
 
 username: CocktailJS
-repository: Cocktail
+repository: cocktail
 
 analytics: UA-39565774-1
 
 docs: {
-	version: 0.4.3
+	version: 0.4.4
 }
 
 markdown: redcarpet
