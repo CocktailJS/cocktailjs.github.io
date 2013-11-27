@@ -187,6 +187,40 @@ The option object can contain any number of _methods_, _properties_ and _annotat
 
     ````
 
+<a id="cocktail.use"></a>
+#**cocktail.use**(_AnnotationDefinition_);
+>Since **v0.5.0**
+
+Registers the given _AnnotationDefinition_ with the current cocktail instance.
+
+<a id="AnnotationDefinition"></a>
+##**AnnotationDefinition** {Class}
+This is the Processor Class defined with `@annotation`. See [@annotation](#@annotation) for more details about defining a custom annotation processor.
+
+>Example
+
+index.js
+
+````javascript
+
+var cocktail = require('cocktail'),
+    myObj = {};
+
+// 1.-include Custom annotation definition
+var Custom = require('./Custom.js');
+
+// 2.-register with cocktail instance
+cocktail.use(Custom);
+
+cocktail.mix(myObj, {
+    // 3.-annotate the code with the custom annotation  
+    '@custom' : 'some-custom-parameter',
+
+    //more annotations, or code
+});
+
+````
+
 <a id="annotations"></a>
 #**Annotations**
 _Annotations_ are special properties defined in the _options_ parameter of cocktail.mix() method.
@@ -196,7 +230,7 @@ This properties are defined by a name starting with `@`. The following is the li
 ##**@annotation**: {String} name
 >Aplicable to **Class**
 
->Since **v0.0.3**
+>Since **v0.5.0**
 
 This annotation will register the current mix as a custom annotation by the name parameter precedeed by the @ symbol.
 The annotation is applicable to a Class with a **process** and **setParameter** methods.
@@ -269,14 +303,18 @@ index.js
 
 ````javascript
 
-// 1.-include Custom annotation definition
-require('./Custom.js');
 
 var cocktail = require('cocktail'),
     myObj = {};
 
+// 1.-include Custom annotation definition
+var Custom = require('./Custom.js');
+
+// 2.-register with cocktail instance
+cocktail.use(Custom);
+
 cocktail.mix(myObj, {
-    // 2.-annotate the code with the custom annotation  
+    // 3.-annotate the code with the custom annotation  
     '@custom' : 'some-custom-parameter',
 
     //more annotations, or code
@@ -284,8 +322,8 @@ cocktail.mix(myObj, {
 
 ````
 
->In the index.js file we are first adding the annotation definition (it is not necessary to bind it to any local variable)
-and then we just use our custom annotation in our code. 
+>In the index.js file we are first requiring the annotation definition and registering it with the cocktail instance.
+Then we can use our custom annotation into our code. 
 The parameter specified in the mix for @custom is the one that will be passed to setParameter method in Custom Annotation definition.
 Then the process() receives the subject, myObj in this case, when it is processed by the annotation.
 
