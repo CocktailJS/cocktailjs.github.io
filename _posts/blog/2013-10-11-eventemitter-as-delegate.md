@@ -256,9 +256,10 @@ Refactoring our `Task` and `Step` classes to use the `@evented` annotation:
 Task.js
 
 ````javascript
-var cocktail = require('cocktail');
+var cocktail = require('cocktail'),
+    Evented  = require('./Evented');
 
-require('./Evented'); //import annotation (*)
+cocktail.use(Evented);
 
 cocktail.mix({
     '@exports': module,
@@ -275,9 +276,10 @@ cocktail.mix({
 Step.js
 
 ````javascript
-var cocktail = require('cocktail');
+var cocktail = require('cocktail'),
+    Evented  = require('./Evented');
 
-require('./Evented'); //import annotation (*)
+cocktail.use(Evented);
 
 cocktail.mix({
     '@exports': module,
@@ -299,8 +301,6 @@ cocktail.mix({
 
 });
 ````
-
-> (*) This mechanism might be changed in a future cocktailJS release, we will keep backward compatibility until version 1.0
 
 
 ##Final words
