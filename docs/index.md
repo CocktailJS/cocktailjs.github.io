@@ -232,7 +232,7 @@ This properties are defined by a name starting with `@`. The following is the li
 
 >Since **v0.5.0**
 
-This annotation will register the current mix as a custom annotation by the name parameter precedeed by the @ symbol.
+This annotation will register the current mix as a custom annotation by the name parameter precedeed by the `@`symbol.
 The annotation is applicable to a Class with a **process** and **setParameter** methods.
 
 A processor class should implement the following methods and properties:
@@ -254,7 +254,7 @@ are defined into **cocktail.SEQUENCE** and you can define when your annotation w
 property into your Annotation Class Processor. The **priority** property should be a Number. The following list shows the
 predifined priorities:
 
-- cocktail.SEQUENCE.NO_OP (-1)
+- cocktail.SEQUENCE.NO\_OP (-1)
 This NO OP priority means that the processor will not be picked up to run in the execution queue.
 - cocktail.SEQUENCE.EXTENDS (10)
 - cocktail.SEQUENCE.PROPERTIES (20)
@@ -269,11 +269,11 @@ except for -1 (NO_OP).
 **Note**: An Annotation Class Processor with no priority defined will be executed with no prority by default meaning that it 
 will be the last one to be executed.
 
-For each priority (except for NO_OP) there are defined a *PRE_XXX* and *POST_XXX* as helpers in case you want to execute the
+For each priority (except for NO\_OP) there are defined a *PRE\_XXX* and *POST\_XXX* as helpers in case you want to execute the
 annotation right after or before some predefined stage.
 
-- cocktail.SEQUENCE.PRE_EXTENDS (9)
-- cocktail.SEQUENCE.POST_MERGE (101)
+- cocktail.SEQUENCE.PRE\_EXTENDS (9)
+- cocktail.SEQUENCE.POST\_MERGE (101)
 
 >Example:
 

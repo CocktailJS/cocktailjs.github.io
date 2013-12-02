@@ -9,7 +9,7 @@ comments: true
 
 This guide is intended to explain the `@properties` annotation through some simple examples.
 
-# Creating a Class with cocktailJS
+# Creating a Class with CocktailJS
 
 To create a class in cocktailJS from scratch, we need to define a class constructor variable that will be used
 as a subject into the mix. The very basic structure looks like this:
