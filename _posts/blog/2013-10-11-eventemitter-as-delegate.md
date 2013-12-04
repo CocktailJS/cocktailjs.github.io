@@ -165,7 +165,11 @@ cocktail.mix({
     '@traits' : [Eventable],
 
     '@properties' : {
-        emitter : new EventEmitter()
+        emitter : undefined
+    },
+
+    constructor: function() {
+        this.setEmitter(new EventEmitter());
     },
 
     execute: function() {
@@ -191,8 +195,12 @@ cocktail.mix({
     '@traits' : [Eventable],
 
     '@properties' : {
-        emitter     : new EventEmitter(),
+        emitter     : undefined,
         description : 'default step description'
+    },
+
+    constructor: function() {
+        this.setEmitter(new EventEmitter());
     },
 
     done : function() {
@@ -208,7 +216,7 @@ cocktail.mix({
 ````
 
 ##Even more reusable code: __@evented__ Annotation
-cocktailJS relies on annotations to perform tasks over classes. It provides as well a mechanism that allows you to create your own annotations too.
+CocktailJS relies on annotations to perform tasks over classes. It provides as well a mechanism that allows you to create your own annotations too.
 In this case, we have a few steps we are doing to apply the `Eventable` trait, and those steps are the same in our `Task` and `Step` classes. We can, then, create a process to do that for us implementing a custom annotation.
 
 Evented.js
@@ -227,22 +235,26 @@ cocktail.mix({
         parameter: undefined
     },
 
-    priority: cocktail.SEQUENCE.PRE_EXPORTS,
-
     process: function(subject){
         var emitter = this.getParameter();
 
-        if(emitter && emitter === true) {
-            emitter = new Emitter();
+        if(emitter) {
+
+            cocktail.mix(subject, {
+                '@traits': [Eventable],
+
+                _emitter: undefined,
+
+                getEmitter: function(){
+                    if(!this._emitter){
+                        this._emitter = (emitter === true) ? new Emitter() : emitter;
+                    }
+
+                    return this._emitter;
+                }
+            });
+
         }
-
-        cocktail.mix(subject, {
-            '@traits': [Eventable],
-
-            '@properties' : {
-                emitter: emitter
-            }
-        });
     }
 
 });
