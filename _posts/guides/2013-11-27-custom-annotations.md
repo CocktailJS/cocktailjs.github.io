@@ -200,6 +200,8 @@ index.js
 var MyClass = require('./MyClass'),
     obj;
 
+obj = new MyClass();
+
 obj.doSomethingAndLog();
 
 ````
