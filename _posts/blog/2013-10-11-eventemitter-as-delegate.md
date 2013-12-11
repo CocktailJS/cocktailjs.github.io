@@ -123,7 +123,7 @@ This code is simple but, if we want to add a new class to represent a Step and w
 
 
 ##Using Traits to share delegation code
-All of the above applies to any class created with cocktailJS. But, we have another mechanism that helps when we want to reuse code. **Traits**.
+All of the above applies to any class created with CocktailJS. But, we have another mechanism that helps when we want to reuse code. **Traits**.
 
 Extracting all that code that we want to share into a Trait will be very easy: We just want to have -in this case- `on` and `emit` methods, so our Trait will be defining only those two:
 
@@ -316,4 +316,4 @@ cocktail.mix({
 
 
 ##Final words
-We have seen here a few design principles and some features behind cocktailJS that help to reduce and reuse code. Now it is time for you to experiment with it and let us know what's your experience, thoughts, etc.
+We have seen here a few design principles and some features behind CocktailJS that help to reduce and reuse code. Now it is time for you to experiment with it and let us know what's your experience, thoughts, etc.

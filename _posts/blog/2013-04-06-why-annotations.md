@@ -12,7 +12,7 @@ comments: true
 > An annotation is a note that is made while reading any form of text.
 
 **Annotations** are used as a special form of syntactic metadata in the source code. 
-The term **metadata** refers to "data about data". While it is an ambiguous definition, the concept in cocktailJS is 
+The term **metadata** refers to "data about data". While it is an ambiguous definition, the concept in CocktailJS is 
 used to describe actions performed over a class or object . We need "metadata" to perform those actions but at the same time they
 describe -or annotate- the code. 
 

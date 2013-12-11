@@ -11,7 +11,7 @@ This guide is intended to explain the `@properties` annotation through some simp
 
 # Creating a Class with CocktailJS
 
-To create a class in cocktailJS from scratch, we need to define a class constructor variable that will be used
+To create a class in CocktailJS from scratch, we need to define a class constructor variable that will be used
 as a subject into the mix. The very basic structure looks like this:
 
 MyClass.js
@@ -53,7 +53,7 @@ module.exports = MyClass;
 
 # Defining Properties
 
-cocktailJS has a handy annotation `@properties` which helps you to define properties and their getters and setter.
+CocktailJS has a handy annotation `@properties` which helps you to define properties and their getters and setter.
 We are going to add a property named `greeting` into our `MyClass` so we can change the message on `sayHello` method.
 
 First, we have to define the `greeting` property:

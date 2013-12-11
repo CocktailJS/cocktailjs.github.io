@@ -7,10 +7,10 @@ tags: [Getting Started, "@extends"]
 comments: true
 ---
 
-This guide will introduce you to some basic principles about inheritance in cocktailJS.
+This guide will introduce you to some basic principles about inheritance in CocktailJS.
 
 # Creating a Class
-It is very simple to create classes with cocktailJS. Let's start with a very simple one. We want to 
+It is very simple to create classes with CocktailJS. Let's start with a very simple one. We want to 
 create a `Person` class. The `Person` instance should be able to print a message in the console when
 we ask it to `sayHi`.
 
@@ -68,7 +68,7 @@ module.exports = Pirate;
 
 ````
 
-The example shows how to extend from `Person` class. In cocktailJS everything is perform as a `mix`. In this case
+The example shows how to extend from `Person` class. In CocktailJS everything is perform as a `mix`. In this case
 we are telling the mix that we are extending from another class - Person - by passing the base class as a parameter
 in the `@extends` annotation.
 So, now `Pirate` is a `Person` and we can create some pirates objects:
