@@ -132,7 +132,7 @@ value for Obj2 is: Obj2
 In the Instance example, we create the `list` property when we instantiate the object since the constructor method is called. Then we have a fresh new Array every time we create an instance of MyClass. On the other hand, in the Prototype version, the array is attached directly to the `MyClass.prototype` meaning that there is only **one** version of the array, and unless you override it by assigning a new value on the instance, all instances will use the same array.
 
 
-To summarize, do not define mutable properties (Object, Array, Date, etc) in the prototype if you expect that each instance of your class to have its own reference.
+To summarize, do not define mutable properties (Object, Array, Date, etc) in the prototype if you expect each instance of your class to have its own reference.
 
 
 
