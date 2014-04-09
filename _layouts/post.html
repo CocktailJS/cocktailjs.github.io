@@ -19,7 +19,7 @@
                             <span class="tag">{{ tag }}</span>
                         {% endfor %}
                     </div>
-                    <div class="date">{{ page.date | date_to_string }}</div>
+                    <div class="date">{{ page.date | date: '%B %d, %Y' }}</div>
                 </div>
 
                 <div class="social"> 
