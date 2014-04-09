@@ -19,8 +19,18 @@
   background: #c0c0c0;
 }
 
-.social{
+.social {
   margin-top: 5px;
+  text-align: left;
+}
+
+.social > div {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.social .facebook {
+  margin-top: -4px;
 }
 
 .entry {
@@ -49,7 +59,9 @@
 }
 
 .meta .date {
-  margin-top: 5px;
+  margin-top: 15px;
   font-size: 16px;
-  color: #ccc;
+  color: #999;
+  text-align: left;
+  border-bottom: 1px solid #E0E0E0;
 }
