@@ -1,0 +1,160 @@
+/* DEFAULT LAYOUT */
+
+.frontpage nav {
+  box-shadow: 0 1px 5px #181818;
+}
+
+.frontpage header {
+  height: 550px;
+  background: url(../images/blur-code-bg.png) no-repeat 0% 100% #1F1F1F;
+  background-size: 100%;
+}
+
+.frontpage hgroup {
+  margin-left: 100px;
+  padding-top: 90px;
+}
+
+.frontpage header .logo {
+  background: url(../images/logo.png) no-repeat -75px -20px;
+  background-size: 340px;
+  height: 131px;
+  width: 165px;
+  display: inline-block;
+}
+
+.frontpage header .title {
+  font-weight: 400;
+  font-size: 140px;
+  color: #f1f1f1;
+  letter-spacing: -5px;
+}
+
+.frontpage header .description{
+  font-weight: 400;
+  color: #919191;
+  text-transform: uppercase;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.frontpage .action {
+  display: inline-block;
+  padding: 5px 10px;
+}
+
+.frontpage .action.orange{
+  background: #f63;
+  color: #eee;
+}
+
+.frontpage .action.white{
+  color: #f63;
+  background: #eee;
+}
+
+.frontpage header .social{
+  padding-top: 0;
+  margin-top: 35px;
+  display: none;
+}
+
+/**
+ * SECTIONS
+ */
+
+.section {
+    padding: 25px 0;
+    min-height: 250px;
+}
+
+.section.even {
+    background: #f0f0f0;
+}
+
+.columns {
+    overflow: hidden;
+    max-width: 720px;
+    margin: auto;
+}
+
+.columns h1 {
+    text-align: center;
+}
+
+.columns .highlight {
+    margin: 0 30px 0 10px;
+}
+
+.columns2 > div {
+    float: left;
+    width: 340px;
+    padding: 0 10px;
+}
+
+.columns3 > div {
+    float: left;
+    width: 220px;
+    padding: 0 10px;
+}
+
+
+.section .icon {
+    text-indent: -9999px;
+    width: 100%;
+    height: 75px;
+    margin: 25px 0;
+}
+
+.section .what .icon {
+    background: url(../images/icons/node.jpeg) no-repeat center center;
+    background-size: 70px;
+}
+
+.section .who .icon {
+    background: url(../images/icons/checkmark.png) no-repeat center center;
+    background-size: 70px;
+}
+
+.section .why .icon {
+    background: url(../images/icons/gear.png) no-repeat center center;
+    background-size: 70px;
+}
+
+
+.section .posts {
+    height: 350px;
+}
+
+.section .post-preview h1{
+    line-height: normal;
+    font-size: 24px;
+    text-align: left;
+}
+
+.section .post-preview .content {
+    max-height: 66px;
+    font-size: 14px;
+    line-height: 20px;
+    overflow: hidden;
+}
+
+.section .post-preview .meta {
+  color: #aaa;
+  text-align: left;
+  margin-top: -10px;
+}
+
+.section .post-preview .meta .tag {
+  font-size: 12px;
+  color: #fff;
+  background: #6c3;
+  padding: 5px 10px;
+  font-weight: bold;
+}
+
+.section .post-preview .meta .date {
+  margin-top: 5px;
+  font-size: 14px;
+  color: #999;
+}

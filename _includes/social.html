@@ -1,21 +1,12 @@
-<div class="social"> 
+<div class="social">
     <ul>
-        <li>            
-            <!-- Twiter -->
-            <div class="social-item twitter">
-                <a href="https://twitter.com/CocktailJS" class="twitter-follow-button" data-show-count="false" data-size="small">Follow @CocktailJS</a>
-                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-            </div>
+        <li class="creator">
+            &copy; 2013 - 2014 <br>
+            CocktailJS <br>
+            Maximiliano Fierro
         </li>
-        <li>
-            <!-- Github -->
-            <div class="social-item github">
-                <a href="https://github.com/{{ site.username }}/{{ site.repository }}" class="github-button" data-count-href="https://github.com/{{ site.username }}/{{ site.repository }}/stargazers" data-count-api="/repos/{{ site.username }}/{{ site.repository }}#watchers">Star</a>
-
-                <a href="https://github.com/{{ site.username }}/{{ site.repository }}" class="github-button" data-count-href="https://github.com/{{ site.username }}/{{ site.repository }}/network" data-count-api="/repos/{{ site.username }}/{{ site.repository }}#forks">Fork</a>
-                <script async defer src="http://buttons.github.io/gh-buttons.js"></script>
-            </div>
-        </li>
+    </ul>
+    <ul>
         <li>
             <!-- G+ -->
             <div class="social-item g-plus">
@@ -27,16 +18,20 @@
                     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
                   })();
                 </script>
-            </div>                
+            </div>
+            {% include fb-sdk.html %}
+            <div class="social-item facebook">
+                <div class="fb-like" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
+            </div>
         </li>
     </ul>
-    <ul>        
-        <li class="social-item gittip">
-            <!-- gittip -->
+    <ul>
+        <!-- gittip -->
+        <!-- <li class="social-item gittip">
             <iframe style="border: 0; margin: 0; padding: 0;"
             src="https://www.gittip.com/elmasse/widget.html"
-            width="48pt" height="22pt"></iframe>            
-        </li>            
+            width="48pt" height="22pt"></iframe>
+        </li> -->
         <li class="social-item travis-ci">
             <!-- Travis CI build-->
             <a href="https://travis-ci.org/CocktailJS/cocktail"><img src="https://travis-ci.org/CocktailJS/cocktail.png?branch=master"/></a>
@@ -44,7 +39,27 @@
         <li class="social-item npm">
             <!-- npm -->
             <a href="http://npmjs.org/package/cocktail"><img src="https://badge.fury.io/js/cocktail.png"></a>
-        </li> 
+        </li>
     </ul>
-
+    <ul>
+        <li>
+            <!-- Twiter -->
+            <div class="social-item twitter">
+                <a href="https://twitter.com/CocktailJS" class="twitter-follow-button" data-show-count="false" data-size="small">Follow @CocktailJS</a>
+                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+            </div>
+        </li>
+        <li>
+            <iframe src="http://ghbtns.com/github-btn.html?user=CocktailJS&repo=cocktail&type=follow"
+              allowtransparency="true" frameborder="0" scrolling="0" width="150" height="20"></iframe>
+        </li>
+        <li>
+            <iframe src="http://ghbtns.com/github-btn.html?user=CocktailJS&repo=cocktail&type=watch&count=true"
+              allowtransparency="true" frameborder="0" scrolling="0" width="162" height="20"></iframe>
+        </li>
+        <li>
+            <iframe src="http://ghbtns.com/github-btn.html?user=CocktailJS&repo=cocktail&type=fork&count=true"
+             allowtransparency="true" frameborder="0" scrolling="0" width="162" height="20"></iframe>
+        </li>
+    </ul>
 </div>

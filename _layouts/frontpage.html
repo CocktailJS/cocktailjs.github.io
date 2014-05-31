@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        {% include head.html %}
+        <link rel="stylesheet" href="{{site.url}}/resources/css/frontpage.css" />
+        {% include analytics.html %}
+    </head>
+
+    <body class="frontpage">
+        {% include navigation.html %}
+        <header>
+            <hgroup>
+                <h1 class="title"> <span class="logo"></span>{{ site.name }}</h1>
+                <h2 class="description">
+                    ANNOTATIONS. TRAITS. TALENTS.
+                </h2>
+                <a href="/guides">
+                <h4 class="action orange">
+                    LEARN MORE
+                </h4>
+                </a>
+                <a href="/docs">
+                <h4 class="action white">
+                    READ OUR DOCS
+                </h4>
+                </a>
+            </hgroup>
+            <hgroup class="social">
+                <!-- Twiter -->
+                <a href="https://twitter.com/CocktailJS" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @CocktailJS</a>
+                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+                <!-- Github -->
+                <a href="https://github.com/{{site.username}}/{{site.repository}}" class="github-button" data-size="large">View in GitHub</a>
+            </hgroup>
+        </header>
+
+        <div class="section odd wide">
+            <section class="columns columns3">
+            {% for post in site.categories.front-section-1 reversed limit:3 %}
+                <div class="{{post.class}}"><div class="icon">{{post.title}}</div>{{post.content}}</div>
+            {% endfor %}
+            </section>
+        </div>
+        <div class="section even wide">
+            <section class="columns columns2">
+            {% for post in site.categories.front-section-2 reversed limit:2 %}
+                <div class="{{post.class}}"><h1>{{post.title}}</h1>{{post.content}}</div>
+            {% endfor %}
+            </section>
+        </div>
+        <div class="section odd wide">
+            <section class="columns columns2">
+            {% for post in site.categories.front-section-3 reversed limit:2 %}
+                <div class="{{post.class}}"><h1>{{post.title}}</h1>{{post.content}}</div>
+            {% endfor %}
+            </section>
+        </div>
+        <div class="section even wide">
+            <section class="columns">
+            {% for post in site.categories.front-section-4 reversed limit:2 %}
+                <div class="{{post.class}}"><h1>{{post.title}}</h1>{{post.content}}</div>
+            {% endfor %}
+            </section>
+        </div>
+        <div class="section odd wide">
+            <section class="columns columns3 posts">
+            <h1>Discuss &amp; Share: Recent Posts </h1>
+            {% for post in site.categories.blog limit:3 %}
+                <div class="post-preview">
+                    <h1><a href="{{ post.url }}">{{post.title}}</a></h1>
+                    <div class="meta">
+                        <div class="date">{{ post.date | date_to_string }}</div>
+                        <div class="tags">
+                            {% for tag in post.tags %}
+                                <span class="tag">{{ tag }}</span>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="content">
+                       {{ post.content | split:'<!--break-->' | first }}
+                    </div>
+                </div>
+            {% endfor %}
+            </section>
+        </div>
+        {{ content }}
+
+        {% include footer.html %}
+
+    </body>
+
+</html>

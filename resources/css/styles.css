@@ -267,27 +267,48 @@ footer {
   margin-top: -10em;
 }
 */
-footer p {
-  color: #f2f2f2;
-  font-size: 12px;
-  text-align: center;
+
+
+
+
+footer {
+    background: #212121;
 }
 
-footer .social {
-  border-top: 4px solid #f63;
-  padding: 10px 0;
-  background: #f0f0f0
+footer .bottom {
+    padding: 10px;
+    max-width: 720px;
+    margin: auto;
+    min-height: 200px;
+}
+
+footer .logo{
+    background: url(../images/logo.png) no-repeat -10px -5px;
+    background-size: 60px;
+    height: 25px;
+    padding-left: 35px;
+    display: inline-block;
+    font-size: 20px;
+    color: #ccc;
+}
+
+footer img {
+    border: none;
+    box-shadow: none;
+    margin: 0;
+    padding: 0;
 }
 
 footer .social ul{
-  text-align: center;
   display: block;
   position: relative;
-  max-width: 720px;
-  margin: 0 auto;
+  max-width: 180px;
+  margin: 25px auto;
+  overflow: hidden;
+  float: left;
 }
 
-footer .social ul li{
+footer .social li{
   display: inline-block;
   font-size: 16px;
   padding-bottom: 5px;
@@ -295,23 +316,11 @@ footer .social ul li{
   vertical-align: top;
 }
 
-footer .social ul .npm {
-  margin-top: -14px;
+footer .social li.creator {
+    font-size: 12px;
+    color: #666;
+    width: 200px;
 }
-
-footer .social ul .travis-ci {
-  margin-top: -15px;
-}
-
-
-footer .bottom {
-  background: url(../images/blackgrid.png) #212121;
-  box-shadow: black 0 0 50px inset;
-  border-top: 4px solid #6c3;
-  padding: 10px;
-}
-
-
 
 /* NAVIGATION */
 nav {
@@ -363,5 +372,3 @@ nav .logo {
   margin-top: 40px;
   border-top: 1px solid #e3e3e3;
 }
-
-
