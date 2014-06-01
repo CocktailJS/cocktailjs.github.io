@@ -527,7 +527,7 @@ myObj.foo('blah'); // this will call foo in MyClass and on its parent class
 This is a helper to define getters and setters for the given properties. All the properties specified here become part of the 
 subject (class prototype or object) with the specified value. For any non boolean properties the **get[PropertyName]** and **set[PropertyName]** methods
 are created. If the property is a boolean then an **is[PropertyName]** method is created instead of the getter.
-
+When the subject is an Object that already contains a property with the same name then only getters and setters are added to the object keeping the original value.
 >Example
 
 ````javascript
@@ -819,18 +819,20 @@ cocktail.mix(MyClass, {
 
 <a id="@as"></a>
 ##**@as**: {String} type to be created.  
-By now only 'class' is a valid parameter.
->Aplicable to **Class**, **Trait**
+>Aplicable to **Class**, **Trait**, **Object**
 
->Since **v0.3.0**
+>Since **v0.3.0**. Parameter `'module'` was added in **v0.5.1**
 
-The @as pseudo-annotation is used to define the current mix as a class when using a Single parameter definition.
+Pass `'class'` to create a class returning a Function constructor or `'module'` to return an object.
+
+The @as pseudo-annotation is used to define the current mix as a given type when using a Single parameter definition.
 A pseudo-annotation is used only on specific mixes, and it means it is an annotation without a processor. In this particular case, **@as is only applicable when defining a mix with only one parameter.**
 
 > Example
 
 ````javascript
 
+//MyClass.js
 var cocktail = require('cocktail');
 
 cocktail.mix({
@@ -842,4 +844,37 @@ cocktail.mix({
     }
 });    
 
+
+//index.js
+var MyClass = require('./MyClass'),
+    a = new MyClass();
+
+a.doSomethingWithData();
+
 ````
+
+> Exporting a Module
+
+````javascript
+
+//myModule.js
+var cocktail = require('cocktail');
+
+cocktail.mix({
+    '@exports': module,
+    '@as'     : 'module',
+
+    doSomethingWithData: function(){
+        //do something with the data here
+    }
+});    
+
+
+//index.js
+var module = require('./myModule');
+
+module.doSomethingWithData();
+
+````
+
+
