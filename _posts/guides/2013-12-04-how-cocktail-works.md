@@ -1,6 +1,6 @@
 ---
 layout: guide
-title: Understanding the mix process.
+title: Understanding the Mix process.
 published: true
 category: guides
 tags: [Intermediate]
