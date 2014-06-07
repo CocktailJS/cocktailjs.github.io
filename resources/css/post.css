@@ -19,6 +19,19 @@
   background: #c0c0c0;
 }
 
+.post .prev-next-links {
+  overflow: hidden;
+  margin-top: 50px;
+}
+
+.post .prev-next-links .next {
+  float: right;
+}
+
+.post .prev-next-links .prev {
+  float: left;
+}
+
 .social {
   margin-top: 5px;
   text-align: left;
