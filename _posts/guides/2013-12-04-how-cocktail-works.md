@@ -5,6 +5,7 @@ published: true
 category: guides
 tags: [Intermediate]
 comments: true
+date: 2014-06-07
 ---
  
 This guide is intended to describe a bit deeper how the **cocktail.mix** process works.
