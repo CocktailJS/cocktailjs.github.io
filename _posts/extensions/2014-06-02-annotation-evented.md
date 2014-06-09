@@ -8,7 +8,7 @@ published: true
 comments: true
 ---
 
-This annotation is used to apply the **Eventable** trait and fulfill its required method by creating a _getEmitter_ method that returns a new Emitter instance. in the current mix.
+This annotation is used to apply the **Eventable** trait and fulfill its required method by creating a _getEmitter_ method that returns a new Emitter instance in the current mix.
 
 ````bash
 $ npm install cocktail-annotation-evented --save
