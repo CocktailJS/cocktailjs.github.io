@@ -1,5 +1,7 @@
 #Repository for CocktailJS page
 
+````bash
 
-        $ jekyll --pygments --no-lsi --safe
+$ jekyll serve
 
+````
