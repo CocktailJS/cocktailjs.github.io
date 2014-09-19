@@ -5,7 +5,7 @@ The CocktailJS page is built using [Jekyll](http://jekyllrb.com)
 ##Contributing
 
 If you feel something is wrong, poorly worded, or you've found a typo please open an issue [here](https://github.
-com/CocktailJS/cocktailjs.github.io/issues)
+com/CocktailJS/cocktailjs.github.io/issues).  
 Or, you can fork the repository and contribute directly by fixing the issue, adding a new post or creating a new guide. All help is greately appreciated.
 
 ##Posts & Guides
@@ -13,7 +13,7 @@ Or, you can fork the repository and contribute directly by fixing the issue, add
 Please keep the current formatting. We use markdown for almost everything.
 
 ###Add a new Post
-To add a new post, just create a new file under _post/blog folder. Just keep the header as in others files:
+To add a new post, just create a new file under `_posts/blog` folder. Just keep the header as in others files:
 
 ````
 ---
@@ -27,7 +27,7 @@ comments: true
 ````
 
 ###Add a new Guide
-For guides, create a new file under _post/guides and keep the header information:
+For guides, create a new file under `_posts/guides` and keep the header information:
 
 ````
 ---
@@ -53,6 +53,6 @@ $ jekyll serve
 
 ````
 
-Then open localhost:4000 on your browser.
+Then open [http://localhost:4000](http://localhost:4000) on your browser.
 
 
