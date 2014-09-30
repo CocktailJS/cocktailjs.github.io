@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: extension
 title: Eventable
 category: extensions
 tags: [traits, talents]

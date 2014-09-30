@@ -13,6 +13,7 @@
         <header>
             <hgroup>
                 <h1 class='title'> {{ page.title }}</h1>
+                <h2 class="repo-name">{{ page.repo-name }}</h2>
                 <div class="meta">
                     <div class="tags">
                         {% for tag in page.tags %}
@@ -29,6 +30,10 @@
         <main>
 
             {{ content }}
+
+            <br/>
+            Check the <a href="https://github.com/CocktailJS/{{ page.repo-name }}" target="_blank">Github Repository</a> for this extension.
+
             {% include post-previous-next.html %}
             {% include disqus-comments.html %}
 
