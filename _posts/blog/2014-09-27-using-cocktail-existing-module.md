@@ -90,7 +90,7 @@ Finally, we did a small refactor to our constructor to use the configure method 
 
 ## Using Configurable as a Talent
 
-We have said that a Trait can be used a Talent when we want to add more functionality to a given instance. Taking the same Surface example, we can demonstrate this easily using Configurable as a Talent right in our Surface constructor:
+We have said that a Trait can be used as a Talent when we want to add more functionality to a given instance. Taking the same Surface example, we can demonstrate this easily using Configurable as a Talent right in our Surface constructor:
 
 > Surface.js 
 
@@ -128,5 +128,5 @@ Surface.prototype.setSize = function (size) {
 
 ````
 
-The \#1, \#2 and \#4 are the same as in the Trait implementation. But \#3 is a little different. Since inside our contructor `this` is the current instance we are creating, we can agument it using `Configurable` as a Talent.
+The \#1, \#2 and \#4 are the same as in the Trait implementation. But \#3 is a little different. Since inside our contructor `this` is the current instance we are creating, we can augment it using `Configurable` as a Talent.
 
