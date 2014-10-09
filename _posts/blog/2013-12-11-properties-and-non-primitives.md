@@ -7,7 +7,7 @@ published: true
 comments: true
 ---
 
-Javascript has five primitive data types: String, Number, Boolean, Null and Undefined. All of these are inmutable, meaning that their values cannot be changed, while Objects, Array, Date, and others are mutable. 
+JavaScript has five primitive data types: String, Number, Boolean, Null and Undefined. All of these are inmutable, meaning that their values cannot be changed, while Objects, Array, Date, and others are mutable. 
 
 This post is intended to show a very subtle difference while defining properties values for a Class inside a prototype versus in the constructor.
 
