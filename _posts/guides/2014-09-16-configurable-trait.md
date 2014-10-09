@@ -16,7 +16,7 @@ The Configurable trait uses setters in the host class to apply the values into t
 There are a few reasons to use a single object argument constructor or factory:
 
 ###Named parameters
-In vanilla JavaScript there are no named parameters. When using a single object parameter it gives us a way to understand what is what in an argument list. This is specially useful for boolean parameters. Consider this example:
+In vanilla JavaScript there are no named parameters. When using a single object parameter it gives us a way to understand what is what in an argument list. Consider this example:
 
 ```javascript
 
@@ -28,7 +28,7 @@ In vanilla JavaScript there are no named parameters. When using a single object 
 
 ```
 
-Now, when we have to create a new Node, we need to remember what is what in the argument list. When those arguments are boolean values the understanding the code becomes a bit harder.
+When we want to create a new Node, we need to remember what is what in the argument list. When those arguments are boolean values the code becomes a bit harder to understand.
 Let's see how this is different with single object parameter:
 
 ```javascript
@@ -47,7 +47,7 @@ Let's see how this is different with single object parameter:
 ```
 
 ###The optional parameters can be easily ignored
-Using the previous Node example, if we want to make expanded and checked optional, the multiple arguments constructor becomes even worst:
+Using the previous Node example, if we want to make `expanded` and `checked` optional, the multiple arguments constructor becomes even worst:
 
 ```javascript
 
@@ -91,7 +91,7 @@ Again, since we use an object the order of the keys does not matter:
 
 ## Using the Configurable Trait
 
-As we saw, there are some advantages of using a constructor with a single object parameter. The Configurable trait exposes a configure method which receives an object and it will call the setter for each key. Using this trait in conjuction with the `@properties` annotation gives us a quite easy way to configure our objects with almost zero cost.
+As we saw, there are some advantages of using a constructor with a single object parameter. The Configurable trait exposes a `configure` method which receives an object and it will call the setter for each key. Using this trait in conjuction with the `@properties` annotation gives us a quite easy way to configure our objects with almost zero cost.
 
 Let's start first by adding the Configurable trait as a dependency:
 
@@ -101,7 +101,7 @@ npm install cocktail-trait-configurable --save
 
 ```
 
-Now, we add the require inside our module definition:
+Add the require for **cocktail** and **configurable** inside our module definition.
 
 > Node.js
 
@@ -126,10 +126,21 @@ cocktail.mix({
         this.configure(options);
     }
 
-})
+});
 
 ```
 
 The `@properties` annotation will create getters and setters for each property. So that is all the code you need to have a configurable Node class.
+
+> index.js
+
+```javascript
+var Node = require('./Node');
+
+var node = new Node({name: 'Element', visible: true});
+
+console.log(node.getName()); // Element
+
+```
 
 
