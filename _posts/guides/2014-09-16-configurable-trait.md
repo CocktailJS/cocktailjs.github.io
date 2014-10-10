@@ -91,7 +91,7 @@ Again, since we use an object the order of the keys does not matter:
 
 ## Using the Configurable Trait
 
-As we saw, there are some advantages of using a constructor with a single object parameter. The Configurable trait exposes a `configure` method which receives an object and it will call the setter for each key. Using this trait in conjuction with the `@properties` annotation gives us a quite easy way to configure our objects with almost zero cost.
+As we saw, there are some advantages of using a constructor with a single object parameter. The Configurable trait exposes a `configure` method which receives an object and it will call the setter for each key. Using this trait in conjunction with the `@properties` annotation gives us a quite easy way to configure our objects with almost zero cost.
 
 Let's start first by adding the Configurable trait as a dependency:
 
