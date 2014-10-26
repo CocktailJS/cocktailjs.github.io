@@ -73,7 +73,7 @@ This is the variable where the mix will be done. It is usually a variable name, 
     }
     ````
 
-    then the mix will be trated as a _Class/Trait Definition_ creating a class.  
+    then the mix will be treated as a _Class/Trait Definition_ creating a class.  
 
     ````javascript
 
