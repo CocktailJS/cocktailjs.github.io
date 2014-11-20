@@ -20,3 +20,5 @@ permalink: none
 safe: true
 lsi: false
 highlighter: pygments
+
+excerpt_separator: "<!--break-->"

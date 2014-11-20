@@ -34,10 +34,8 @@
                             </div>
                         </div>
                         <div class="preview">
-                           {{ post.content | split:'<!--break-->' | first }}
-                             {% if post.content contains '<!--break-->' %}
-                                  <a href="{{ post.url }}">Read More</a>
-                             {% endif %}
+                            {{ post.excerpt }}
+                            <a href="{{ post.url }}">Read More</a>      
                             <br/>
                             <a href="https://github.com/CocktailJS/{{ post.repo-name }}" target="_blank">Github Repository</a>
                         </div> 

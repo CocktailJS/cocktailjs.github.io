@@ -26,10 +26,8 @@
                             <div class="date">{{ post.date | date_to_string }}</div>
                         </div>
                         <div class="preview">
-                           {{ post.content | split:'<!--break-->' | first }}
-                             {% if post.content contains '<!--break-->' %}
-                                  <a href="{{ post.url }}">Read More</a>
-                             {% endif %}
+                            {{ post.excerpt }}
+                            <a href="{{ post.url }}">Read More</a>
                         </div> 
                     </article>  
                 {% endfor %}
