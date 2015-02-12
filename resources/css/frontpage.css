@@ -11,7 +11,9 @@
 }
 
 .frontpage hgroup {
-  margin-left: 100px;
+  /*margin-left: 100px;*/
+  max-width: 800px;
+  margin: auto;
   padding-top: 90px;
 }
 
@@ -74,7 +76,7 @@
 
 .columns {
     overflow: hidden;
-    max-width: 720px;
+    max-width: 800px;
     margin: auto;
 }
 
@@ -88,13 +90,13 @@
 
 .columns2 > div {
     float: left;
-    width: 340px;
+    width: 378px;
     padding: 0 10px;
 }
 
 .columns3 > div {
     float: left;
-    width: 220px;
+    width: 245px;
     padding: 0 10px;
 }
 
