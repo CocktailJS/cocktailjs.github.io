@@ -11,6 +11,8 @@ comments: true
 
 Even if we are creating objects from a module factory or from a constructor, we may want to pass along some configuration data. This configuration is often used to be applied as the instance state.
 
+<!--break-->
+
 The Configurable trait uses setters in the host class to apply the values into the instance based on a configuration object. For any property defined in that object, the configure method will check if a setter exists in the host class and if it does then it will be invoked with the corresponding value. If there is no setter, the property is just ignored.
 
 There are a few reasons to use a single object argument constructor or factory:
