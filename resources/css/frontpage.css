@@ -135,7 +135,7 @@
 }
 
 .section .post-preview .content {
-    max-height: 66px;
+/*    max-height: 66px;*/
     font-size: 14px;
     line-height: 20px;
     overflow: hidden;
