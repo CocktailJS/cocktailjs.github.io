@@ -224,7 +224,7 @@ cocktail.mix(myObj, {
 <a id="annotations"></a>
 #**Annotations**
 _Annotations_ are special properties defined in the _options_ parameter of cocktail.mix() method.
-This properties are defined by a name starting with `@`. The following is the list of the current cocktail core annotations.
+These properties are defined by a name starting with `@`. The following is the list of the current cocktail core annotations.
 
 <a id="@annotation"></a>
 ##**@annotation**: {String} name
