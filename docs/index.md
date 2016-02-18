@@ -228,7 +228,7 @@ These properties are defined by a name starting with `@`. The following is the l
 
 <a id="@annotation"></a>
 ##**@annotation**: {String} name
->Aplicable to **Class**
+>Applicable to **Class**
 
 >Since **v0.5.0**
 
@@ -819,7 +819,7 @@ cocktail.mix(MyClass, {
 
 <a id="@as"></a>
 ##**@as**: {String} type to be created.  
->Aplicable to **Class**, **Trait**, **Object**
+>Applicable to **Class**, **Trait**, **Object**
 
 >Since **v0.3.0**. Parameter `'module'` was added in **v0.5.1**
 
