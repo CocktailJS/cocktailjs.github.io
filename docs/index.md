@@ -21,7 +21,7 @@ This is the variable where the mix will be done. It is usually a variable name, 
 
 -   **Object**: Just a simple instance or plain object.
 
-    ````javascript
+    ```javascript
 
     var obj = {};
     cocktail.mix(obj, ...)
@@ -29,11 +29,11 @@ This is the variable where the mix will be done. It is usually a variable name, 
     var another = new AnotherClass();
     cocktail.mix(another, ...)
 
-    ````
+    ```
 
 -   **Class**: A class reference or a constructor function.  
 
-    ````javascript
+    ```javascript
 
     var MyClass = function(){};
     cocktail.mix(MyClass ,...)
@@ -41,11 +41,11 @@ This is the variable where the mix will be done. It is usually a variable name, 
     var Other = require('./SomeClass');
     cocktail.mix(Other, ...)
 
-    ````
+    ```
 
 -   **Trait/Talent**: Traits and Talents are special cases of Class.  
 
-    ````javascript
+    ```javascript
 
     var MyTrait = function(){};
     cocktail.mix(MyTrait ,...)
@@ -53,7 +53,7 @@ This is the variable where the mix will be done. It is usually a variable name, 
     var TraitA = require('./TraitA');
     cocktail.mix(TraitA ,...)
 
-    ````
+    ```
 
 -   **Object class definition** {Object}
     >Since **v0.2.0**
@@ -69,15 +69,15 @@ This is the variable where the mix will be done. It is usually a variable name, 
     Or the Object literal contains the `@as` pseudo-annotation with a value of **"class"**  
     (`@as` pseudo-annotation was introduced in version 0.3.0)
 
-    ````javascript
+    ```javascript
     {
         '@as': 'class'
     }
-    ````
+    ```
 
     then the mix will be treated as a _Class/Trait Definition_ creating a class.  
 
-    ````javascript
+    ```javascript
 
     var MyBaseClass;
 
@@ -87,11 +87,11 @@ This is the variable where the mix will be done. It is usually a variable name, 
         myBaseMethod: function() {}
     });
 
-    ````
+    ```
 
     Example without using the pseudo-annotation  
 
-    ````javascript
+    ```javascript
 
     var MyBaseClass = require('./MyBaseClass'),
         MyClass;
@@ -102,7 +102,7 @@ This is the variable where the mix will be done. It is usually a variable name, 
         myMethod: function() {}
     });
 
-    ````
+    ```
 
 <a id="options"></a>
 
@@ -111,39 +111,39 @@ The option object can contain any number of _methods_, _properties_ and _annotat
 
 -   **Property**: A key-value pair that defines "state".
 
-    ````javascript
+    ```javascript
 
     {
         someProperty: 1
     }
 
-    ````
+    ```
 
 -   **Method**: A key-function pair that defines behavior.  
 
-    ````javascript
+    ```javascript
 
     {
         someMethod: function(){}
     }
 
-    ````
+    ```
 
 -   **Annotation**: A special case of property that starts with the @ symbol, that is intended to define a process, mark, or any other metadata over the given mix.   
 
-    ````javascript
+    ```javascript
 
     {
         '@someAnnotation': 'this is not state'
     }
 
-    ````
+    ```
 
     >Example with a Class (Function):
 
     MyClass.js
 
-    ````javascript
+    ```javascript
 
     var cocktail = require('cocktail'),
         MyClass = function(){};
@@ -162,13 +162,13 @@ The option object can contain any number of _methods_, _properties_ and _annotat
 
     module.exports = MyClass;
 
-    ````
+    ```
 
     >Example with an Object:
 
     index.js
 
-    ````javascript
+    ```javascript
 
     var cocktail = require('cocktail'),
         ClassA = require('./ClassA'),
@@ -188,7 +188,7 @@ The option object can contain any number of _methods_, _properties_ and _annotat
         }
     });
 
-    ````
+    ```
 
 <a id="cocktail.use"></a>
 
@@ -206,7 +206,7 @@ This is the Processor Class defined with `@annotation`. See [@annotation](#@anno
 
 index.js
 
-````javascript
+```javascript
 
 var cocktail = require('cocktail'),
     myObj = {};
@@ -224,7 +224,7 @@ cocktail.mix(myObj, {
     //more annotations, or code
 });
 
-````
+```
 
 <a id="annotations"></a>
 
@@ -286,7 +286,7 @@ annotation right after or before some predefined stage.
 
 Custom.js
 
-````javascript
+```javascript
 
 var cocktail = require('cocktail'),
     Custom = function(){};
@@ -301,14 +301,14 @@ cocktail.mix(Custom, {
 
 module.exports = Custom;
 
-````
+```
 
 >The Custom class is a processor for the annotation named `custom`.
 >Now we can use our newly created annotation in our code:
 
 index.js
 
-````javascript
+```javascript
 
 
 var cocktail = require('cocktail'),
@@ -327,7 +327,7 @@ cocktail.mix(myObj, {
     //more annotations, or code
 });
 
-````
+```
 
 >In the index.js file we are first requiring the annotation definition and registering it with the cocktail instance.
 Then we can use our custom annotation into our code.
@@ -362,7 +362,7 @@ If the property is an Array it is concatenated with the subject version.
 
 index.js
 
-````javascript
+```javascript
 
 var cocktail = require('cocktail'),
     myObject = {
@@ -380,13 +380,13 @@ cocktail.mix(myObject, {
 
 });
 
-````
+```
 
 > Here the default merge strategy is applied (`mine`). So the myObject.property becomes `{z: 'z'}`
 
 index.js
 
-````javascript
+```javascript
 
 var cocktail = require('cocktail'),
     myObject = {
@@ -405,13 +405,13 @@ cocktail.mix(myObject, {
 
 });
 
-````
+```
 
 > Here the `their` merge strategy is applied. So the myObject.property becomes `{a: 'a', b: 'b'}`
 
 index.js
 
-````javascript
+```javascript
 
 var cocktail = require('cocktail'),
     myObject = {
@@ -432,14 +432,14 @@ cocktail.mix(myObject, {
 
 });
 
-````
+```
 
 > Here the `deep-mine` merge strategy is applied. So the myObject.property becomes `{a: 'A', b: 'b', z: 'z'}` and
 myObject.values gets concatenated becoming `[1,2,3,4]`.
 
 index.js
 
-````javascript
+```javascript
 
 var cocktail = require('cocktail'),
     myObject = {
@@ -460,7 +460,7 @@ cocktail.mix(myObject, {
 
 });
 
-````
+```
 
 > Here the `deep-their` merge strategy is applied. So the myObject.property becomes `{a: 'a', b: 'b', z: 'z'}` and
 myObject.values gets concatenated becoming `[1,2,3,4]`.
@@ -483,7 +483,7 @@ It calls the specified methodName on the parent class with the given params.
 
 MyClass.js
 
-````javascript
+```javascript
 
 var cocktail = require('cocktail'),
     Base = require('./Base'),
@@ -509,13 +509,13 @@ cocktail.mix(MyClass, {
 
 module.exports = MyClass;
 
-````
+```
 
 >MyClass class extends from the Base class.
 
 index.js
 
-````javascript
+```javascript
 
 var MyClass = require('./MyClass'),
     myObj;
@@ -525,7 +525,7 @@ myObj = new MyClass();
 
 myObj.foo('blah'); // this will call foo in MyClass and on its parent class
 
-````
+```
 
 <a id="@properties"></a>
 
@@ -540,7 +540,7 @@ are created. If the property is a boolean then an **is[PropertyName]** method is
 When the subject is an Object that already contains a property with the same name then only getters and setters are added to the object keeping the original value.
 >Example
 
-````javascript
+```javascript
 
 var cocktail = require('cocktail'),
     MyClass = function(){};
@@ -578,7 +578,7 @@ instance.isInitialized();
 //returns undefined
 instance.getOther();
 
-````
+```
 
 > MyClass is defined with all the properties specified in the annotation.
 
@@ -593,7 +593,7 @@ This annotation will create the given methods and properties as static members o
 
 >Example
 
-````javascript
+```javascript
 
 var cocktail = require('cocktail'),
     MyClass  = function(){},
@@ -623,11 +623,11 @@ console.log(MyClass.someStaticMethod());
 console.log(MyClass.VALUE);
 // -> 'SOME SORT OF VALUE'
 
-````
+```
 
 As static methods they cannot access the instance properties or methods. In a *static method* the keyword `this` points to the static part of the Class. In the previous example you can access the static property `VALUE` from within the `someStaticMethod` through `this.VALUE`
 
-````javascript
+```javascript
 
 var cocktail = require('cocktail'),
     MyClass  = function(){},
@@ -658,7 +658,7 @@ console.log(MyClass.someStaticMethod());
 console.log(MyClass.VALUE);
 // -> 'SOME SORT OF VALUE'
 
-````
+```
 
 
 <a id="@traits"></a>
@@ -688,7 +688,7 @@ Basically, all the methods defined in the Trait will become part of the target c
 
 >Example
 
-````javascript
+```javascript
 
 var cocktail = require('cocktail'),
     TraitA = require('./TraitA'),
@@ -720,7 +720,7 @@ cocktail.mix(MyClass, {
 
 });
 
-````
+```
 
 <a id="@talents"></a>
 
@@ -737,7 +737,7 @@ Talents share the same design principles that Traits and they have the same mech
 
 >Example
 
-````javascript
+```javascript
 
 var cocktail = require('cocktail'),
     TraitA = require('./TraitA'),
@@ -765,7 +765,7 @@ cocktail.mix(myObj, {
 
 });
 
-````
+```
 
 <a id="@requires"></a>
 
@@ -780,7 +780,7 @@ Those **required** methods are defined using a **'@requires'** annotation in the
 
 > Example
 
-````javascript
+```javascript
 
 var cocktail = require('cocktail'),
     TraitA = require('TraitA'),
@@ -799,7 +799,7 @@ cocktail.mix(MyTrait, {
 
 module.exports = MyTrait;   
 
-````
+```
 
 <a id="@exports"></a>
 
@@ -813,7 +813,7 @@ the module variable where the current mix will be exported.
 
 > Example
 
-````javascript
+```javascript
 
 var cocktail = require('cocktail'),
     MyClass = function(){};
@@ -830,7 +830,7 @@ cocktail.mix(MyClass, {
 //this is not necessary anymore:
 //module.exports = MyClass;
 
-````
+```
 
 <a id="@as"></a>
 
@@ -846,7 +846,7 @@ A pseudo-annotation is used only on specific mixes, and it means it is an annota
 
 > Example
 
-````javascript
+```javascript
 
 //MyClass.js
 var cocktail = require('cocktail');
@@ -867,11 +867,11 @@ var MyClass = require('./MyClass'),
 
 a.doSomethingWithData();
 
-````
+```
 
 > Exporting a Module
 
-````javascript
+```javascript
 
 //myModule.js
 var cocktail = require('cocktail');
@@ -891,4 +891,4 @@ var module = require('./myModule');
 
 module.doSomethingWithData();
 
-````
+```
