@@ -19,6 +19,6 @@ permalink: none
 
 safe: true
 lsi: false
-highlighter: pygments
+highlighter: rouge
 
 excerpt_separator: "<!--break-->"
