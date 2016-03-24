@@ -14,15 +14,15 @@ This extension is a **Trait** to include a __configure__ method that will receiv
 
 ###Install
 
-````bash
+```bash
 $ npm install cocktail-trait-configurable --save
-````
+```
 
 ###Usage
 
 > User.js
 
-````javascript
+```javascript
 var cocktail = require('cocktail'),
     Configurable = require('cocktail-trait-configurable');
 
@@ -54,13 +54,13 @@ cocktail.mix({
   }
 });
 
-````
+```
 
 The User class defined here, has two properties, and since we used the `@properties` annotation to define them, we get the setters (`setFirstName` and `setLastName`) and getters (`getFirstName` and `getLastName`) methods for each of them. We have defined a third setter (setName). This setter will be called when we pass a `name` as a property. In this case, the setter it's a sort of helper to split the name into first and last name.
 
 >index.js
 
-````javascript
+```javascript
 var User = require('./User'),
     john, mike;
 
@@ -74,6 +74,6 @@ mike = new User({name: 'Mike Smith'});
 
 console.log(mike.getFirstName()); // Mike
 
-````
+```
 
 

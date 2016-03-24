@@ -11,7 +11,7 @@ We consider tests mandatory in CocktailJS repository, not only __unit tests__ bu
 
 <!--break-->
 
-````javascript
+```javascript
 
     // -- >Experimental
     
@@ -43,7 +43,7 @@ We consider tests mandatory in CocktailJS repository, not only __unit tests__ bu
 
     // -- >End of Experimental
 
-````
+```
 
 ## Talents
 
@@ -57,7 +57,7 @@ We mentioned that our Talent will be used only as a _Test Helper_, so it won't b
 
 test/helper/RestoreProcessor.js
 
-````javascript
+```javascript
 var cocktail = require('../../lib/cocktail');
 
 cocktail.mix({
@@ -68,13 +68,13 @@ cocktail.mix({
 	}
 });
 
-````
+```
 
 Now we need to declare what methods will be required to be defined in the object where we are going to add the Talent. Our Talent cannot define any state, so we need to specify how we can access the state using the `@requires` annotation. In this case, we need access to the _default processor list_ and the _current processors_ in order to restore them.
 
 test/helper/RestoreProcessor.js
 
-````javascript
+```javascript
 var cocktail = require('../../lib/cocktail');
 
 cocktail.mix({
@@ -90,13 +90,13 @@ cocktail.mix({
 	}
 });
 
-````
+```
 
 After defining the required methods, we can now start to refactor our method inside the Talent:
 
 test/helper/RestoreProcessor.js
 
-````javascript
+```javascript
 var cocktail = require('../../lib/cocktail');
 
 cocktail.mix({
@@ -123,13 +123,13 @@ cocktail.mix({
 	}
 });
 
-````
+```
 
 Almost done! The Talent is defined already and we have to apply it to the cocktail instance in our test. We need to require the Talent and apply it. 
 
 test/integration/cocktail.js
 
-````javascript
+```javascript
 
 //...
 
@@ -151,7 +151,7 @@ var chai = require("chai"),
 
     //...
 
-````
+```
 
 One last step before we run our code is to _remove_ the current definition in `lib/cocktail.js` file first because we don't need it anymore, and more importantly because it will fail if we apply a Talent with a method definition that is overriding an existing method in the target object.
 

@@ -15,9 +15,9 @@ A Trait to add **AOP advices** into Classes/Objects. The methods `around`, `afte
 
 ###Install
 
-````bash
+```bash
 $ npm install cocktail-trait-advisable --save
-````
+```
 
 ### Usage
 

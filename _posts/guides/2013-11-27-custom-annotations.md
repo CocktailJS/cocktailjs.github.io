@@ -23,7 +23,7 @@ The main goal for our custom annotation will be to add the `log(params)` method 
 
 Basically we want to make the following code work:
 
-````javascript
+```javascript
 
 //...
 
@@ -39,7 +39,7 @@ cocktail.mix({
     } 
 });
 
-````
+```
 
 In the code above, we have defined a Class with a `@logger` annotation and passed to it the `console` instance. We want to be able to use that console and print the message we send to log method in (1).
 
@@ -49,7 +49,7 @@ Let's start creating our Annotation Processor. We will use the `@annotation` ann
 
 Logger.js - initial
 
-````javascript
+```javascript
 var cocktail = require('cocktail');
 
 cocktail.mix({
@@ -62,7 +62,7 @@ cocktail.mix({
 
 });
 
-````
+```
 
 That's all we need. We've just defined our Logger Processor. Now, let's start working on the `process` and `setParameter` methods.
 
@@ -70,17 +70,17 @@ That's all we need. We've just defined our Logger Processor. Now, let's start wo
 
 The `setParameter` will be called with the value of the annotation in the mix. In our example we have defined:
 
-````javascript
+```javascript
 
     '@logger' : console,
 
-````
+```
 
 So the `setParameter` will receive the `console`. In order to have access to it from the `process` method we might need to save it somewhere.
 
 Logger.js - setting params
 
-````javascript
+```javascript
 var cocktail = require('cocktail');
 
 cocktail.mix({
@@ -97,7 +97,7 @@ cocktail.mix({
 
 });
 
-````
+```
 
 ## Working on the Process
 
@@ -106,7 +106,7 @@ Our Logger Processor will add a `log()` method and use the given logger to show 
 
 Logger.js - process
 
-````javascript
+```javascript
 var cocktail = require('cocktail');
 
 cocktail.mix({
@@ -129,13 +129,13 @@ cocktail.mix({
 
 });
 
-````
+```
 
 Last step. We said we wanted an annotation that can be processed on a Class or Object. With the code above we have added the log method to the subject prototype. We need to slightly change that code to make sure that `log` method will be added as well if the subject is an Object.
 
 Logger.js - final
 
-````javascript
+```javascript
 var cocktail = require('cocktail');
 
 cocktail.mix({
@@ -159,7 +159,7 @@ cocktail.mix({
 
 });
 
-````
+```
 
 The `host` variable will pick the prototype (if subject is a Class) or the subject itself if it is an object instance.
 
@@ -169,7 +169,7 @@ Now we are going to modify our code so we can declare our Logger class and regis
 
 MyClass.js
 
-````javascript
+```javascript
 
 var cocktail = require('cocktail'),
     Logger   = require('./Logger'); // (1)
@@ -188,14 +188,14 @@ cocktail.mix({
     } 
 });
 
-````
+```
 In the code for MyClass we have declared a variable Logger that is our recently created Annotation (1). Then we need to tell `cocktail` instance to use our custom annotation (2) by adding it to the list of processors. And finally we can use it into our mix (3).
 
 Then we can create an index.js file to see it in action.
 
 index.js
 
-````javascript
+```javascript
 
 var MyClass = require('./MyClass'),
     obj;
@@ -204,13 +204,13 @@ obj = new MyClass();
 
 obj.doSomethingAndLog();
 
-````
+```
 
 Executing the file on the console we should see:
 
-````
+```
 $ node index.js
 doSomethingAndLog has been called!
-````
+```
 
 **Note**: For the sake of simplicity we are not validating the parameter has a log method that can be called nor the subject is null or any other possible error.

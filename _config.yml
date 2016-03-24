@@ -14,11 +14,9 @@ docs: {
     version: 0.7.2
 }
 
-markdown: redcarpet
 permalink: none
 
 safe: true
 lsi: false
-highlighter: rouge
 
 excerpt_separator: "<!--break-->"

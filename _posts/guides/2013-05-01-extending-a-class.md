@@ -16,7 +16,7 @@ we ask it to `sayHi`.
 
 Person.js
 
-````javascript
+```javascript
 
 var cocktail = require('cocktail'),
     Person = function(){};
@@ -30,14 +30,14 @@ cocktail.mix(Person, {
 
 module.exports =  Person;
 
-````
+```
 
 In the example above we just created a Person class with a method `sayHi()`. We can use our new
 class to instantiate some objects:
 
 index.js
 
-````javascript
+```javascript
 
 var Person = require('./Person'),
     joe;
@@ -46,7 +46,7 @@ joe = new Person();
 
 joe.sayHi(); //will print "Hi!" in the console
 
-````
+```
 
 # Extending a Class
 Once we have created our `Person` we may want to add more abstractions to our model. Let's say we want to create 
@@ -54,7 +54,7 @@ a `Pirate` who is a `Person` and can `sayHi()` as well.
 
 Pirate.js
 
-````javascript
+```javascript
 
 var cocktail = require('cocktail'),
     Person   = require('./Person'),
@@ -66,7 +66,7 @@ cocktail.mix(Pirate, {
 
 module.exports = Pirate;
 
-````
+```
 
 The example shows how to extend from `Person` class. In CocktailJS everything is perform as a `mix`. In this case
 we are telling the mix that we are extending from another class - Person - by passing the base class as a parameter
@@ -75,7 +75,7 @@ So, now `Pirate` is a `Person` and we can create some pirates objects:
 
 index.js
 
-````javascript
+```javascript
 
 var Person = require('./Person'),
     Pirate = require('./Pirate'),
@@ -89,7 +89,7 @@ jack = new Pirate();
 
 jack.sayHi(); //will print "Hi!" in the console
 
-````
+```
 
 # Refactoring our classes
 With the current abstraction we have no differences between `Person` and `Pirate`. Let's introduce some changes
@@ -97,7 +97,7 @@ about how each of them says "Hi".
 
 Person.js
 
-````javascript
+```javascript
 
 var cocktail = require('cocktail'),
     Person = function(){};
@@ -113,13 +113,13 @@ cocktail.mix(Person, {
 
 module.exports =  Person;
 
-````
+```
 
 And now in `Pirate` we can override the `greeting` property with something more appropriate for a pirate:
 
 Pirate.js
 
-````javascript
+```javascript
 
 var cocktail = require('cocktail'),
     Person   = require('./Person'),
@@ -134,12 +134,12 @@ cocktail.mix(Pirate, {
 
 module.exports = Pirate;
 
-````
+```
 
 Done! If we execute now our `index.js` file we will have a console message like this:
 
-````console
+```console
 $ node index.js
 Hello!
 Ahoy!
-````
+```

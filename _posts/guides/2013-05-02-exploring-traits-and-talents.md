@@ -22,7 +22,7 @@ how they look like:
 
 Person.js
 
-````javascript
+```javascript
 
 var cocktail = require('cocktail'),
     Person = function(){};
@@ -38,11 +38,11 @@ cocktail.mix(Person, {
 
 module.exports =  Person;
 
-````
+```
 
 Pirate.js
 
-````javascript
+```javascript
 
 var cocktail = require('cocktail'),
     Person   = require('./Person'),
@@ -57,7 +57,7 @@ cocktail.mix(Pirate, {
 
 module.exports = Pirate;
 
-````
+```
 
 Imagine that we want to add a `Robot` to the class model. We want the **Robot** to be able to say hi too. One can be tempted
 to reuse the same structure in **Pirate** and **Person** but, there is **no semantic relationship** between a Robot 
@@ -69,7 +69,7 @@ to create a new trait that we will call it **Greetable** and it can be defined a
 
 Greetable.js
 
-````javascript
+```javascript
 
 var cocktail  = require('cocktail'),
     Greetable = function(){};
@@ -86,7 +86,7 @@ cocktail.mix(Greetable, {
 
 module.exports = Greetable;
 
-````
+```
 
 The code above defines a class as a _Trait_ **Greetable**. It is not so different from defining a class. We have 
 specified our `sayHi` method in this trait. This method needs to access to the `greeting` variable. Since _Traits_
@@ -97,7 +97,7 @@ Now we can create the `Robot` class that will be composed with the trait.
 
 Robot.js
 
-````javascript
+```javascript
 
 var cocktail  = require('cocktail'),
     Greetable = require('./Greetable'),
@@ -113,7 +113,7 @@ cocktail.mix(Robot, {
     }
 });
 
-````
+```
 
 We have created a new class for `Robot`. We've declared that our class is composed with a `Trait` **Greetable**.
 The _Greetable_ needs a `getGreeting` method so we defined one that returns our greeting property.
@@ -126,7 +126,7 @@ Let's refactor them to take advantage of the _Greetable_ trait.
 
 Person.js
 
-````javascript
+```javascript
 
 var cocktail  = require('cocktail'),
     Greetable = require('./Greetable'),
@@ -144,14 +144,14 @@ cocktail.mix(Person, {
 
 module.exports =  Person;
 
-````
+```
 
 That's all we need. We don't need to change our `Pirate` class since the methods defined in the _trait_ will be
 inherited from `Person`.
 
 Pirate.js
 
-````javascript
+```javascript
 
 var cocktail = require('cocktail'),
     Person   = require('./Person'),
@@ -166,13 +166,13 @@ cocktail.mix(Pirate, {
 
 module.exports = Pirate;
 
-````
+```
 
 Let's see now how this will work into our main file.
 
 index.js
 
-````javascript
+```javascript
 
 var Person = require('./Person'),
     Pirate = require('./Pirate'),
@@ -191,7 +191,7 @@ marvin = new Robot();
 
 marvin.sayHi(); //will print "01001000 01100101 01101100 01101100 01101111!" 
 
-````
+```
 
 # Talents
 We have seen how to create a Trait and how to use it into our class definition. **Talents** are not that different.
@@ -201,7 +201,7 @@ our object.
 
 index.js
 
-````javascript
+```javascript
 
 var Person = require('./Person'),
     Pirate = require('./Pirate'),
@@ -232,7 +232,7 @@ cocktail.mix(dishwasher,{
 
 dishwasher.sayHi(); //will print "DISHWASHER 1000!"
 
-````
+```
 
 As you can see in the example we have defined an object _dishwasher_. For some reason we want to make the dishwasher
 able to sayHi too. We need a getGreeting method since it is not defined in the object. To do so, we can define it

@@ -17,7 +17,7 @@ outside the `cocktail.mix()` method:
 
 Person.js
 
-````javascript
+```javascript
 
 var cocktail = require('cocktail');
 
@@ -39,7 +39,7 @@ cocktail.mix({
 
 });
 
-````
+```
 
 The code above shows how a class is defined. We have specified a `greeting` property and a constructor that receives a 
 parameter for the greeting property. If the property has value then we are going to use the setter to assign the constructor
@@ -55,7 +55,7 @@ you can use the single parameter class definition and use the `@exports` annotat
 
 Pirate.js
 
-````javascript
+```javascript
 
 var cocktail = require('cocktail'),
     Person   = require('./Person');
@@ -67,7 +67,7 @@ cocktail.mix({
     greeting: 'Ahoy'
 });
 
-````
+```
 
 #Traits and Talents
 We have said that _Traits & Talents_ are just a special type of class where you only define behavior. It is very common
@@ -76,7 +76,7 @@ We are going to define the _Greetable_ trait using the Single Parameter Class De
 
 Greetable.js
 
-````javascript
+```javascript
 
 var cocktail = require('cocktail');
 
@@ -93,13 +93,13 @@ cocktail.mix({
 
 });
 
-````
+```
 
 And now we can refactor our previous `Person` class:
 
 Person.js
 
-````javascript
+```javascript
 
 var cocktail  = require('cocktail'),
     Greetable = require('./Greetable.js');
@@ -119,7 +119,7 @@ cocktail.mix({
 
 });
 
-````
+```
 
 Notice that our _Greetable_ trait declares a `getGreeting` as a required method. We are applying the trait to our 
 `Person` class. We didn't define the getter for `greeting` property but it is created when we declare `@properties`
@@ -129,7 +129,7 @@ Now let's use our classes in a simple example. We can create a couple _Pirates_ 
 
 index.js
 
-````javascript
+```javascript
 
 var Person = require('./Person'),
     Pirate = require('./Pirate'),
@@ -143,15 +143,15 @@ for (i = 0; i < people.length; i++) {
     people[i].sayHi();
 }
 
-````
+```
 
 Runing index.js
 
-````console
+```console
 $ node index.js
 Ahoy!
 Hello!
-````
+```
 
 That's it, as you can see we use _cocktail_ to help with **classes** definitions but it is not required to use the
 classes.

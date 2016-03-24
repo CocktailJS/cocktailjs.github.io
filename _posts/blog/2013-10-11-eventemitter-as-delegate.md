@@ -15,7 +15,7 @@ Commonly, you would create an instance of EventEmitter or you could extend from 
 
 index.js
 
-````javascript
+```javascript
 var EventEmitter = require('events').EventEmitter,
     emitter;
 
@@ -27,8 +27,8 @@ emitter.on('executed', onExecuted);
 
 emitter.emit('executed');
 
-````
-  
+```
+
 When the `executed` event is emitted, then the `onExecuted` function will be called.  
 
 ## Extending from EventEmitter
@@ -36,7 +36,7 @@ There are tons of posts about how to use EventEmitter, but basically the idea or
 
 Task.js
 
-````javascript
+```javascript
 var EventEmitter = require('events').EventEmitter,
     Task;
 
@@ -56,13 +56,13 @@ Task.prototype.execute: function() {
 }
 
 module.exports = Task;
-````
+```
 
 So now we can have Tasks firing our custom event.
 
 index.js
 
-`````javascript
+```javascript
 var Task = require('./Task'),
     task;
 
@@ -71,7 +71,7 @@ task = new Task();
 task.on('executed', function(){/* handle event here */})
 
 task.execute();
-`````
+```
 
 Here, our execute method in Task fires the `executed` event.
 
@@ -85,7 +85,7 @@ If we add an EventEmitter instance property to our Task, then we can delegate th
 
 Task.js
 
-````javascript
+```javascript
 var EventEmitter = require('events').EventEmitter,
     Task;
 
@@ -113,7 +113,7 @@ Task.prototype.execute: function() {
 }
 
 module.exports = Task;
-````
+```
 
 With this change we can still execute our `index.js` file without changing anything else since we just created the EventEmitter methods as delegated ones in our `Task.js` class definition.
 
@@ -129,11 +129,11 @@ Extracting all that code that we want to share into a Trait will be very easy: W
 
 Eventable.js
 
-````javascript
+```javascript
 var cocktail = require('cocktail');
 
 cocktail.mix({
-    '@exports' : module, 
+    '@exports' : module,
     '@requires': ['getEmitter'],
 
     on: function() {
@@ -145,7 +145,7 @@ cocktail.mix({
     }
 
 }) ;
-````
+```
 
 The `Eventable` trait requires a `getEmitter` method defined in the class where we are going to apply it. And here,  `getEmitter` is expected to return an instance of EventEmitter *or* any other object that has a similar public api. So you can implement your own event emitter if you would like to do it.
 
@@ -153,7 +153,7 @@ Now, we have to apply the Trait `Eventable` to our `Task` class:
 
 Task.js
 
-````javascript
+```javascript
 var cocktail     = require('cocktail'),
     EventEmitter = require('events').EventEmitter,
     Eventable    = require('./Eventable');
@@ -177,13 +177,13 @@ cocktail.mix({
     }
 });
 
-````
+```
 
 With these changes we can still execute our `index.js` with no problems. And in case we need a new class `Step` to fire and listen to events, we can reuse the `Eventable` trait in the same way as we did for `Task`:
 
 Step.js
 
-````javascript
+```javascript
 var cocktail     = require('cocktail'),
     EventEmitter = require('events').EventEmitter,
     Eventable    = require('./Eventable');
@@ -213,7 +213,7 @@ cocktail.mix({
 
 });
 
-````
+```
 
 ##Even more reusable code: __@evented__ Annotation
 CocktailJS relies on annotations to perform tasks over classes. It provides as well a mechanism that allows you to create your own annotations too.
@@ -221,7 +221,7 @@ In this case, we have a few steps we are doing to apply the `Eventable` trait, a
 
 Evented.js
 
-````javascript
+```javascript
 var cocktail  = require('cocktail'),
     Eventable = require('./Eventable'),
     Emitter   = require('events').EventEmitter;
@@ -259,7 +259,7 @@ cocktail.mix({
 
 });
 
-````
+```
 
 The `Evented` Annotation will apply the `Eventable` trait for us. If the annotation parameter is `true` then we are going to create the `EventEmitter` instance but, you can pass your own emitter instance too.
 
@@ -267,7 +267,7 @@ Refactoring our `Task` and `Step` classes to use the `@evented` annotation:
 
 Task.js
 
-````javascript
+```javascript
 var cocktail = require('cocktail'),
     Evented  = require('./Evented');
 
@@ -283,11 +283,11 @@ cocktail.mix({
         this.emit('executed');
     }
 });
-````
+```
 
 Step.js
 
-````javascript
+```javascript
 var cocktail = require('cocktail'),
     Evented  = require('./Evented');
 
@@ -312,7 +312,7 @@ cocktail.mix({
     }
 
 });
-````
+```
 
 
 ##Final words

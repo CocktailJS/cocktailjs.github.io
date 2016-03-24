@@ -10,7 +10,7 @@ on your code.
 
 > A Class Example (Car.js)
 
-````javascript
+```javascript
 var cocktail = require('cocktail');
 
 cocktail.mix({
@@ -30,5 +30,5 @@ cocktail.mix({
 	}
 });
 
-````
+```
 Read more: [Class Definitions](/guides/using-single-parameter-class-definition.html)

@@ -15,7 +15,7 @@ To use a trait in an already defined module is quite easy. We can mix the trait 
 
 > Surface.js
 
-````javascript
+```javascript
 
 module.exports = Surface;
 
@@ -38,7 +38,7 @@ Surface.prototype.setSize = function (size) {
 
 // more surface methods ...
 
-````
+```
 
 This very simple example is enough to demonstrate how to use a simple trait. In the Surface constructor we receive four parameters, two of them define the position, and the other two the size. Then we have a setter for the size which gets an object defining the size in terms of height and width, and another setter for the position defined by an object containing the x and y coordinates.
 
@@ -50,7 +50,7 @@ As it was mentioned before, we can mix a trait right into the class definition. 
 
 > Surface.js 
 
-````javascript
+```javascript
 
 var cocktail = require('cocktail'), // #1 
     Configurable = require('cocktail-trait-configurable'); // #2
@@ -80,7 +80,7 @@ Surface.prototype.setSize = function (size) {
 
 // more surface methods ...
 
-````
+```
 
 We have added our dependencies in \#1 and \#2: cocktail and a reference to our Configurable trait that adds the `configure` method to the host class, in this case the `Surface` class.
 
@@ -94,7 +94,7 @@ We have said that a Trait can be used as a Talent when we want to add more funct
 
 > Surface.js 
 
-````javascript
+```javascript
 
 var cocktail = require('cocktail'), // #1 
     Configurable = require('cocktail-trait-configurable'); // #2
@@ -126,7 +126,7 @@ Surface.prototype.setSize = function (size) {
 
 // more surface methods ...
 
-````
+```
 
 The \#1, \#2 and \#4 are the same as in the Trait implementation. But \#3 is a little different. Since inside our contructor `this` is the current instance we are creating, we can augment it using `Configurable` as a Talent.
 

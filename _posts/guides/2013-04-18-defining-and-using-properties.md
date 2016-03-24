@@ -16,7 +16,7 @@ as a subject into the mix. The very basic structure looks like this:
 
 MyClass.js
 
-````javascript
+```javascript
 var cocktail = require('cocktail'),
     MyClass = function(){};
 
@@ -25,7 +25,7 @@ cocktail.mix(MyClass, {
 });
 
 module.exports = MyClass;
-````
+```
 
 Here we have created and exported our class `MyClass`. Right now there is nothing done in the mix since the option
 object is just an empty object.
@@ -34,7 +34,7 @@ message in the console which we called `sayHello`:
 
 MyClass.js
 
-````javascript
+```javascript
 
 var cocktail = require('cocktail'),
     MyClass = function(){};
@@ -49,7 +49,7 @@ cocktail.mix(MyClass, {
 
 module.exports = MyClass;
 
-````
+```
 
 # Defining Properties
 
@@ -58,17 +58,17 @@ We are going to add a property named `greeting` into our `MyClass` so we can cha
 
 First, we have to define the `greeting` property:
 
-````javascript
+```javascript
 
 '@properties' : {
     greeting: 'Hello'
 }
 
-````
+```
 
 And then change the `sayHello` method to use the getter.
 
-````javascript
+```javascript
 
 sayHello: function(){
     var greeting = this.getGreeting();
@@ -76,13 +76,13 @@ sayHello: function(){
     console.log(greeting + ' cocktail!');
 }
 
-````
+```
 
 MyClass class will look like the following:
 
 MyClass.js
 
-````javascript
+```javascript
 
 var cocktail = require('cocktail'),
     MyClass = function(){};
@@ -103,13 +103,13 @@ cocktail.mix(MyClass, {
 
 module.exports = MyClass;
 
-````
+```
 
 Now we can use MyClass to produce different messages:
 
 index.js
 
-````javascript
+```javascript
 
 var MyClass = require('./MyClass'),
     obj;
@@ -124,7 +124,7 @@ obj.sayHello(); // prints "Ahoy cocktail!"
 obj.setGreeting('Yo');
 obj.sayHello(); // prints "Yo cocktail!"
 
-````
+```
 
 The '@properties' annotation creates the getter and setter for you. It also adds the property to the subject (or
 subject's prototype in case of classes). An special case is made when the defined property is a boolean. Here,
@@ -132,7 +132,7 @@ instead of having a getter an isXXX method is created.
 
 MyClass.js
 
-````javascript
+```javascript
 
 var cocktail = require('cocktail'),
     MyClass = function(){};
@@ -157,7 +157,7 @@ cocktail.mix(MyClass, {
 
 module.exports = MyClass;
 
-````
+```
 
 In the example above, we have added a property _silent_ which defines if the sayHello() method will print the message
 to the console or not. Since _silent_ is declared as _false_ it is assumed as a boolean property then an **isSilent** method
