@@ -11,7 +11,7 @@ repository: cocktail
 analytics: UA-39565774-1
 
 docs: {
-    version: 0.7.1
+    version: 0.7.2
 }
 
 markdown: redcarpet
